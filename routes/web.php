@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController as auth;
+use App\Http\Controllers\FrontendController as frontend;
+use App\Http\Controllers\BackendController as backend;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,15 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home',[frontend::class, 'index'])->name('home');
+Route::get('/dashboard',[backend::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-})->name('dashboard');
+
+
+// Route::get('/dashboard', function () {
+//     return view('welcome');
+// })->name('dashboard');
+
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
