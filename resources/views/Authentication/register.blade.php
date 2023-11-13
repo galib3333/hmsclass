@@ -1,72 +1,121 @@
 @extends('layouts.appAuth')
 @section('title', 'Sign Up')
 @section('content')
-    <div class="main-wrapper  account-wrapper">
-        <div class="account-page">
-            <div class="account-center">
-                <div class="account-box">
-                    <form {{ route('register.store') }}" method="POST" class="form-signin">
-                        @csrf
-                        <div class="account-logo">
-                            <a href="index-2.html"><img src="{{asset('public/assets/img/logo-dark.png')}}" alt=""></a>
-                        </div>
-                        <div class="form-group">
-                            <label for="FullName">Full Name</label>
-                            <input type="text" class="form-control" name="FullName" value="{{ old('FullName') }}"
-                                required="" id="FullName" placeholder="Your Full Name">
+
+    <div class="card card-authentication1 mx-auto my-4">
+        <div class="card-body">
+            <div class="card-content p-2">
+                <div class="text-center">
+                    <img src="{{ asset('public/assets/images/logo-icon.png') }}" alt="logo icon">
+                </div>
+                <div class="card-title text-uppercase text-center py-3">Sign Up</div>
+                <form {{ route('register.store') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="FullName" class="sr-only">Full Name</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" id="FullName" class="form-control input-shadow"
+                                placeholder="Enter Your Full Name" name="FullName" value="{{ old('FullName') }}">
                             @if ($errors->has('FullName'))
                                 <small class="d-block text-danger">
                                     {{ $errors->first('FullName') }}
                                 </small>
                             @endif
+                            <div class="form-control-position">
+                                <i class="icon-user"></i>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="EmailAddress">Email address</label>
-                            <input type="email" class="form-control" required="" id="EmailAddress" name="EmailAddress"
-                                value="{{ old('EmailAddress') }}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="EmailAddress" class="sr-only">Email Address</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" id="EmailAddress" name="EmailAddress" value="{{ old('EmailAddress') }}"
+                                class="form-control input-shadow" placeholder="Enter Your Email Address">
                             @if ($errors->has('EmailAddress'))
                                 <small class="d-block text-danger">
                                     {{ $errors->first('EmailAddress') }}
                                 </small>
                             @endif
+                            <div class="form-control-position">
+                                <i class="icon-envelope-open"></i>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="contact_no_en">Contact Number</label>
-                            <input type="text" class="form-control" required="" id="contact_no_en" name="contact_no_en"
-                                value="{{ old('contact_no_en') }}" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_no_en" class="sr-only">Contact Number</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" id="contact_no_en" name="contact_no_en" value="{{ old('contact_no_en') }}"
+                                class="form-control input-shadow" placeholder="Enter Your Contact Number">
                             @if ($errors->has('contact_no_en'))
                                 <small class="d-block text-danger">
                                     {{ $errors->first('contact_no_en') }}
                                 </small>
                             @endif
+                            <div class="form-control-position">
+                                <i class="icon-envelope-open"></i>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" required="" id="password" name="password" placeholder="Enter pwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Password</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" id="password" name="password" class="form-control input-shadow"
+                                placeholder="Choose Password">
                             @if ($errors->has('password'))
                                 <small class="d-block text-danger">
                                     {{ $errors->first('password') }}
                                 </small>
                             @endif
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password_confirmation">Confirm Password</label>
-                            <input type="password" class="form-control" required="" id="password" name="password" placeholder="Enter pwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirmation" class="sr-only">Password</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" id="password_confirmation" name="password_confirmation"
+                                class="form-control input-shadow" placeholder="Choose Password">
+                            @if ($errors->has('password'))
+                                <small class="d-block text-danger">
+                                    {{ $errors->first('password') }}
+                                </small>
+                            @endif
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
+                            </div>
                         </div>
-                        <div class="form-group checkbox">
-                            <label>
-                                <input type="checkbox"> I have read and agree the Terms & Conditions
-                            </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="icheck-material-white">
+                            <input type="checkbox" id="user-checkbox" checked="" />
+                            <label for="user-checkbox">I Agree With Terms & Conditions</label>
                         </div>
-                        <div class="form-group text-center">
-                            <button class="btn btn-primary account-btn" type="submit">Signup</button>
+                    </div>
+
+                    <button type="button" class="btn btn-light btn-block waves-effect waves-light">Sign Up</button>
+                    <div class="text-center mt-3">Sign Up With</div>
+
+                    <div class="form-row mt-4">
+                        <div class="form-group mb-0 col-6">
+                            <button type="button" class="btn btn-light btn-block"><i class="fa fa-facebook-square"></i>
+                                Facebook</button>
                         </div>
-                        <div class="text-center login-link">
-                            Already have an account? <a href="login.html">Login</a>
+                        <div class="form-group mb-0 col-6 text-right">
+                            <button type="button" class="btn btn-light btn-block"><i class="fa fa-twitter-square"></i>
+                                Twitter</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                </form>
             </div>
         </div>
+        <div class="card-footer text-center py-3">
+            <p class="text-warning mb-0">Already have an account? <a href="login.html"> Sign In here</a></p>
+        </div>
     </div>
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
 @endsection

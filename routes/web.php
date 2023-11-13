@@ -23,7 +23,7 @@ Route::get('/logout', [auth::class,'singOut'])->name('logOut');
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home',[frontend::class, 'index'])->name('home');
+Route::get('/',[frontend::class, 'index'])->name('home');
 Route::get('/dashboard',[backend::class, 'index'])->name('dashboard');
 
 
