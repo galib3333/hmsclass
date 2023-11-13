@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Role;
-use App\Http\Requests\Authentication\SignupRequest;
 use App\Http\Requests\Authentication\SigninRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\Authentication\SignupRequest;
+use App\Models\Role;
+use App\Models\User;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
@@ -20,18 +20,20 @@ class AuthenticationController extends Controller
     {
         try {
             $user = new User();
-            $user->name_en = $request->Fullname;
+            $user->name_en = $request->FullName;
             $user->contact_no_en = $request->contact_no_en;
             $user->email = $request->EmailAddress;
             $user->password = Hash::make($request->password);
             $user->role_id = 4;
-            if ($user->save())
+            // dd($request->all());
+            if ($user->save()) {
                 return redirect("login")->with("success", "Successfully Registered");
-            else
+            } else {
                 return redirect("login")->with("danger", "Please try again");
+            }
 
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             return redirect("login")->with("danger", "Please try again");
         }
     }
@@ -50,14 +52,16 @@ class AuthenticationController extends Controller
                 if (Hash::check($request->password, $user->password)) {
                     $this->setSession($user);
                     return redirect()->route('dashboard')->with('success', 'Successfully logged in!');
-                } else
+                } else {
                     return redirect()->route('login')->with('error', 'Your phone number is invalid! Please try again');
+                }
 
-            } else
+            } else {
                 return redirect()->route('login')->with('error', 'Your phone number is invalid! Please try again2');
+            }
 
         } catch (Exception $e) {
-            dd($e);
+            // dd($e);
             return redirect('login')->with('error', 'Your phone number is invalid! Please try again3');
 
         }
@@ -76,8 +80,9 @@ class AuthenticationController extends Controller
         ]);
     }
 
-    public function signOut(){
+    public function signOut()
+    {
         request()->session()->flush();
-        return redirect('login')->with($this->resMessageHtml(false,'error', currentUserId()));
+        return redirect('login')->with($this->resMessageHtml(false, 'error', currentUserId()));
     }
 }

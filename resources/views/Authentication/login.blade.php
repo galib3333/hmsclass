@@ -60,7 +60,7 @@
                             <a href="reset-password.html">Reset Password</a>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-light btn-block">Sign In</button>
+                    <button type="submit" class="btn btn-light btn-block">Sign In</button>
                     <div class="text-center mt-3">Sign In With</div>
 
                     <div class="form-row mt-4">

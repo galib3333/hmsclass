@@ -93,7 +93,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-light btn-block waves-effect waves-light">Sign Up</button>
+                    <button type="submit" class="btn btn-light btn-block waves-effect waves-light">Sign Up</button>
                     <div class="text-center mt-3">Sign Up With</div>
 
                     <div class="form-row mt-4">
@@ -111,7 +111,7 @@
             </div>
         </div>
         <div class="card-footer text-center py-3">
-            <p class="text-warning mb-0">Already have an account? <a href="login.html"> Sign In here</a></p>
+            <p class="text-warning mb-0">Already have an account? <a href="{{'login'}}"> Sign In here</a></p>
         </div>
     </div>
 
