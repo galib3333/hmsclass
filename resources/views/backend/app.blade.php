@@ -146,10 +146,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown"
-                            href="#">
-                            <span class="user-profile"><img src="https://via.placeholder.com/110x110"
-                                    class="img-circle" alt="user avatar"></span>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#" aria-expanded="true">
+                            <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-item user-details">
@@ -192,9 +190,8 @@
                 <!--end overlay-->
 
             </div>
-            <!-- End container-fluid-->
-
-        </div><!--End content-wrapper-->
+        </div>
+        <!--End content-wrapper-->
         <!--Start Back To Top Button-->
         <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
         <!--End Back To Top Button-->

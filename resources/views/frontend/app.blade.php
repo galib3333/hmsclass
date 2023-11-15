@@ -49,7 +49,7 @@
                         <a class="nav-link" href="doctor.html">Doctor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="logo_main" href="index.html"><img src="{{asset('public/images/logo.png')}}"></a>
+                        <a class="logo_main" href="{{'home'}}"><img src="{{asset('public/images/logo.png')}}"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="depatments.html">Depatments</a>
@@ -64,7 +64,7 @@
                         <a class="nav-link" href="#"><img src="{{asset('public/images/search-icon.png')}}"></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">LOGIN</a>
+                        <a class="nav-link" href="{{'login'}}">LOGIN</a>
                     </li>
                 </ul>
             </div>

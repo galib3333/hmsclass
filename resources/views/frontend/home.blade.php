@@ -202,7 +202,7 @@
                 <div class="main_bt"><a href="#">Send</a></div>
             </div>
             <div class="col-md-6">
-                <h1 class="contact_text">What syas our peasant</h1>
+                <h1 class="contact_text">What says our patients</h1>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

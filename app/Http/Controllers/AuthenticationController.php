@@ -9,6 +9,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthenticationController extends Controller
 {
@@ -85,4 +86,5 @@ class AuthenticationController extends Controller
         request()->session()->flush();
         return redirect('login')->with($this->resMessageHtml(false, 'error', currentUserId()));
     }
+    
 }
