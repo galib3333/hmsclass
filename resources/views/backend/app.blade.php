@@ -171,7 +171,7 @@
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
                             <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+                            <a href="{{'logOut'}}"><li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li></a>
                         </ul>
                     </li>
                 </ul>
