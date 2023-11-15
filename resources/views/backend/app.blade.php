@@ -146,8 +146,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#" aria-expanded="true">
-                            <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown"
+                            href="#">
+                            <span class="user-profile"><img src="https://via.placeholder.com/110x110"
+                                    class="img-circle" alt="user avatar"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-item user-details">
@@ -247,6 +249,9 @@
     </div><!--End wrapper-->
 
     <!-- Bootstrap core JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/popper.min.js') }}"></script>
     <script src="assets/js/bootstrap.min.js')}}"></script>
