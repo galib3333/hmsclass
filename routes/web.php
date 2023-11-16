@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthenticationController as auth;
+use App\Http\Controllers\Backend\AuthenticationController as auth;
 use App\Http\Controllers\FrontendController as frontend;
-use App\Http\Controllers\BackendController as backend;
-use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\Backend\BackendController as backend;
+// use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\Backend\UserController as user;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,23 +20,28 @@ Route::get('/register', [auth::class,'signUpForm'])->name('register');
 Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
 Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
-Route::get('/logout', [auth::class,'singOut'])->name('logOut');
+Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 
-Route::get('/auth/github/redirect', function () {
-  return Socialite::driver('github')->redirect();
-});
+// Route::get('/auth/github/redirect', function () {
+//   return Socialite::driver('github')->redirect();
+// });
 
-Route::get('/auth/github/callback', function () {
-  $user = Socialite::driver('github')->user();
+// Route::get('/auth/github/callback', function () {
+//   $user = Socialite::driver('github')->user();
 
-  dd($user->getName(), $user->getEmail(), $user->getId());
-});
+//   dd($user->getName(), $user->getEmail(), $user->getId());
+// });
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::middleware(['checkrole'])->group(function () {
+  Route::get('/dashboard',[backend::class, 'index'])->name('dashboard');
+  Route::resource('/user', user::class)->except(['update', 'store']);
+});
 Route::get('/',[frontend::class, 'index'])->name('home');
-Route::get('/dashboard',[backend::class, 'index'])->name('dashboard');
+
 
 
 

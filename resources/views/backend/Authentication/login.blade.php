@@ -1,4 +1,4 @@
-@extends('layouts.appAuth')
+@extends('backend.layouts.appAuth')
 @section('tile','Login Page')
 @section('content')
     <!-- Start wrapper-->

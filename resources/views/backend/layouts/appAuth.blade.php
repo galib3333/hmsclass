@@ -27,6 +27,8 @@
     <link href="{{ asset('public/assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{ asset('public/assets/css/app-style.css') }}" rel="stylesheet" />
+     <!-- Toast CSS -->
+     <link href="{{asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -104,6 +106,22 @@
     <!-- Index js -->
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+    <script>
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}");
+        @endif
+        @if (Session::has('info'))
+            toastr.info("{{ Session::get('info') }}");
+        @endif
+        @if (Session::has('warning'))
+            toastr.warning("{{ Session::get('warning') }}");
+        @endif
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}");
+        @endif
+    </script>
 
 </body>
 

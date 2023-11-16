@@ -1,4 +1,4 @@
-@extends('layouts.appAuth')
+@extends('backend.layouts.appAuth')
 @section('title', 'Sign Up')
 @section('content')
 

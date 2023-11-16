@@ -27,6 +27,8 @@
     <link href="{{ asset('public/assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{ asset('public/assets/css/app-style.css') }}" rel="stylesheet" />
+     <!-- Toast CSS -->
+     <link href="{{asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -171,7 +173,7 @@
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
                             <li class="dropdown-divider"></li>
-                            <a href="{{'login'}}"><li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li></a>
+                            <a href="{{route('logOut')}}"><li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li></a>
                         </ul>
                     </li>
                 </ul>

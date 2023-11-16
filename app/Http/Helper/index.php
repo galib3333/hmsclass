@@ -55,3 +55,7 @@ function currentUserId(){
 function currentUser(){
     return encryptor('decrypt', request()->get('roleIdentity'));
 }
+
+function fullAccess(){
+    return encryptor('decrypt', request()->session()->get('accessType'));
+}
