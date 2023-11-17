@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8" />
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Newlife Admin</title>
+    <title>@yield('title',env('APP_NAME'))</title>
     <!-- loader-->
     <link href="{{ asset('public/assets/css/pace.min.css') }}" rel="stylesheet')}}" />
     <script src="{{ asset('public/assets/js/pace.min.js') }}"></script>
@@ -27,8 +27,9 @@
     <link href="{{ asset('public/assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{ asset('public/assets/css/app-style.css') }}" rel="stylesheet" />
-     <!-- Toast CSS -->
-     <link href="{{asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- Toast CSS -->
+    <link href="{{ asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css') }}"
+        rel="stylesheet" type="text/css">
 
 </head>
 
@@ -54,8 +55,13 @@
                 </li>
 
                 <li>
-                    <a href="icons.html">
-                        <i class="zmdi zmdi-invert-colors"></i> <span>UI Icons</span>
+                    <a href="{{'userlist'}}">
+                        <i class="zmdi zmdi-account-circle"></i> <span>User List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{'userlist'}}">
+                        <i class="zmdi zmdi-invert-colors"></i> <span>User List</span>
                     </a>
                 </li>
 
@@ -150,7 +156,7 @@
                     <li class="nav-item">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown"
                             href="#">
-                            <span class="user-profile"><img src="https://via.placeholder.com/110x110"
+                            <span class="user-profile"><img src="{{asset('public/uploads/users/'.request()->session()->get('image'))}}"
                                     class="img-circle" alt="user avatar"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -158,10 +164,10 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="https://via.placeholder.com/110x110" alt="user avatar"></div>
+                                                src="{{asset('public/uploads/users/'.request()->session()->get('image'))}}" alt="user avatar"></div>
                                         <div class="media-body">
-                                            <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
-                                            <p class="user-subtitle">mccoy@example.com</p>
+                                            <h6 class="mt-2 user-title">{{request()->session()->get('username')}}</h6>
+                                            <p class="user-subtitle">{{ request()->session()->get('userEmail') }}</p>
                                         </div>
                                     </div>
                                 </a>
@@ -173,7 +179,9 @@
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
                             <li class="dropdown-divider"></li>
-                            <a href="{{route('logOut')}}"><li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li></a>
+                            <a href="{{ route('logOut') }}">
+                                <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+                            </a>
                         </ul>
                     </li>
                 </ul>
@@ -252,7 +260,7 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/popper.min.js') }}"></script>

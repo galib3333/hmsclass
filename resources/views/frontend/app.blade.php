@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <!-- basic -->
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Newlife</title>
+    <title>@yield('title',env('APP_NAME'))</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -330,8 +330,7 @@
     <!-- copyright section start -->
     <div class="copyright_section">
         <div class="container">
-            <p class="copyright">2023 All Rights Reserved. Design by <a href="https://html.design">Free html
-                    Templates</a></p>
+            <p class="copyright">2023 All Rights Reserved by <a href="https://newlife.org">New Life</a></p>
         </div>
     </div>
     <!-- copyright section end -->

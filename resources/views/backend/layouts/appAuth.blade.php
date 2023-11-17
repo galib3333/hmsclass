@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8" />
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Newlife Admin</title>
+    <title>@yield('title',env('APP_NAME'))</title>
     <!-- loader-->
     <link href="{{ asset('public/assets/css/pace.min.css') }}" rel="stylesheet')}}" />
     <script src="{{ asset('public/assets/js/pace.min.js') }}"></script>
@@ -27,8 +27,9 @@
     <link href="{{ asset('public/assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{ asset('public/assets/css/app-style.css') }}" rel="stylesheet" />
-     <!-- Toast CSS -->
-     <link href="{{asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- Toast CSS -->
+    <link href="{{ asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css') }}"
+        rel="stylesheet" type="text/css">
 
 </head>
 

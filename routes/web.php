@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AuthenticationController as auth;
-use App\Http\Controllers\FrontendController as frontend;
 use App\Http\Controllers\Backend\BackendController as backend;
-// use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Backend\UserController as user;
+use App\Http\Controllers\FrontendController as frontend;
+// use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +16,12 @@ use App\Http\Controllers\Backend\UserController as user;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-Route::get('/register', [auth::class,'signUpForm'])->name('register');
-Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
-Route::get('/login', [auth::class,'signInForm'])->name('login');
-Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
-Route::get('/logout', [auth::class,'signOut'])->name('logOut');
+ */
+Route::get('/register', [auth::class, 'signUpForm'])->name('register');
+Route::post('/register', [auth::class, 'signUpStore'])->name('register.store');
+Route::get('/login', [auth::class, 'signInForm'])->name('login');
+Route::post('/login', [auth::class, 'signInCheck'])->name('login.check');
+Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 
 // Route::get('/auth/github/redirect', function () {
 //   return Socialite::driver('github')->redirect();
@@ -37,13 +38,13 @@ Route::get('/logout', [auth::class,'signOut'])->name('logOut');
 // });
 
 Route::middleware(['checkrole'])->group(function () {
-  Route::get('/dashboard',[backend::class, 'index'])->name('dashboard');
-  Route::resource('/user', user::class)->except(['update', 'store']);
+    Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
+    Route::get('/userlist', [User::class, 'index'])->name('userList');
+    Route::post('/usercreate', [User::class, 'create'])->name('user.create');
+    Route::post('/userstore', [User::class, 'store'])->name('user.store');
+    Route::resource('/user', user::class)->except(['update', 'store']);
 });
-Route::get('/',[frontend::class, 'index'])->name('home');
-
-
-
+Route::get('/', [frontend::class, 'index'])->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('welcome');
