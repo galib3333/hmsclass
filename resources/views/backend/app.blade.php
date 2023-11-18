@@ -28,7 +28,7 @@
     <!-- Custom Style-->
     <link href="{{ asset('public/assets/css/app-style.css') }}" rel="stylesheet" />
     <!-- Toast CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 
 
 </head>
@@ -42,14 +42,14 @@
         <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
             <div class="brand-logo">
                 <a href="index.html">
-                    <img src="{{ asset('public/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
-                    <h5 class="logo-text">Dashtreme Admin</h5>
+                    <img src="{{ asset('public/assets/images/logo.png') }}" class="logo-icon" alt="logo icon">
+                    <h5 class="logo-text">NewLife HMS</h5>
                 </a>
             </div>
             <ul class="sidebar-menu do-nicescrol">
                 <li class="sidebar-header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="index.html">
+                    <a href="{{'dashboard'}}">
                         <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -60,8 +60,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ 'userlist' }}">
-                        <i class="zmdi zmdi-invert-colors"></i> <span>User List</span>
+                    <a href="{{ 'doctorlist' }}">
+                        <i class="zmdi zmdi-account-add"></i><span>Doctors List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ 'patientlist' }}">
+                        <i class="zmdi zmdi-mood-bad"></i><span>Patients List</span>
                     </a>
                 </li>
 
@@ -157,7 +162,7 @@
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown"
                             href="#">
                             <span class="user-profile"><img
-                                    src="{{ asset('public/uploads/users/'.request()->session()->get('image')) }}"
+                                    src="{{ asset('public/uploads/users/' .request()->session()->get('image')) }}"
                                     class="img-circle" alt="user avatar"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -165,12 +170,13 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="{{ asset('public/uploads/users/'.request()->session()->get('image')) }}"
+                                                src="{{ asset('public/uploads/users/' .request()->session()->get('image')) }}"
                                                 alt="user avatar"></div>
                                         <div class="media-body">
                                             <h6 class="mt-2 user-title">
                                                 {{ encryptor('decrypt',request()->session()->get('username')) }}</h6>
-                                            <p class="user-subtitle">{{ encryptor('decrypt',request()->session()->get('useremail')) }}</p>
+                                            <p class="user-subtitle">
+                                                {{ encryptor('decrypt',request()->session()->get('useremail')) }}</p>
                                         </div>
                                     </div>
                                 </a>
@@ -215,7 +221,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    Copyright © 2018 Dashtreme Admin
+                    Copyright © 2023 NewLife HMS.
                 </div>
             </div>
         </footer>
