@@ -29,7 +29,7 @@ class checkRole
         if(!Session::has('userId') || Session::has('userId')==null){
             return redirect()->route('logOut');
         }else{
-            $user=User::findOrFail(currentUserId());
+            $user=User::find(currentUserId());
             if(!$user){
                 return redirect()->route('logOut');
             }else if($user->full_access=="1"){

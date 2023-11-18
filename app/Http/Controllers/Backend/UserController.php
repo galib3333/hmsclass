@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Backend\User\AddNewRequest;
 use App\Http\Requests\Backend\User\UpdateRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
+use Toastr;
 
 class UserController extends Controller
 {
@@ -51,7 +53,7 @@ class UserController extends Controller
 
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
-                $request->image->extension();
+                    $request->image->extension();
                 $request->image->move(public_path('uploads/users'), $imageName);
                 $user->image = $imageName;
             }
@@ -106,7 +108,7 @@ class UserController extends Controller
 
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
-                $request->image->extension();
+                    $request->image->extension();
                 $request->image->move(public_path('uploads/users'), $imageName);
                 $user->image = $imageName;
             }
@@ -128,6 +130,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data= User::findOrFail(encryptor('decrypt',$id));
+        $image_path=public_path('uploads/users/').$data->image;
+        
+        if($data->delete()){
+            if(File::exists($image_path)) 
+                File::delete($image_path);
+            
+            Toastr::warning('Deleted Permanently!');
+            return redirect()->back();
+        }
     }
+
 }

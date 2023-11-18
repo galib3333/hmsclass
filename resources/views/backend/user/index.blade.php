@@ -6,8 +6,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('user.create') }}" class="btn btn-light px-3 mb-3"><i class="fa fa-plus"></i></a>
-                <h5 class="card-title">Hover Table</h5>
+                <a href="{{ route('user.create') }}" class="btn btn-light px-2 mb-3">Add User<i class="fa fa-plus px-2"></i></a>
+                <h5 class="card-title">User Table</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>

@@ -40,9 +40,7 @@ Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 Route::middleware(['checkrole'])->group(function () {
     Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
     Route::get('/userlist', [User::class, 'index'])->name('userList');
-    Route::post('/usercreate', [User::class, 'create'])->name('user.create');
-    Route::post('/userstore', [User::class, 'store'])->name('user.store');
-    Route::resource('/user', user::class)->except(['update', 'store']);
+    Route::resource('/user', user::class);
 });
 Route::get('/', [frontend::class, 'index'])->name('home');
 

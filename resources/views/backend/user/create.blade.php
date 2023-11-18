@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">User Form</div>
+                        <div class="card-title">User Create Form</div>
                         <hr>
                         <form method="post" action="{{route('user.store')}}" enctype="multipart/form-data" >
                             @csrf
@@ -92,10 +92,8 @@
                                     <div class="form-group">
                                         <label for="fullAccess">Full Access</label>
                                         <select id="fullAccess" class="form-control" name="fullAccess">
-                                            <option value="0" @if (old('fullAccess') == 0) selected @endif>No
-                                            </option>
-                                            <option value="1" @if (old('fullAccess') == 1) selected @endif>Yes
-                                            </option>
+                                            <option value="0" @if (old('fullAccess') == 0) selected @endif>No</option>
+                                            <option value="1" @if (old('fullAccess') == 1) selected @endif>Yes</option>
                                         </select>
                                         @if ($errors->has('fullAccess'))
                                             <span class="text-danger"> {{ $errors->first('fullAccess') }}</span>

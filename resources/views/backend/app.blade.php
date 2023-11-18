@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>@yield('title',env('APP_NAME'))</title>
+    <title>@yield('title', env('APP_NAME'))</title>
     <!-- loader-->
     <link href="{{ asset('public/assets/css/pace.min.css') }}" rel="stylesheet')}}" />
     <script src="{{ asset('public/assets/js/pace.min.js') }}"></script>
@@ -28,8 +28,8 @@
     <!-- Custom Style-->
     <link href="{{ asset('public/assets/css/app-style.css') }}" rel="stylesheet" />
     <!-- Toast CSS -->
-    <link href="{{ asset('public/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css') }}"
-        rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+
 
 </head>
 
@@ -55,12 +55,12 @@
                 </li>
 
                 <li>
-                    <a href="{{'userlist'}}">
+                    <a href="{{ 'userlist' }}">
                         <i class="zmdi zmdi-account-circle"></i> <span>User List</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{'userlist'}}">
+                    <a href="{{ 'userlist' }}">
                         <i class="zmdi zmdi-invert-colors"></i> <span>User List</span>
                     </a>
                 </li>
@@ -144,8 +144,8 @@
                             <i class="fa fa-bell-o"></i></a>
                     </li>
                     <li class="nav-item language">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                            href="javascript:void();"><i class="fa fa-flag"></i></a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect"
+                            data-toggle="dropdown" href="javascript:void();"><i class="fa fa-flag"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-item"> <i class="flag-icon flag-icon-gb mr-2"></i> English</li>
                             <li class="dropdown-item"> <i class="flag-icon flag-icon-fr mr-2"></i> French</li>
@@ -156,7 +156,8 @@
                     <li class="nav-item">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown"
                             href="#">
-                            <span class="user-profile"><img src="{{asset('public/uploads/users/'.request()->session()->get('image'))}}"
+                            <span class="user-profile"><img
+                                    src="{{ asset('public/uploads/users/'.request()->session()->get('image')) }}"
                                     class="img-circle" alt="user avatar"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -164,9 +165,11 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="{{asset('public/uploads/users/'.request()->session()->get('image'))}}" alt="user avatar"></div>
+                                                src="{{ asset('public/uploads/users/'.request()->session()->get('image')) }}"
+                                                alt="user avatar"></div>
                                         <div class="media-body">
-                                            <h6 class="mt-2 user-title">{{request()->session()->get('username')}}</h6>
+                                            <h6 class="mt-2 user-title">
+                                                {{ encryptor('decrypt',request()->session()->get('username')) }}</h6>
                                             <p class="user-subtitle">{{ request()->session()->get('userEmail') }}</p>
                                         </div>
                                     </div>
@@ -280,6 +283,9 @@
 
     <!-- Index js -->
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
 
 
 </body>
