@@ -35,7 +35,7 @@ class AuthenticationController extends Controller
             }
 
         } catch (Exception $e) {
-            // dd($e);
+            dd($e);
             return redirect("login")->with("danger", "Please try again");
         }
     }
@@ -73,7 +73,7 @@ class AuthenticationController extends Controller
     {
         try {
             // Determine if the input is an email or a phone number
-            $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
+            $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'contact_no_en';
 
             $user = User::where($fieldType, $request->username)->first();
 
@@ -88,7 +88,7 @@ class AuthenticationController extends Controller
                 return redirect()->route('login')->with('error', 'Invalid ' . $fieldType . '! Please try again');
             }
         } catch (Exception $e) {
-            // dd($e);
+            dd($e);
             return redirect('login')->with('error', 'Invalid ' . $fieldType . '! Please try again');
         }
     }
@@ -98,7 +98,7 @@ class AuthenticationController extends Controller
     {
         return request()->session()->put([
             'userId' => encryptor('encrypt', $user->id),
-            'username' => encryptor('encrypt', $user->name),
+            'username' => encryptor('encrypt', $user->name_en),
             'useremail' => encryptor('encrypt', $user->email),
             'role' => encryptor('encrypt', $user->role->type),
             'role_id' => encryptor('encrypt', $user->role_id),

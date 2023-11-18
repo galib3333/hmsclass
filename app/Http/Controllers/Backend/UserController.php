@@ -104,6 +104,7 @@ class UserController extends Controller
             $user->status = $request->status;
             $user->full_access = $request->fullAccess;
             $user->language = 'en';
+            if($request->password)
             $user->password = Hash::make($request->password);
 
             if ($request->hasFile('image')) {

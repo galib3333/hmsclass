@@ -170,7 +170,7 @@
                                         <div class="media-body">
                                             <h6 class="mt-2 user-title">
                                                 {{ encryptor('decrypt',request()->session()->get('username')) }}</h6>
-                                            <p class="user-subtitle">{{ request()->session()->get('userEmail') }}</p>
+                                            <p class="user-subtitle">{{ encryptor('decrypt',request()->session()->get('useremail')) }}</p>
                                         </div>
                                     </div>
                                 </a>
