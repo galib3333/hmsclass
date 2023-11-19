@@ -3,7 +3,9 @@
 use App\Http\Controllers\Backend\AuthenticationController as auth;
 use App\Http\Controllers\Backend\BackendController as backend;
 use App\Http\Controllers\Backend\UserController as user;
+use App\Http\Controllers\Backend\PatientController as patient;
 use App\Http\Controllers\FrontendController as frontend;
+
 // use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
 
@@ -39,9 +41,12 @@ Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 
 Route::middleware(['checkrole'])->group(function () {
     Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
-    Route::get('/userlist', [User::class, 'index'])->name('userList');
     Route::resource('/user', user::class);
+
 });
+
+Route::resource('/patients', patient::class);
+
 Route::get('/', [frontend::class, 'index'])->name('home');
 
 // Route::get('/dashboard', function () {

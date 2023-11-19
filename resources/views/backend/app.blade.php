@@ -55,7 +55,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ 'userlist' }}">
+                    <a href="{{ route('user.index') }}">
                         <i class="zmdi zmdi-account-circle"></i> <span>User List</span>
                     </a>
                 </li>
@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ 'patientlist' }}">
+                    <a href="{{ route('patients.index') }}">
                         <i class="zmdi zmdi-mood-bad"></i><span>Patients List</span>
                     </a>
                 </li>
@@ -177,6 +177,8 @@
                                                 {{ encryptor('decrypt',request()->session()->get('username')) }}</h6>
                                             <p class="user-subtitle">
                                                 {{ encryptor('decrypt',request()->session()->get('useremail')) }}</p>
+                                            <p class="user-subtitle">
+                                                {{ encryptor('decrypt',request()->session()->get('role')) }}</p>
                                         </div>
                                     </div>
                                 </a>

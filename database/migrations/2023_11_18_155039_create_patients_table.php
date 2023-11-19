@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('phone');
             $table->text('present_address');
             $table->text('permanent_address');
-            $table->string('picture')->nullable();
-            $table->date('birth_date');
+            $table->string('image')->nullable();
+            $table->date('birth_date')->nullable();
             $table->string('gender');
             $table->string('blood_type')->nullable();
             $table->integer('status')->default(1);

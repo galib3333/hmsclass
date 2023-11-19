@@ -131,10 +131,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $data= User::findOrFail(encryptor('decrypt',$id));
-        $image_path=public_path('uploads/users/').$data->image;
+        $user= User::findOrFail(encryptor('decrypt',$id));
+        $image_path=public_path('uploads/users/').$user->image;
         
-        if($data->delete()){
+        if($user->delete()){
             if(File::exists($image_path)) 
                 File::delete($image_path);
             
