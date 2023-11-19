@@ -8,7 +8,7 @@ use App\Http\Requests\Backend\Patient\StorePatientRequest;
 use App\Http\Requests\Backend\Patient\UpdatePatientRequest;
 use Exception;
 use File;
-use Brian2694\Toastr\Toastr;
+use Toastr;
 
 class PatientController extends Controller
 {
@@ -125,7 +125,7 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Patient $id)
+    public function destroy($id)
     {
         $patient= Patient::findOrFail(encryptor('decrypt',$id));
         $image_path=public_path('uploads/patients/').$patient->image;
