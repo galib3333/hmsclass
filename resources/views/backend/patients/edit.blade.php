@@ -12,14 +12,14 @@
                     <div class="card-body">
                         <div class="card-title">Patient Update Form</div>
                         <hr>
-                        <form method="post" {{ route('patients.update', encryptor('encrypt', $patient->id)) }} enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('patients.update', encryptor('encrypt', $patient->id)) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
                                     <label for="patientId">Patient Id <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="patientId" name="patientId"
-                                        value="{{ old('patientId', $patient->patientId) }}" placeholder="Enter Patient ID">
+                                        value="{{ old('patientId', $patient->patient_id) }}" placeholder="Enter Patient ID">
                                     @if ($errors->has('patientId'))
                                         <span class="text-danger"> {{ $errors->first('patientId') }}</span>
                                     @endif
@@ -27,7 +27,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="firstName">First Name</label>
                                     <input type="text" class="form-control" id="firstName" name="firstName"
-                                        value="{{ old('firstName', $patient->firstName) }}" placeholder="Enter Your First Name">
+                                        value="{{ old('firstName', $patient->first_name) }}"
+                                        placeholder="Enter Your First Name">
                                     @if ($errors->has('firstName'))
                                         <span class="text-danger"> {{ $errors->first('firstName') }}</span>
                                     @endif
@@ -35,7 +36,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="lastName">Last Name</label>
                                     <input type="text" class="form-control" id="lastName" name="lastName"
-                                        value="{{ old('lastName') }}" placeholder="Enter Your Last Name">
+                                        value="{{ old('lastName', $patient->last_name) }}"
+                                        placeholder="Enter Your Last Name">
                                     @if ($errors->has('lastName'))
                                         <span class="text-danger"> {{ $errors->first('lastName') }}</span>
                                     @endif
@@ -43,7 +45,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="emailAddress">Email <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="emailAddress" name="emailAddress"
-                                        value="{{ old('emailAddress') }}" placeholder="Enter Email Address">
+                                        value="{{ old('emailAddress', $patient->email) }}"
+                                        placeholder="Enter Email Address">
                                     @if ($errors->has('emailAddress'))
                                         <span class="text-danger"> {{ $errors->first('emailAddress') }}</span>
                                     @endif
@@ -51,7 +54,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="phoneNumber">Phone Number <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
-                                        value="{{ old('phoneNumber') }}"
+                                        value="{{ old('phoneNumber', $patient->phone) }}"
                                         placeholder="Enter Your Phone Number">
                                     @if ($errors->has('phoneNumber'))
                                         <span class="text-danger"> {{ $errors->first('phoneNumber') }}</span>
@@ -60,7 +63,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="presentAddress">Present Address</label>
                                     <input type="text" class="form-control" id="presentAddress" name="presentAddress"
-                                        value="{{ old('presentAddress') }}"
+                                        value="{{ old('presentAddress', $patient->present_address) }}"
                                         placeholder="Enter Your PresentAddress">
                                     @if ($errors->has('presentAddress'))
                                         <span class="text-danger"> {{ $errors->first('presentAddress') }}</span>
@@ -69,7 +72,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="permanentAddress"> Permanent Address</label>
                                     <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
-                                        value="{{ old('permanentAddress') }}"
+                                        value="{{ old('permanentAddress', $patient->permanent_address) }}"
                                         placeholder="Enter Your Permanent Address">
                                     @if ($errors->has('permanentAddress'))
                                         <span class="text-danger"> {{ $errors->first('permanentAddress') }}</span>
@@ -78,7 +81,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="birthDate"> Birth Date</label>
                                     <input type="text" class="form-control" id="birthDate" name="birthDate"
-                                        value="{{ old('birthDate') }}"
+                                        value="{{ old('birthDate', $patient->birth_date) }}"
                                         placeholder="Enter Your Birth Date">
                                     @if ($errors->has('birthDate'))
                                         <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
@@ -87,7 +90,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="bloodType">Blood Type</label>
                                     <input type="text" class="form-control" id="bloodType" name="bloodType"
-                                        value="{{ old('bloodType') }}"
+                                        value="{{ old('bloodType', $patient->blood_type) }}"
                                         placeholder="Enter Your bloodType">
                                     @if ($errors->has('bloodType'))
                                         <span class="text-danger"> {{ $errors->first('bloodType') }}</span>
