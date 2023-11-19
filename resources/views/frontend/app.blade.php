@@ -64,7 +64,7 @@
                         <a class="nav-link" href="#"><img src="{{asset('public/images/search-icon.png')}}"></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{'login'}}">LOGIN</a>
+                        <a class="nav-link" href="{{route('login')}}">LOGIN</a>
                     </li>
                 </ul>
             </div>
