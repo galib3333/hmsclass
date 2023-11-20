@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('employ_id')->unsigned();
+            $table->integer('employ_id')->unsigned()->nullable();
             $table->foreign('employ_id')->references('id')->on('employ_basics');
             $table->string('email')->unique()->nullable();
             $table->string('contact_no_en')->unique();
