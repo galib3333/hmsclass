@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_bn')->nullable();
+            $table->integer('employ_id')->unsigned();
+            $table->foreign('employ_id')->references('id')->on('employ_basics');
             $table->string('email')->unique()->nullable();
             $table->string('contact_no_en')->unique();
             $table->string('contact_no_bn')->unique()->nullable();
@@ -22,9 +22,10 @@ return new class extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->string('password');
             $table->string('language')->default('en');
-            $table->string('image')->nullable();
             $table->boolean('full_access')->default(false)->comment('1=yes, 0=no');
             $table->boolean('status')->default(1)->comment('1 = active, 2 = inactive');
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

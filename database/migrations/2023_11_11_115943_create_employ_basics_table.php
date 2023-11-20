@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('patients', function (Blueprint $table) {
+        Schema::create('employ_basics', function (Blueprint $table) {
             $table->id();
-            $table->string('patient_id');
-            $table->string('name_en');
-            $table->string('name_bn')->nullable();
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
-            $table->string('contact_no_en')->unique();
-            $table->string('contact_no_bn')->unique()->nullable();
+            $table->string('phone');
+            $table->string('gender');
+            $table->date('birth_date');
+            $table->unsignedBigInteger('blood_id');
+            $table->foreign('blood_id')->references('id')->on('blood')->onDelete('cascade');
+            $table->string('image');
             $table->text('present_address');
             $table->text('permanent_address');
-            $table->string('image')->nullable();
-            $table->date('birth_date')->nullable();
-            $table->string('gender');
-            $table->unsignedBigInteger('blood_id');
-            $table->foreign('blood_id')->references('id')->on('blood');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('patients');
+        Schema::dropIfExists('employ_basics');
     }
 };
