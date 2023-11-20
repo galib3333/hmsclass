@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('patient_admits', function (Blueprint $table) {
             $table->id();
-            $table->integer('patient_id')->unsigned();
+            $table->unsignedBigInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->string('father_name');
             $table->string('mother_name');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('doctor_ref');
             $table->text('problem');
             $table->date('admit_date');
-            $table->integer('room_id')->unsigned();
+            $table->unsignedBigInteger('room_id')->nullable();
             $table->foreign('room_id')->references('id')->on('room_lists')->onDelete('cascade');
             $table->string('guardian');
             $table->string('relation');

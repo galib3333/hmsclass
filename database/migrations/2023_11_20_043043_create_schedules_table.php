@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employ_id');
+            $table->unsignedBigInteger('employ_id')->nullable();
             $table->foreign('employ_id')->references('id')->on('employ_basics')->onDelete('cascade');
-            $table->unsignedBigInteger('day_id');
+            $table->unsignedBigInteger('day_id')->nullable();
             $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
-            $table->unsignedBigInteger('sift_id');
-            $table->foreign('sift_id')->references('id')->on('shifts')->onDelete('cascade');
+            $table->unsignedBigInteger('shift_id');
+            $table->foreign('shift_id')->references('id')->on('shifts')->onDelete('cascade');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('room_lists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('room_cat_id');
+            $table->unsignedBigInteger('room_cat_id')->nullable();
             $table->foreign('room_cat_id')->references('id')->on('room_cats')->onDelete('cascade');
             $table->integer('room_no');
             $table->integer('floor_no');

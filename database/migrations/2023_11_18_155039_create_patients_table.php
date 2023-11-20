@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('gender');
-            $table->unsignedBigInteger('blood_id');
+            $table->unsignedBigInteger('blood_id')->nullable();
             $table->foreign('blood_id')->references('id')->on('blood');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();

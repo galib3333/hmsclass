@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->string('ot_no');
             $table->date('operation_date');
-            $table->unsignedBigInteger('doc_ref');
+            $table->unsignedBigInteger('doc_ref')->nullable();
             $table->foreign('doc_ref')->references('id')->on('doctors');
             $table->text('description')->nullable();
             $table->integer('status')->default(1);

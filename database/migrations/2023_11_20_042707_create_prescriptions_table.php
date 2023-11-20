@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('app_id');
+            $table->unsignedBigInteger('app_id')->nullable();
             $table->foreign('app_id')->references('id')->on('appointments')->onDelete('cascade');
             $table->text('cc');
             $table->text('inv');

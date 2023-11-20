@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('patient_prescribe_medi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('prescribe_id');
+            $table->unsignedBigInteger('prescribe_id')->nullable();
             $table->foreign('prescribe_id')->references('id')->on('patient_prescribe')->onDelete('cascade');
-            $table->unsignedBigInteger('medicine_cat_id');
+            $table->unsignedBigInteger('medicine_cat_id')->nullable();
             $table->foreign('medicine_cat_id')->references('id')->on('patient_medi_cat')->onDelete('cascade');
             $table->string('_name');
             $table->string('dose');

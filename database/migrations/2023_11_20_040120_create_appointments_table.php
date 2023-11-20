@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('patient_id')->unsigned();
+            $table->unsignedBigInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->integer('employ_id')->unsigned();
+            $table->unsignedBigInteger('employ_id')->unsigned();
             $table->foreign('employ_id')->references('id')->on('employ_basics');
             $table->date('app_date');
             $table->string('serial');

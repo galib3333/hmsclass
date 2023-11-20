@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('invest_lists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('inv_cat_id');
+            $table->unsignedBigInteger('inv_cat_id')->nullable();
             $table->foreign('inv_cat_id')->references('id')->on('invest_cats')->onDelete('cascade');
             $table->string('invset_name');
             $table->text('description');
