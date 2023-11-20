@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('type',20)->unique();
             $table->string('identity',30)->unique();
+            $table->integer('status')->default(1);
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
         DB::table('roles')->insert([
@@ -24,18 +28,18 @@ return new class extends Migration
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'Admin',
-                'identity' => 'admin',
-                'created_at' => Carbon::now()
-            ],
-            [
                 'type' => 'Doctor',
                 'identity' => 'doctor',
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'User',
-                'identity' => 'user',
+                'type' => 'Receptionist',
+                'identity' => 'receptionist',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'type' => 'Accountant',
+                'identity' => 'accountant',
                 'created_at' => Carbon::now()
             ],
             
