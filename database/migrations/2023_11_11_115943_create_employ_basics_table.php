@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name_en');
+            $table->string('name_bn')->nullable();
             $table->string('email');
-            $table->string('phone');
+            $table->string('contact_no_en')->unique();
+            $table->string('contact_no_bn')->unique()->nullable();
             $table->string('gender');
             $table->date('birth_date');
             $table->unsignedBigInteger('blood_id');

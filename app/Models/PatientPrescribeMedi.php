@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InvestList extends Model
+class PatientPrescribeMedi extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $fillable = [
-        'inv_cat_id',
-        'invset_name',
-        'description',
-        'price',
+        'prescribe_id',
+        'medicine_cat_id',
+        '_name',
+        'dose',
         'status',
         'created_by',
         'updated_by',
@@ -21,8 +22,13 @@ class InvestList extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function investCategory()
+    public function prescribe()
     {
-        return $this->belongsTo(InvestCat::class, 'inv_cat_id');
+        return $this->belongsTo(Prescription::class, 'prescribe_id');
+    }
+
+    public function medicineCategory()
+    {
+        return $this->belongsTo(PatientMediCat::class, 'medicine_cat_id');
     }
 }
