@@ -9,9 +9,8 @@ use App\Models\Role;
 use App\Models\Blood;
 use Exception;
 use File;
-use Toastr;
-use App\Http\Requests\StoreEmployBasicRequest;
-use App\Http\Requests\UpdateEmployBasicRequest;
+use App\Http\Requests\Backend\Employee\StoreEmployBasicRequest;
+use App\Http\Requests\Backend\Employee\UpdateEmployBasicRequest;
 
 
 class EmployBasicController extends Controller
@@ -31,9 +30,9 @@ class EmployBasicController extends Controller
     public function create()
     {
         $role = Role::get();
-        return view('backend.employees.create', compact('role'));
         $blood = Blood::get();
-        return view('backend.employees.create', compact('blood'));
+        return view('backend.employees.create', compact('role', 'blood'));
+        
     }
 
     /**
@@ -51,8 +50,10 @@ class EmployBasicController extends Controller
             $employee->present_address = $request->presentAddress;
             $employee->permanent_address = $request->permanentAddress;
             $employee->role_id = $request->roleId;
+            $employee->gender = $request->gender;
+            $employee->birth_date = $request->birthDate;
+            $employee->blood_id = $request->bloodId;
             $employee->status = $request->status;
-            $employee->full_access = $request->fullAccess;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
                     $request->image->extension();
@@ -61,14 +62,17 @@ class EmployBasicController extends Controller
             }
 
             if ($employee->save()) {
-                return redirect()->route('employees.index')->with('success', 'Successfully Saved Employee');
+                return redirect()->route('employees.index');
+                $this->notice::success('Employee Successfully Added');
             } else {
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back();
+                $this->notice::error('Please try again');
             }
 
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back();
+            $this->notice::error('Please try again');
         }
     }
 
@@ -86,7 +90,9 @@ class EmployBasicController extends Controller
     public function edit(string $id)
     {
         $employee = EmployBasic::findOrFail(encryptor('decrypt', $id));
-        return view('backend.employees.edit', compact('employee'));
+        $role = Role::get();
+        $blood = Blood::get();
+        return view('backend.employees.edit', compact('role', 'blood', 'employee'));
     }
 
     /**
@@ -104,8 +110,10 @@ class EmployBasicController extends Controller
             $employee->present_address = $request->presentAddress;
             $employee->permanent_address = $request->permanentAddress;
             $employee->role_id = $request->roleId;
+            $employee->gender = $request->gender;
+            $employee->birth_date = $request->birthDate;
+            $employee->blood_id = $request->bloodId;
             $employee->status = $request->status;
-            $employee->full_access = $request->fullAccess;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
                     $request->image->extension();
@@ -114,14 +122,17 @@ class EmployBasicController extends Controller
             }
 
             if ($employee->save()) {
-                return redirect()->route('employees.index')->with('success', 'Successfully Saved Employee');
+                return redirect()->route('employees.index');
+                $this->notice::success('Employee Successfully Updated');
             } else {
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back();
+                $this->notice::error('Please try again');
             }
 
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back();
+            $this->notice::error('Please try again');
         }
     }
 
@@ -136,8 +147,8 @@ class EmployBasicController extends Controller
         if($employee->delete()){
             if(File::exists($image_path)) 
                 File::delete($image_path);
-            
-            Toastr::warning('Deleted Permanently!');
+
+            $this->notice::error('Employee Deleted Permanently!');
             return redirect()->back();
         }
     }

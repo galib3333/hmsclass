@@ -49,7 +49,7 @@
             <ul class="sidebar-menu do-nicescrol">
                 <li class="sidebar-header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="{{'dashboard'}}">
+                    <a href="{{ 'dashboard' }}">
                         <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -72,6 +72,11 @@
                 <li>
                     <a href="{{ route('employees.index') }}">
                         <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('blood.index')}}">
+                        <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
                     </a>
                 </li>
 
@@ -149,8 +154,8 @@
                             <i class="fa fa-envelope-open-o"></i></a>
                     </li>
                     <li class="nav-item dropdown-lg">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                            href="javascript:void();">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect"
+                            data-toggle="dropdown" href="javascript:void();">
                             <i class="fa fa-bell-o"></i></a>
                     </li>
                     <li class="nav-item language">

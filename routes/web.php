@@ -4,6 +4,8 @@ use App\Http\Controllers\Backend\AuthenticationController as auth;
 use App\Http\Controllers\Backend\BackendController as backend;
 use App\Http\Controllers\Backend\UserController as user;
 use App\Http\Controllers\Backend\PatientController as patient;
+use App\Http\Controllers\Backend\EmployBasicController as employee;
+use App\Http\Controllers\Backend\BloodController as blood;
 use App\Http\Controllers\Frontend\FrontendController as frontend;
 use App\Http\Controllers\Frontend\AboutController as about;
 use App\Http\Controllers\Frontend\BlogController as blog;
@@ -42,16 +44,22 @@ Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 //     return view('welcome');
 // });
 
-Route::middleware(['checkrole'])->group(function () {
-   
-    
+Route::middleware(['checkrole'])->prefix('admin')->group(function(){
+    // Route::resource('user', user::class);
+    Route::resource('role', role::class);
+    Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
+    Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
+});
 
+Route::middleware(['checkauth'])->prefix('admin')->group(function(){
+    
 });
 Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
 
 Route::resource('/patients', patient::class);
 Route::resource('/user', user::class);
-Route::resource('/employees', user::class);
+Route::resource('/employees', employee::class);
+Route::resource('/blood', blood::class);
 
 Route::get('/', [frontend::class, 'index'])->name('home');
 Route::get('/about', [about::class, 'index'])->name('about');

@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="card-title">Employee Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('employees.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('employees.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
@@ -29,6 +29,22 @@
                                     </select>
                                     @if ($errors->has('roleId'))
                                         <span class="text-danger"> {{ $errors->first('roleId') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
+                                    <select class="form-control" name="bloodId" id="bloodId">
+                                        <option value="">Select Blood Group</option>
+                                        @forelse($blood as $b)
+                                            <option value="{{ $b->id }}"
+                                                {{ old('bloodId') == $b->id ? 'selected' : '' }}>
+                                                {{ $b->blood_type_name }}</option>
+                                        @empty
+                                            <option value="">No Blood Group found</option>
+                                        @endforelse
+                                    </select>
+                                    @if ($errors->has('bloodId'))
+                                        <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
@@ -57,7 +73,8 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="contactNumber_en">Contact Number (English) <i class="text-danger">*</i></label>
+                                    <label for="contactNumber_en">Contact Number (English) <i
+                                            class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="contactNumber_en" name="contactNumber_en"
                                         value="{{ old('contactNumber_en') }}"
                                         placeholder="Enter Your Contect Number In English">
@@ -77,8 +94,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="presentAddress"> Present Address</label>
                                     <input type="text" class="form-control" id="presentAddress" name="presentAddress"
-                                        value="{{ old('presentAddress') }}"
-                                        placeholder="Enter Your PresentAddress">
+                                        value="{{ old('presentAddress') }}" placeholder="Enter Your PresentAddress">
                                     @if ($errors->has('presentAddress'))
                                         <span class="text-danger"> {{ $errors->first('presentAddress') }}</span>
                                     @endif
@@ -86,10 +102,17 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="permanentAddress"> Permanent Address</label>
                                     <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
-                                        value="{{ old('permanentAddress') }}"
-                                        placeholder="Enter Your Permanent Address">
+                                        value="{{ old('permanentAddress') }}" placeholder="Enter Your Permanent Address">
                                     @if ($errors->has('permanentAddress'))
                                         <span class="text-danger"> {{ $errors->first('permanentAddress') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="birthDate">Birth Date</label>
+                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                        value="{{ old('birthDate') }}" placeholder="Enter Birth Date">
+                                    @if ($errors->has('birthDate'))
+                                        <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -106,8 +129,20 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select id="gender" class="form-control" name="gender">
+                                            <option value="male" @if (old('gender') == 'male') selected @endif>Male
+                                            </option>
+                                            <option value="female" @if (old('gender') == 'female') selected @endif>
+                                                Female</option>
+                                        </select>
+                                        @if ($errors->has('gender'))
+                                            <span class="text-danger"> {{ $errors->first('gender') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="image">Image</label>

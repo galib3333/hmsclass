@@ -3,117 +3,81 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Authentication\SigninRequest;
-use App\Http\Requests\Authentication\SignupRequest;
+
+use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
-use Exception;
-use Illuminate\Http\Request;
+use App\Http\Requests\Authentication\SignupRequest;
+use App\Http\Requests\Authentication\SigninRequest;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Socialite\Facades\Socialite;
+use Exception;
 
 class AuthenticationController extends Controller
 {
-    public function signupForm()
-    {
-        return view("backend.authentication.register");
+    public function signUpForm(){
+        return view('backend.authentication.register');
     }
-    public function signUpStore(SignupRequest $request)
-    {
-        try {
-            $user = new User();
-            $user->name_en = $request->FullName;
-            $user->contact_no_en = $request->contact_no_en;
-            $user->email = $request->EmailAddress;
-            $user->password = Hash::make($request->password);
-            $user->role_id = 4;
-            // dd($request->all());
-            if ($user->save()) {
-                return redirect("login")->with("success", "Successfully Registered");
-            } else {
-                return redirect("login")->with("danger", "Please try again");
-            }
 
-        } catch (Exception $e) {
-            dd($e);
-            return redirect("login")->with("danger", "Please try again");
+    public function signUpStore(SignupRequest $request){
+        try{
+            $user=new User;
+            $user->name_en=$request->FullName;
+            $user->contact_no_en=$request->contact_no_en;
+            $user->email=$request->EmailAddress;
+            $user->password=Hash::make($request->password);
+            $user->role_id=4;
+            if($user->save())
+                return redirect('login')->with('success','Successfully Registred');
+            else
+                return redirect('login')->with('danger','Please try again');
+        }catch(Exception $e){
+            //dd($e);
+            return redirect('login')->with('danger','Please try again');;
+        }
+
+    }
+
+    public function signInForm(){
+        return view('backend.authentication.login');
+    }
+
+    public function signInCheck(SigninRequest $request){
+        try{
+            $user=User::where('contact_no_en',$request->username)
+                        ->orWhere('email',$request->username)->first();
+            if($user){
+                if($user->status==1){
+                    if(Hash::check($request->password , $user->password)){
+                        $this->setSession($user);
+                        return redirect()->route('dashboard')->with('success','Successfully login');
+                    }else
+                        return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+                }else
+                    return redirect()->route('login')->with('error','You are not active user. Please contact to authority!');
+        }else
+                return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+        }catch(Exception $e){
+            //dd($e);
+            return redirect()->route('login')->with('error','Your phone number or password is wrong!');
         }
     }
 
-    public function signInForm()
-    {
-        return view("backend.authentication.login");
-    }
-
-    // public function signInCheck(SigninRequest $request)
-    // {
-    //     try {
-    //         $user = User::where('contact_no_en', $request->username)->orwhere('email', $request->username)->first();
-
-    //         if ($user) {
-    //             if (Hash::check($request->password, $user->password)) {
-    //                 $this->setSession($user);
-    //                 return redirect()->route('dashboard')->with('success', 'Successfully logged in!');
-    //             } else {
-    //                 return redirect()->route('login')->with('error', 'Your phone number is invalid! Please try again');
-    //             }
-
-    //         } else {
-    //             return redirect()->route('login')->with('error', 'Your phone number is invalid! Please try again2');
-    //         }
-
-    //     } catch (Exception $e) {
-    //         dd($e);
-    //         return redirect('login')->with('error', 'Your phone number is invalid! Please try again3');
-
-    //     }
-    // }
-
-    public function signInCheck(SigninRequest $request)
-    {
-        try {
-            // Determine if the input is an email or a phone number
-            $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'contact_no_en';
-
-            $user = User::where($fieldType, $request->username)->first();
-
-            if ($user) {
-                if (Hash::check($request->password, $user->password)) {
-                    $this->setSession($user);
-                    return redirect()->route('dashboard')->with('success', 'Successfully logged in!');
-                } else {
-                    return redirect()->route('login')->with('error', 'Invalid password! Please try again');
-                }
-            } else {
-                return redirect()->route('login')->with('error', 'Invalid ' . $fieldType . '! Please try again');
-            }
-        } catch (Exception $e) {
-            dd($e);
-            return redirect('login')->with('error', 'Invalid ' . $fieldType . '! Please try again');
-        }
-    }
-
-
-    public function setSession($user)
-    {
+    public function setSession($user){
         return request()->session()->put([
-            'userId' => encryptor('encrypt', $user->id),
-            'username' => encryptor('encrypt', $user->name_en),
-            'useremail' => encryptor('encrypt', $user->email),
-            'role' => encryptor('encrypt', $user->role->type),
-            'role_id' => encryptor('encrypt', $user->role_id),
-            'accessType' => encryptor('encrypt', $user->full_access),
-            'roleIdentity' => encryptor('encrypt', $user->role->identity),
-            'language' => encryptor('encrypt', $user->language),
-            'image' => $user->image ?? 'no-image.png',
-
-        ]);
+                'userId'=>encryptor('encrypt',$user->id),
+                'userName'=>encryptor('encrypt',$user->name),
+                'role_id'=>encryptor('encrypt',$user->role_id),
+                'accessType'=>encryptor('encrypt',$user->full_access),
+                'role'=>encryptor('encrypt',$user->role->type),
+                'roleIdentity'=>encryptor('encrypt',$user->role->identity),
+                'language'=>encryptor('encrypt',$user->language),
+                'image'=>$user->image ?? 'no-image.png'
+            ]
+        );
     }
 
-    public function signOut()
-    {
+    public function singOut(){
         request()->session()->flush();
-        return redirect('login')->with('danger', 'Successfully signed out');
+        return redirect('login')->with('danger','Succfully Logged Out');
     }
-
 }

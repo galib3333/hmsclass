@@ -10,6 +10,7 @@ class Blood extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'blood';
     protected $fillable = [
         'blood_type_name',
         'status',

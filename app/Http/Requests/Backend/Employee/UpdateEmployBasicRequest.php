@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Backend\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEmployBasicRequest extends FormRequest
+class UpdateEmployBasicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
