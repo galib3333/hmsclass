@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\EmployBasic;
-use App\Http\Requests\StoreEmployBasicRequest;
-use App\Http\Requests\UpdateEmployBasicRequest;
+use App\Http\Controllers\Controller;
 
-class EmployBasicController extends Controller
+use App\Models\Death;
+use App\Http\Requests\StoreDeathRequest;
+use App\Http\Requests\UpdateDeathRequest;
+
+class DeathController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class EmployBasicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployBasicRequest $request)
+    public function store(StoreDeathRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class EmployBasicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(EmployBasic $employBasic)
+    public function show(Death $death)
     {
         //
     }
@@ -43,7 +45,7 @@ class EmployBasicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(EmployBasic $employBasic)
+    public function edit(Death $death)
     {
         //
     }
@@ -51,7 +53,7 @@ class EmployBasicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmployBasicRequest $request, EmployBasic $employBasic)
+    public function update(UpdateDeathRequest $request, Death $death)
     {
         //
     }
@@ -59,7 +61,7 @@ class EmployBasicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EmployBasic $employBasic)
+    public function destroy(Death $death)
     {
         //
     }

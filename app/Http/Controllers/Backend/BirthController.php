@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\PatientAdmit;
-use App\Http\Requests\StorePatientAdmitRequest;
-use App\Http\Requests\UpdatePatientAdmitRequest;
+use App\Http\Controllers\Controller;
 
-class PatientAdmitController extends Controller
+use App\Models\Birth;
+use App\Http\Requests\StoreBirthRequest;
+use App\Http\Requests\UpdateBirthRequest;
+
+class BirthController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class PatientAdmitController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePatientAdmitRequest $request)
+    public function store(StoreBirthRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class PatientAdmitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PatientAdmit $patientAdmit)
+    public function show(Birth $birth)
     {
         //
     }
@@ -43,7 +45,7 @@ class PatientAdmitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PatientAdmit $patientAdmit)
+    public function edit(Birth $birth)
     {
         //
     }
@@ -51,7 +53,7 @@ class PatientAdmitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePatientAdmitRequest $request, PatientAdmit $patientAdmit)
+    public function update(UpdateBirthRequest $request, Birth $birth)
     {
         //
     }
@@ -59,7 +61,7 @@ class PatientAdmitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PatientAdmit $patientAdmit)
+    public function destroy(Birth $birth)
     {
         //
     }

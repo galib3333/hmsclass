@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Prescription;
-use App\Http\Requests\StorePrescriptionRequest;
-use App\Http\Requests\UpdatePrescriptionRequest;
+use App\Http\Controllers\Controller;
 
-class PrescriptionController extends Controller
+use App\Models\InvestList;
+use App\Http\Requests\StoreInvestListRequest;
+use App\Http\Requests\UpdateInvestListRequest;
+
+class InvestListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class PrescriptionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePrescriptionRequest $request)
+    public function store(StoreInvestListRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class PrescriptionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prescription $prescription)
+    public function show(InvestList $investList)
     {
         //
     }
@@ -43,7 +45,7 @@ class PrescriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prescription $prescription)
+    public function edit(InvestList $investList)
     {
         //
     }
@@ -51,7 +53,7 @@ class PrescriptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePrescriptionRequest $request, Prescription $prescription)
+    public function update(UpdateInvestListRequest $request, InvestList $investList)
     {
         //
     }
@@ -59,7 +61,7 @@ class PrescriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prescription $prescription)
+    public function destroy(InvestList $investList)
     {
         //
     }

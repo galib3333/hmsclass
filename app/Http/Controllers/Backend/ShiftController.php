@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Appointment;
-use App\Http\Requests\StoreAppointmentRequest;
-use App\Http\Requests\UpdateAppointmentRequest;
+use App\Http\Controllers\Controller;
 
-class AppointmentController extends Controller
+use App\Models\Shift;
+use App\Http\Requests\StoreShiftRequest;
+use App\Http\Requests\UpdateShiftRequest;
+
+class ShiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAppointmentRequest $request)
+    public function store(StoreShiftRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class AppointmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Appointment $appointment)
+    public function show(Shift $shift)
     {
         //
     }
@@ -43,7 +45,7 @@ class AppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Appointment $appointment)
+    public function edit(Shift $shift)
     {
         //
     }
@@ -51,7 +53,7 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
+    public function update(UpdateShiftRequest $request, Shift $shift)
     {
         //
     }
@@ -59,7 +61,7 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(Shift $shift)
     {
         //
     }

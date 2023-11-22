@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\PrescriptionMedi;
-use App\Http\Requests\StorePrescriptionMediRequest;
-use App\Http\Requests\UpdatePrescriptionMediRequest;
+use App\Http\Controllers\Controller;
 
-class PrescriptionMediController extends Controller
+use App\Models\RoomList;
+use App\Http\Requests\StoreRoomListRequest;
+use App\Http\Requests\UpdateRoomListRequest;
+
+class RoomListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class PrescriptionMediController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePrescriptionMediRequest $request)
+    public function store(StoreRoomListRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class PrescriptionMediController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PrescriptionMedi $prescriptionMedi)
+    public function show(RoomList $roomList)
     {
         //
     }
@@ -43,7 +45,7 @@ class PrescriptionMediController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PrescriptionMedi $prescriptionMedi)
+    public function edit(RoomList $roomList)
     {
         //
     }
@@ -51,7 +53,7 @@ class PrescriptionMediController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePrescriptionMediRequest $request, PrescriptionMedi $prescriptionMedi)
+    public function update(UpdateRoomListRequest $request, RoomList $roomList)
     {
         //
     }
@@ -59,7 +61,7 @@ class PrescriptionMediController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PrescriptionMedi $prescriptionMedi)
+    public function destroy(RoomList $roomList)
     {
         //
     }

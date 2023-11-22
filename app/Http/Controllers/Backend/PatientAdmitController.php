@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Test;
-use App\Http\Requests\StoreTestRequest;
-use App\Http\Requests\UpdateTestRequest;
+use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+use App\Models\PatientAdmit;
+use App\Http\Requests\StorePatientAdmitRequest;
+use App\Http\Requests\UpdatePatientAdmitRequest;
+
+class PatientAdmitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class TestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTestRequest $request)
+    public function store(StorePatientAdmitRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class TestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Test $test)
+    public function show(PatientAdmit $patientAdmit)
     {
         //
     }
@@ -43,7 +45,7 @@ class TestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Test $test)
+    public function edit(PatientAdmit $patientAdmit)
     {
         //
     }
@@ -51,7 +53,7 @@ class TestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestRequest $request, Test $test)
+    public function update(UpdatePatientAdmitRequest $request, PatientAdmit $patientAdmit)
     {
         //
     }
@@ -59,7 +61,7 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Test $test)
+    public function destroy(PatientAdmit $patientAdmit)
     {
         //
     }

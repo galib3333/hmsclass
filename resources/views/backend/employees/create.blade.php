@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', trans('Create User'))
+@section('title', trans('Create Employee'))
 
 @section('content')
     <!-- // Basic multiple Column Form section start -->
@@ -10,9 +10,9 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">User Create Form</div>
+                        <div class="card-title">Employee Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('user.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{route('employees.store')}}" enctype="multipart/form-data" >
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
@@ -32,20 +32,20 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="userName_en">Name (English) <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="userName_en" name="userName_en"
-                                        value="{{ old('userName_en') }}" placeholder="Enter Your Name In English">
-                                    @if ($errors->has('userName_en'))
-                                        <span class="text-danger"> {{ $errors->first('userName_en') }}</span>
+                                    <label for="employeeName_en">Name (English) <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="employeeName_en" name="employeeName_en"
+                                        value="{{ old('employeeName_en') }}" placeholder="Enter Employee Name In English">
+                                    @if ($errors->has('employeeName_en'))
+                                        <span class="text-danger"> {{ $errors->first('employeeName_en') }}</span>
                                     @endif
                                 </div>
 
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="userName_bn">Name (Bangla)</label>
-                                    <input type="text" class="form-control" id="userName_bn" name="userName_bn"
-                                        value="{{ old('userName_bn') }}" placeholder="Enter Your Name In Bangla">
-                                    @if ($errors->has('userName_bn'))
-                                        <span class="text-danger"> {{ $errors->first('userName_bn') }}</span>
+                                    <label for="employeeName_bn">Name (Bangla)</label>
+                                    <input type="text" class="form-control" id="employeeName_bn" name="employeeName_bn"
+                                        value="{{ old('employeeName_bn') }}" placeholder="Enter Employee Name In Bangla">
+                                    @if ($errors->has('employeeName_bn'))
+                                        <span class="text-danger"> {{ $errors->first('employeeName_bn') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
@@ -74,6 +74,24 @@
                                         <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
                                     @endif
                                 </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="presentAddress"> Present Address</label>
+                                    <input type="text" class="form-control" id="presentAddress" name="presentAddress"
+                                        value="{{ old('presentAddress') }}"
+                                        placeholder="Enter Your PresentAddress">
+                                    @if ($errors->has('presentAddress'))
+                                        <span class="text-danger"> {{ $errors->first('presentAddress') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="permanentAddress"> Permanent Address</label>
+                                    <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
+                                        value="{{ old('permanentAddress') }}"
+                                        placeholder="Enter Your Permanent Address">
+                                    @if ($errors->has('permanentAddress'))
+                                        <span class="text-danger"> {{ $errors->first('permanentAddress') }}</span>
+                                    @endif
+                                </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="status">Status</label>
@@ -88,29 +106,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="fullAccess">Full Access</label>
-                                        <select id="fullAccess" class="form-control" name="fullAccess">
-                                            <option value="0" @if (old('fullAccess') == 0) selected @endif>No</option>
-                                            <option value="1" @if (old('fullAccess') == 1) selected @endif>Yes</option>
-                                        </select>
-                                        @if ($errors->has('fullAccess'))
-                                            <span class="text-danger"> {{ $errors->first('fullAccess') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="password">Password <i class="text-danger">*</i></label>
-                                        <input type="password" id="password" class="form-control" name="password">
-                                        @if ($errors->has('password'))
-                                            <span class="text-danger"> {{ $errors->first('password') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="image">Image</label>

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Death;
-use App\Http\Requests\StoreDeathRequest;
-use App\Http\Requests\UpdateDeathRequest;
+use App\Http\Controllers\Controller;
 
-class DeathController extends Controller
+use App\Models\Prescription;
+use App\Http\Requests\StorePrescriptionRequest;
+use App\Http\Requests\UpdatePrescriptionRequest;
+
+class PrescriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class DeathController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDeathRequest $request)
+    public function store(StorePrescriptionRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class DeathController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Death $death)
+    public function show(Prescription $prescription)
     {
         //
     }
@@ -43,7 +45,7 @@ class DeathController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Death $death)
+    public function edit(Prescription $prescription)
     {
         //
     }
@@ -51,7 +53,7 @@ class DeathController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDeathRequest $request, Death $death)
+    public function update(UpdatePrescriptionRequest $request, Prescription $prescription)
     {
         //
     }
@@ -59,7 +61,7 @@ class DeathController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Death $death)
+    public function destroy(Prescription $prescription)
     {
         //
     }

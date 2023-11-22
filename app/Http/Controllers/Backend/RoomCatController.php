@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Birth;
-use App\Http\Requests\StoreBirthRequest;
-use App\Http\Requests\UpdateBirthRequest;
+use App\Http\Controllers\Controller;
 
-class BirthController extends Controller
+use App\Models\RoomCat;
+use App\Http\Requests\StoreRoomCatRequest;
+use App\Http\Requests\UpdateRoomCatRequest;
+
+class RoomCatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class BirthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBirthRequest $request)
+    public function store(StoreRoomCatRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class BirthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Birth $birth)
+    public function show(RoomCat $roomCat)
     {
         //
     }
@@ -43,7 +45,7 @@ class BirthController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Birth $birth)
+    public function edit(RoomCat $roomCat)
     {
         //
     }
@@ -51,7 +53,7 @@ class BirthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBirthRequest $request, Birth $birth)
+    public function update(UpdateRoomCatRequest $request, RoomCat $roomCat)
     {
         //
     }
@@ -59,7 +61,7 @@ class BirthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Birth $birth)
+    public function destroy(RoomCat $roomCat)
     {
         //
     }

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\InvestCat;
-use App\Http\Requests\StoreInvestCatRequest;
-use App\Http\Requests\UpdateInvestCatRequest;
+use App\Http\Controllers\Controller;
 
-class InvestCatController extends Controller
+use App\Models\Department;
+use App\Http\Requests\StoreDepartmentRequest;
+use App\Http\Requests\UpdateDepartmentRequest;
+
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class InvestCatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInvestCatRequest $request)
+    public function store(StoreDepartmentRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class InvestCatController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(InvestCat $investCat)
+    public function show(Department $department)
     {
         //
     }
@@ -43,7 +45,7 @@ class InvestCatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InvestCat $investCat)
+    public function edit(Department $department)
     {
         //
     }
@@ -51,7 +53,7 @@ class InvestCatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateInvestCatRequest $request, InvestCat $investCat)
+    public function update(UpdateDepartmentRequest $request, Department $department)
     {
         //
     }
@@ -59,7 +61,7 @@ class InvestCatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(InvestCat $investCat)
+    public function destroy(Department $department)
     {
         //
     }

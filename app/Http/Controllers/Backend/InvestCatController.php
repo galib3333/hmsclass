@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\RoomCat;
-use App\Http\Requests\StoreRoomCatRequest;
-use App\Http\Requests\UpdateRoomCatRequest;
+use App\Http\Controllers\Controller;
 
-class RoomCatController extends Controller
+use App\Models\InvestCat;
+use App\Http\Requests\StoreInvestCatRequest;
+use App\Http\Requests\UpdateInvestCatRequest;
+
+class InvestCatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class RoomCatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRoomCatRequest $request)
+    public function store(StoreInvestCatRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class RoomCatController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RoomCat $roomCat)
+    public function show(InvestCat $investCat)
     {
         //
     }
@@ -43,7 +45,7 @@ class RoomCatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RoomCat $roomCat)
+    public function edit(InvestCat $investCat)
     {
         //
     }
@@ -51,7 +53,7 @@ class RoomCatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRoomCatRequest $request, RoomCat $roomCat)
+    public function update(UpdateInvestCatRequest $request, InvestCat $investCat)
     {
         //
     }
@@ -59,7 +61,7 @@ class RoomCatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RoomCat $roomCat)
+    public function destroy(InvestCat $investCat)
     {
         //
     }

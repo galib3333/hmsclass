@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->string('cc');
-            $table->unsignedBigInteger('inv_id')->nullable();
-            $table->foreign('inv_id')->references('id')->on('invest_lists')->onDelete('cascade');
+            $table->unsignedBigInteger('inv_list_id')->nullable();
+            $table->foreign('inv_list_id')->references('id')->on('invest_lists')->onDelete('cascade');
             $table->string('advice');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Designation;
-use App\Http\Requests\StoreDesignationRequest;
-use App\Http\Requests\UpdateDesignationRequest;
+use App\Http\Controllers\Controller;
 
-class DesignationController extends Controller
+use App\Models\Appointment;
+use App\Http\Requests\StoreAppointmentRequest;
+use App\Http\Requests\UpdateAppointmentRequest;
+
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class DesignationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDesignationRequest $request)
+    public function store(StoreAppointmentRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class DesignationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Designation $designation)
+    public function show(Appointment $appointment)
     {
         //
     }
@@ -43,7 +45,7 @@ class DesignationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Designation $designation)
+    public function edit(Appointment $appointment)
     {
         //
     }
@@ -51,7 +53,7 @@ class DesignationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDesignationRequest $request, Designation $designation)
+    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
     {
         //
     }
@@ -59,7 +61,7 @@ class DesignationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Designation $designation)
+    public function destroy(Appointment $appointment)
     {
         //
     }

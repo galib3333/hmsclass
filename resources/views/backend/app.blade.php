@@ -69,6 +69,11 @@
                         <i class="zmdi zmdi-mood-bad"></i><span>Patients List</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('employees.index') }}">
+                        <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="forms.html">

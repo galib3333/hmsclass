@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\Shift;
-use App\Http\Requests\StoreShiftRequest;
-use App\Http\Requests\UpdateShiftRequest;
+use App\Http\Controllers\Controller;
 
-class ShiftController extends Controller
+use App\Models\Schedule;
+use App\Http\Requests\StoreScheduleRequest;
+use App\Http\Requests\UpdateScheduleRequest;
+
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ShiftController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreShiftRequest $request)
+    public function store(StoreScheduleRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ShiftController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Shift $shift)
+    public function show(Schedule $schedule)
     {
         //
     }
@@ -43,7 +45,7 @@ class ShiftController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Shift $shift)
+    public function edit(Schedule $schedule)
     {
         //
     }
@@ -51,7 +53,7 @@ class ShiftController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateShiftRequest $request, Shift $shift)
+    public function update(UpdateScheduleRequest $request, Schedule $schedule)
     {
         //
     }
@@ -59,7 +61,7 @@ class ShiftController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Shift $shift)
+    public function destroy(Schedule $schedule)
     {
         //
     }

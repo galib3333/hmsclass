@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Models\InvestList;
-use App\Http\Requests\StoreInvestListRequest;
-use App\Http\Requests\UpdateInvestListRequest;
+use App\Http\Controllers\Controller;
 
-class InvestListController extends Controller
+use App\Models\Operation;
+use App\Http\Requests\StoreOperationRequest;
+use App\Http\Requests\UpdateOperationRequest;
+
+class OperationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class InvestListController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInvestListRequest $request)
+    public function store(StoreOperationRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class InvestListController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(InvestList $investList)
+    public function show(Operation $operation)
     {
         //
     }
@@ -43,7 +45,7 @@ class InvestListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InvestList $investList)
+    public function edit(Operation $operation)
     {
         //
     }
@@ -51,7 +53,7 @@ class InvestListController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateInvestListRequest $request, InvestList $investList)
+    public function update(UpdateOperationRequest $request, Operation $operation)
     {
         //
     }
@@ -59,7 +61,7 @@ class InvestListController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(InvestList $investList)
+    public function destroy(Operation $operation)
     {
         //
     }

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('contact_no_bn')->unique()->nullable();
             $table->string('gender');
             $table->date('birth_date');
-            $table->unsignedBigInteger('blood_id');
+            $table->unsignedBigInteger('blood_id')->nullable();
             $table->foreign('blood_id')->references('id')->on('blood')->onDelete('cascade');
             $table->string('image');
             $table->text('present_address');
