@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('user.create') }}" class="btn btn-light px-2 mb-3">Add User<i class="fa fa-plus px-2"></i></a>
+                {{-- <a href="{{ route('user.create') }}" class="btn btn-light px-2 mb-3">Add User<i class="fa fa-plus px-2"></i></a> --}}
                 <h5 class="card-title">User Table</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -30,7 +30,7 @@
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->contact_no_en }}</td>
                                     <td>{{ $u->role?->type }}</td>
-                                    <td><img width="50px" src="{{ asset('public/uploads/users/' . $u->image) }}"
+                                    <td><img width="50px" src="{{ asset('public/uploads/employees/' . $u->employBasic?->image) }}"
                                             alt=""></td>
                                     <td>
                                         @if ($u->status == 1)

@@ -10,6 +10,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{ route('user.index') }}" class="btn btn-light px-2 mb-3">User List<i
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">User Update Form</div>
                         <hr>
                         <form method="post" enctype="multipart/form-data"
@@ -43,16 +45,6 @@
                                         <span class="text-danger"> {{ $errors->first('userName_en') }}</span>
                                     @endif
                                 </div>
-
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="userName_bn">Name (Bangla)</label>
-                                    <input type="text" class="form-control" id="userName_bn" name="userName_bn"
-                                        value="{{ old('userName_bn', $user->name_bn) }}"
-                                        placeholder="Enter Your Name In Bangla">
-                                    @if ($errors->has('userName_bn'))
-                                        <span class="text-danger"> {{ $errors->first('userName_bn') }}</span>
-                                    @endif
-                                </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="EmailAddress">Email <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="EmailAddress" name="EmailAddress"
@@ -69,15 +61,6 @@
                                         placeholder="Enter Your Contect Number In English">
                                     @if ($errors->has('contactNumber_en'))
                                         <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="contactNumber_bn">Contact Number (Bangla)</label>
-                                    <input type="text" class="form-control" id="contactNumber_bn" name="contactNumber_bn"
-                                        value="{{ old('contactNumber_bn', $user->contact_no_bn) }}"
-                                        placeholder="Enter Your Contect Number In Bangla">
-                                    @if ($errors->has('contactNumber_bn'))
-                                        <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -108,8 +91,6 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="password">Password <i class="text-danger">*</i></label>
@@ -119,14 +100,9 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="image">Image</label>
-                                        <input type="file" id="image" class="form-control" placeholder="Image"
-                                            name="image">
-                                    </div>
-                                </div>
                             </div>
+                            
+
                             <div class="form-group py-2 px-3">
                                 <div class="icheck-material-white">
                                     <input type="checkbox" id="user-checkbox1" checked="" />

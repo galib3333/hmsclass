@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 
 use App\Models\EmployBasic;
 use App\Models\Role;
+use App\Models\User;
 use App\Models\Blood;
 use Exception;
 use File;
 use App\Http\Requests\Backend\Employee\StoreEmployBasicRequest;
 use App\Http\Requests\Backend\Employee\UpdateEmployBasicRequest;
-
+use Illuminate\Support\Facades\Hash;
+use DB;
 
 class EmployBasicController extends Controller
 {
@@ -41,6 +43,8 @@ class EmployBasicController extends Controller
     public function store(StoreEmployBasicRequest $request)
     {
         try {
+            DB::beginTransaction();
+
             $employee = new EmployBasic();
             $employee->name_en = $request->employeeName_en;
             $employee->name_bn = $request->employeeName_bn;
@@ -62,14 +66,23 @@ class EmployBasicController extends Controller
             }
 
             if ($employee->save()) {
-                return redirect()->route('employees.index');
-                $this->notice::success('Employee Successfully Added');
-            } else {
-                return redirect()->back();
-                $this->notice::error('Please try again');
+                $user=new User;
+                $user->employ_id = $employee->id;
+                $user->name_en = $request->employeeName_en;
+                $user->email = $request->EmailAddress;
+                $user->contact_no_en = $request->contactNumber_en;
+                $user->role_id = $request->roleId;
+                $user->status = $request->status;
+                $user->password = Hash::make($request->password);
+                if($user->save()){
+                    DB::commit();
+                    return redirect()->route('employees.index');
+                    $this->notice::success('Employee Successfully Added');
+                }
             }
 
         } catch (Exception $e) {
+            DB::rollback();
             dd($e);
             return redirect()->back();
             $this->notice::error('Please try again');
@@ -101,6 +114,7 @@ class EmployBasicController extends Controller
     public function update(UpdateEmployBasicRequest $request, string $id)
     {
         try {
+            DB::beginTransaction();
             $employee = EmployBasic::findOrFail(\encryptor('decrypt', $id));
             $employee->name_en = $request->employeeName_en;
             $employee->name_bn = $request->employeeName_bn;
@@ -122,14 +136,22 @@ class EmployBasicController extends Controller
             }
 
             if ($employee->save()) {
-                return redirect()->route('employees.index');
-                $this->notice::success('Employee Successfully Updated');
-            } else {
-                return redirect()->back();
-                $this->notice::error('Please try again');
+                $user=User::where('employ_id',$employee->id)->first();
+                $user->name_en = $request->employeeName_en;
+                $user->email = $request->EmailAddress;
+                $user->contact_no_en = $request->contactNumber_en;
+                $user->role_id = $request->roleId;
+                $user->status = $request->status;
+                if($request->password)
+                    $user->password = Hash::make($request->password);
+                if($user->save()){
+                    DB::commit();
+                    return redirect()->route('employees.index');
+                    $this->notice::success('Employee Successfully Updated');
+                }
             }
-
         } catch (Exception $e) {
+            DB::rollback();
             dd($e);
             return redirect()->back();
             $this->notice::error('Please try again');

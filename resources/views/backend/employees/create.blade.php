@@ -10,6 +10,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{ route('employees.index') }}" class="btn btn-light px-2 mb-3">Employee List<i
+                            class="fa fa-list px-2"></i></a>
                         <div class="card-title">Employee Create Form</div>
                         <hr>
                         <form method="post" action="{{ route('employees.store') }}" enctype="multipart/form-data">
@@ -133,13 +135,22 @@
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select id="gender" class="form-control" name="gender">
-                                            <option value="male" @if (old('gender') == 'male') selected @endif>Male
+                                            <option value="Male" @if (old('gender') == 'Male') selected @endif>Male
                                             </option>
-                                            <option value="female" @if (old('gender') == 'female') selected @endif>
+                                            <option value="Female" @if (old('gender') == 'Female') selected @endif>
                                                 Female</option>
                                         </select>
                                         @if ($errors->has('gender'))
                                             <span class="text-danger"> {{ $errors->first('gender') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="password">Password <i class="text-danger">*</i></label>
+                                        <input type="password" id="password" class="form-control" name="password">
+                                        @if ($errors->has('password'))
+                                            <span class="text-danger"> {{ $errors->first('password') }}</span>
                                         @endif
                                     </div>
                                 </div>

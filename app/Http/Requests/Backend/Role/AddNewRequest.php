@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Backend\User;
+namespace App\Http\Requests\Backend\Role;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,7 +22,8 @@ class AddNewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'Identity'=>'required|max:30|alpha:ascii|unique:roles,identity',
+            'Name'=>'required|max:30|unique:roles,name'
         ];
     }
 }

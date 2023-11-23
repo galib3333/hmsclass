@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('type',20)->unique();
+            $table->string('name',20)->unique();
             $table->string('identity',30)->unique();
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();

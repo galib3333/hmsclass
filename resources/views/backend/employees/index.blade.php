@@ -14,6 +14,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('#SL') }}</th>
+                                <th scope="col">{{ __('Image') }}</th>
                                 <th scope="col">{{ __('Name EN') }}</th>
                                 <th scope="col">{{ __('Name BN') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
@@ -25,7 +26,6 @@
                                 <th scope="col">{{ __('Birth Date') }}</th>
                                 <th scope="col">{{ __('Blood Group') }}</th>
                                 <th scope="col">{{ __('Role') }}</th>
-                                <th scope="col">{{ __('Image') }}</th>
                                 <th scope="col">{{ __('Status') }}</th>
                                 <th class="white-space-nowrap">{{ __('Action') }}</th>
                             </tr>
@@ -34,6 +34,8 @@
                             @forelse($employee as $e)
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
+                                    <td><img width="50px" src="{{ asset('public/uploads/employees/' . $e->image) }}"
+                                            alt=""></td>
                                     <td>{{ $e->name_en }}</td>
                                     <td>{{ $e->name_bn }}</td>
                                     <td>{{ $e->email }}</td>
@@ -45,8 +47,7 @@
                                     <td>{{ $e->birth_date }}</td>
                                     <td>{{ $e->blood->blood_type_name }}</td>
                                     <td>{{ $e->role?->type }}</td>
-                                    <td><img width="50px" src="{{ asset('public/uploads/employees/' . $e->image) }}"
-                                            alt=""></td>
+
                                     <td>{{ $e->status == 1 ? 'Active' : 'Inactive' }}</td>
 
                                     {{-- <td>

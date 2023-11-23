@@ -16,8 +16,8 @@
                     <thead>
                         <tr>
                             <th scope="col">{{__('#SL')}}</th>
-                            <th scope="col">{{__('Type')}}</th>
                             <th scope="col">{{__('Name')}}</th>
+                            <th scope="col">{{__('Identity')}}</th>
                             <th class="white-space-nowrap">{{__('Action') }}</th>
                         </tr>
                     </thead>
@@ -25,7 +25,7 @@
                         @forelse($data as $p)
                         <tr>
                             <th scope="row">{{ ++$loop->index }}</th>
-                            <td>{{$p->type}}</td>
+                            <td>{{$p->name}}</td>
                             <td>{{$p->identity}}</td>
                             <td class="white-space-nowrap">
                                 <a href="{{route('role.edit',encryptor('encrypt',$p->id))}}">

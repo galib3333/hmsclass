@@ -10,6 +10,8 @@ use App\Http\Controllers\Frontend\FrontendController as frontend;
 use App\Http\Controllers\Frontend\AboutController as about;
 use App\Http\Controllers\Frontend\BlogController as blog;
 use App\Http\Controllers\Frontend\ContactController as contact;
+use App\Http\Controllers\Backend\RoleController as role;
+use App\Http\Controllers\Backend\PermissionController as permission;
 
 // use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
@@ -44,22 +46,22 @@ Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 //     return view('welcome');
 // });
 
-Route::middleware(['checkrole'])->prefix('admin')->group(function(){
-    // Route::resource('user', user::class);
-    Route::resource('role', role::class);
-    Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
-    Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
+Route::middleware(['checkrole'])->prefix('admin')->group(function () {
+  
 });
-
-Route::middleware(['checkauth'])->prefix('admin')->group(function(){
-    
-});
-Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
-
+Route::resource('user', user::class);
+Route::resource('role', role::class);
+Route::get('permission/{role}', [permission::class, 'index'])->name('permission.list');
+Route::post('permission/{role}', [permission::class, 'save'])->name('permission.save');
 Route::resource('/patients', patient::class);
 Route::resource('/user', user::class);
 Route::resource('/employees', employee::class);
 Route::resource('/blood', blood::class);
+
+Route::middleware(['checkauth'])->prefix('admin')->group(function () {
+   
+});
+Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
 
 Route::get('/', [frontend::class, 'index'])->name('home');
 Route::get('/about', [about::class, 'index'])->name('about');

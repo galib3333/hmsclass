@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Requests\Backend\Role\AddNewRequest;
+use App\Http\Requests\Backend\Role\UpdateRequest;
 
 class RoleController extends Controller
 {
@@ -32,14 +34,14 @@ class RoleController extends Controller
     {
         try{
             $data=new Role();
-            $data->type=$request->Type;
-            $data->identity=$request->Name;
+            $data->name=$request->Name;
+            $data->identity=$request->Identity;
             if($data->save()){
                 $this->notice::success('Successfully saved');
                 return redirect()->route('role.index');
             }
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
         }
@@ -69,7 +71,7 @@ class RoleController extends Controller
     {
         try{
             $data=Role::findOrFail(encryptor('decrypt',$id));
-            $data->type=$request->Name;
+            $data->name=$request->Name;
             $data->identity=$request->Identity;
             if($data->save()){
                 $this->notice::success('Successfully updated');

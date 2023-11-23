@@ -172,7 +172,7 @@
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown"
                             href="#">
                             <span class="user-profile"><img
-                                    src="{{ asset('public/uploads/users/' .request()->session()->get('image')) }}"
+                                    src="{{ asset('public/uploads/employees/' .request()->session()->get('image')) }}"
                                     class="img-circle" alt="user avatar"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -180,13 +180,13 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="{{ asset('public/uploads/users/' .request()->session()->get('image')) }}"
+                                                src="{{ asset('public/uploads/employees/' .request()->session()->get('image')) }}"
                                                 alt="user avatar"></div>
                                         <div class="media-body">
                                             <h6 class="mt-2 user-title">
-                                                {{ encryptor('decrypt',request()->session()->get('username')) }}</h6>
+                                                {{ encryptor('decrypt',request()->session()->get('userName')) }}</h6>
                                             <p class="user-subtitle">
-                                                {{ encryptor('decrypt',request()->session()->get('useremail')) }}</p>
+                                                {{ encryptor('decrypt',request()->session()->get('email')) }}</p>
                                             <p class="user-subtitle">
                                                 {{ encryptor('decrypt',request()->session()->get('role')) }}</p>
                                         </div>

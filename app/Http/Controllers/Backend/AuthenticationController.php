@@ -53,9 +53,9 @@ class AuthenticationController extends Controller
                     }else
                         return redirect()->route('login')->with('error','Your phone number or password is wrong!');
                 }else
-                    return redirect()->route('login')->with('error','You are not active user. Please contact to authority!');
+                    return redirect()->route('login')->with('error','You are not active user. Please contact to authority!2');
         }else
-                return redirect()->route('login')->with('error','Your phone number or password is wrong!');
+                return redirect()->route('login')->with('error','Your phone number or password is wrong!1');
         }catch(Exception $e){
             //dd($e);
             return redirect()->route('login')->with('error','Your phone number or password is wrong!');
@@ -65,19 +65,20 @@ class AuthenticationController extends Controller
     public function setSession($user){
         return request()->session()->put([
                 'userId'=>encryptor('encrypt',$user->id),
-                'userName'=>encryptor('encrypt',$user->name),
+                'userName'=>encryptor('encrypt',$user->name_en),
+                'email'=>encryptor('encrypt',$user->email),
                 'role_id'=>encryptor('encrypt',$user->role_id),
                 'accessType'=>encryptor('encrypt',$user->full_access),
-                'role'=>encryptor('encrypt',$user->role->type),
+                'role'=>encryptor('encrypt',$user->role->name),
                 'roleIdentity'=>encryptor('encrypt',$user->role->identity),
-                'language'=>encryptor('encrypt',$user->language),
-                'image'=>$user->image ?? 'no-image.png'
+                'language'=>"",
+                'image'=>$user->employBasic?->image
             ]
         );
     }
 
-    public function singOut(){
+    public function signOut(){
         request()->session()->flush();
-        return redirect('login')->with('danger','Succfully Logged Out');
+        return redirect('login')->with('danger','Successfully Logged Out');
     }
 }

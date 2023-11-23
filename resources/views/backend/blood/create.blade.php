@@ -10,6 +10,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{ route('blood.index') }}" class="btn btn-light px-2 mb-3">Blood List<i
+                            class="fa fa-list px-2"></i></a>
                         <div class="card-title">Blood Group Create Form</div>
                         <hr>
                         <form method="post" action="{{route('blood.store')}}" enctype="multipart/form-data" >

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Backend\User;
+namespace App\Http\Requests\Backend\Role;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
-class AddNewRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,10 +20,12 @@ class AddNewRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules(Request $r): array
     {
+        $id=encryptor('decrypt',$r->uptoken);
         return [
-            //
+            'Identity'=>'required|max:30|alpha:ascii|unique:roles,identity,'.$id,
+            'Name'=>'required|max:30|unique:roles,name,'.$id
         ];
     }
 }
