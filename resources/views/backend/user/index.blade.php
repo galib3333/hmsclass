@@ -29,7 +29,7 @@
                                     <td>{{ $u->name_en }}</td>
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->contact_no_en }}</td>
-                                    <td>{{ $u->role?->type }}</td>
+                                    <td>{{ $u->role?->name }}</td>
                                     <td><img width="50px" src="{{ asset('public/uploads/employees/' . $u->employBasic?->image) }}"
                                             alt=""></td>
                                     <td>

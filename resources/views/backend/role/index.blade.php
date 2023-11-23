@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.app')
 @section('title',trans('Role'))
 @section('page',trans('List'))
 @section('content')
@@ -10,7 +10,8 @@
             
             <!-- table bordered -->
             <div class="table-responsive"><div>
-                <a class="pull-right fs-1" href="{{route('role.create')}}"><i class="fa fa-plus"></i></a>
+                <a href="{{ route('role.create') }}" class="btn btn-light px-2 mb-3 mt-2 mx-2">Add Role<i
+                    class="fa fa-plus px-2"></i></a>
             </div>
                 <table class="table table-bordered mb-0">
                     <thead>

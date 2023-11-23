@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.app')
 
 @section('title',trans('Role'))
 @section('page',trans('Create'))
@@ -10,6 +10,8 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
+                    <a href="{{ route('role.index') }}" class="btn btn-light px-2 mb-3 mt-1 mx-1">Role List<i
+                        class="fa fa-list px-2"></i></a>
                     <form class="form" method="post" enctype="multipart/form-data" action="{{route('role.store')}}">
                         @csrf
                         <div class="row">

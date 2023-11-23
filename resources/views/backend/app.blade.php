@@ -60,6 +60,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('role.index') }}">
+                        <i class="zmdi zmdi-account-circle"></i> <span>Role List</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ 'doctorlist' }}">
                         <i class="zmdi zmdi-account-add"></i><span>Doctors List</span>
                     </a>
