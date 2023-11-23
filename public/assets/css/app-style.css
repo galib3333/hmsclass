@@ -577,12 +577,15 @@ body.bg-theme15 {
 	-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08)!important;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08)!important;
     font-size:15px;
-	background-color: #000;
+	background-color: #1d1d1d;
     color: #ffffff;
 }
 
 .dropdown-menu ul{
   margin-top: 0px;
+}
+.custom-dropdown-menu {
+    min-width: 200px;
 }
 
 .dropdown-divider{

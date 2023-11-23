@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.app')
 @section('title',trans('Permission'))
 @section('page',trans('List'))
 
@@ -64,8 +64,9 @@
                 @endforelse
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary"> Save</button>
+                    <div class="form-group d-flex justify-content-end col-12">
+                        <button type="submit" class="btn btn-light px-3 mr-2 mt-2"><i class="icon-lock"></i>
+                            Save</button>
                     </div>
                 </div>
             </form>

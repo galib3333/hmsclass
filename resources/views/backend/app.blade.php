@@ -53,6 +53,49 @@
                         <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
+                
+                <!-- Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-users"></i><span>HRM</span>
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown" style="min-width: 250px;">
+                        <ul class="dropList mb-1" style="list-style:none">
+                        <li>
+                            <a href="{{ route('user.index') }}">
+                                <i class="fa fa-user"></i> <span>User List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('role.index') }}">
+                                <i class="zmdi zmdi-account-circle"></i> <span>Role List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ 'doctorlist' }}">
+                                <i class="fa fa-user-md"></i></i><span>Doctors List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('patients.index') }}">
+                                <i class="fa fa-wheelchair"></i><span>Patients List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('employees.index') }}">
+                                <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('blood.index') }}">
+                                <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
+                            </a>
+                        </li>
+                    </ul>
+                        <!-- Add more items as needed -->
+                    </div>
+                </li>
 
                 <li>
                     <a href="{{ route('user.index') }}">
@@ -66,12 +109,12 @@
                 </li>
                 <li>
                     <a href="{{ 'doctorlist' }}">
-                        <i class="zmdi zmdi-account-add"></i><span>Doctors List</span>
+                        <i class="fa fa-user-md"></i></i><span>Doctors List</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('patients.index') }}">
-                        <i class="zmdi zmdi-mood-bad"></i><span>Patients List</span>
+                        <i class="fa fa-wheelchair"></i><span>Patients List</span>
                     </a>
                 </li>
                 <li>
@@ -80,7 +123,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('blood.index')}}">
+                    <a href="{{ route('blood.index') }}">
                         <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
                     </a>
                 </li>
@@ -154,8 +197,8 @@
 
                 <ul class="navbar-nav align-items-center right-nav-link">
                     <li class="nav-item dropdown-lg">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown"
-                            href="javascript:void();">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect"
+                            data-toggle="dropdown" href="javascript:void();">
                             <i class="fa fa-envelope-open-o"></i></a>
                     </li>
                     <li class="nav-item dropdown-lg">
