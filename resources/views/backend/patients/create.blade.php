@@ -26,19 +26,36 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName"
-                                        value="{{ old('firstName') }}" placeholder="Enter Your First Name">
-                                    @if ($errors->has('firstName'))
-                                        <span class="text-danger"> {{ $errors->first('firstName') }}</span>
+                                    <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"
+                                        value="{{ old('patientNameEN') }}" placeholder="Enter Employee Name In English">
+                                    @if ($errors->has('patientNameEN'))
+                                        <span class="text-danger"> {{ $errors->first('patientNameEN') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="patientNameBN">Name (Bangla)</label>
+                                    <input type="text" class="form-control" id="patientNameBN" name="patientNameBN"
+                                        value="{{ old('patientNameBN') }}" placeholder="Enter Employee Name In Bangla">
+                                    @if ($errors->has('patientNameBN'))
+                                        <span class="text-danger"> {{ $errors->first('patientNameBN') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName"
-                                        value="{{ old('lastName') }}" placeholder="Enter Your Last Name">
-                                    @if ($errors->has('lastName'))
-                                        <span class="text-danger"> {{ $errors->first('lastName') }}</span>
+                                    <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
+                                    <select class="form-control" name="bloodId" id="bloodId">
+                                        <option value="">Select Blood Group</option>
+                                        @forelse($blood as $b)
+                                            <option value="{{ $b->id }}"
+                                                {{ old('bloodId') == $b->id ? 'selected' : '' }}>
+                                                {{ $b->blood_type_name }}</option>
+                                        @empty
+                                            <option value="">No Blood Group found</option>
+                                        @endforelse
+                                    </select>
+                                    @if ($errors->has('bloodId'))
+                                        <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
@@ -50,12 +67,22 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="phoneNumber">Phone Number <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
-                                        value="{{ old('phoneNumber') }}"
-                                        placeholder="Enter Your Phone Number">
-                                    @if ($errors->has('phoneNumber'))
-                                        <span class="text-danger"> {{ $errors->first('phoneNumber') }}</span>
+                                    <label for="contactNumber_en">Contact Number (English) <i
+                                            class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="contactNumber_en" name="contactNumber_en"
+                                        value="{{ old('contactNumber_en') }}"
+                                        placeholder="Enter Your Contect Number In English">
+                                    @if ($errors->has('contactNumber_en'))
+                                        <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="contactNumber_bn">Contact Number (Bangla)</label>
+                                    <input type="text" class="form-control" id="contactNumber_bn" name="contactNumber_bn"
+                                        value="{{ old('contactNumber_bn') }}"
+                                        placeholder="Enter Your Contect Number In Bangla">
+                                    @if ($errors->has('contactNumber_bn'))
+                                        <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
@@ -77,21 +104,11 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="birthDate"> Birth Date</label>
-                                    <input type="text" class="form-control" id="birthDate" name="birthDate"
-                                        value="{{ old('birthDate') }}"
-                                        placeholder="Enter Your Birth Date">
+                                    <label for="birthDate">Birth Date</label>
+                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                        value="{{ old('birthDate') }}" placeholder="Enter Birth Date">
                                     @if ($errors->has('birthDate'))
                                         <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="bloodType"> Blood Type</label>
-                                    <input type="text" class="form-control" id="bloodType" name="bloodType"
-                                        value="{{ old('bloodType') }}"
-                                        placeholder="Enter Your bloodType">
-                                    @if ($errors->has('bloodType'))
-                                        <span class="text-danger"> {{ $errors->first('bloodType') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">

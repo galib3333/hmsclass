@@ -95,39 +95,6 @@
                         <!-- Add more items as needed -->
                 </li>
             </ul>
-
-
-            <li>
-                <a href="{{ route('user.index') }}">
-                    <i class="zmdi zmdi-account-circle"></i> <span>User List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('role.index') }}">
-                    <i class="zmdi zmdi-account-circle"></i> <span>Role List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ 'doctorlist' }}">
-                    <i class="fa fa-user-md"></i></i><span>Doctors List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('patients.index') }}">
-                    <i class="fa fa-wheelchair"></i><span>Patients List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('employees.index') }}">
-                    <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('blood.index') }}">
-                    <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
-                </a>
-            </li>
-
             <li>
                 <a href="forms.html">
                     <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>

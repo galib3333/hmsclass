@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 
 use App\Models\Patient;
+use App\Models\Blood;
 use App\Http\Requests\Backend\Patient\StorePatientRequest;
 use App\Http\Requests\Backend\Patient\UpdatePatientRequest;
 use Exception;
@@ -29,7 +30,9 @@ class PatientController extends Controller
     public function create()
     {
         $patient = Patient::get();
-        return view('backend.patients.create', compact('patient'));    }
+        $blood = Blood::get();
+        return view('backend.patients.create', compact('patient', 'blood'));    
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,15 +42,16 @@ class PatientController extends Controller
         try {
             $patient = new Patient();
             $patient->patient_id = $request->patientId;
-            $patient->first_name = $request->firstName;
-            $patient->last_name = $request->lastName;
+            $patient->name_en = $request->patientNameEN;
+            $patient->name_bn = $request->patientNameBN;
             $patient->email = $request->emailAddress;
-            $patient->phone = $request->phoneNumber;
+            $patient->contact_no_en = $request->contactNumber_en;
+            $patient->contact_no_bn = $request->contactNumber_bn;
             $patient->present_address = $request->presentAddress;
             $patient->permanent_address = $request->permanentAddress;
             $patient->birth_date = $request->birthDate;
             $patient->gender = $request->gender;
-            $patient->blood_type = $request->bloodType;
+            $patient->blood_id = $request->bloodId;
             $patient->status = $request->status;
 
             if ($request->hasFile('image')) {
@@ -83,7 +87,8 @@ class PatientController extends Controller
     public function edit(string $id)
     {
         $patient = Patient::findOrFail(encryptor('decrypt', $id));
-        return view('backend.patients.edit', compact('patient'));
+        $blood = Blood::get();
+        return view('backend.patients.edit', compact('patient', 'blood'));
     }
 
     /**
@@ -94,15 +99,16 @@ class PatientController extends Controller
         try {
             $patient = Patient::findOrFail(\encryptor('decrypt', $id));
             $patient->patient_id = $request->patientId;
-            $patient->first_name = $request->firstName;
-            $patient->last_name = $request->lastName;
+            $patient->name_en = $request->firstName;
+            $patient->name_bn = $request->lastName;
             $patient->email = $request->emailAddress;
-            $patient->phone = $request->phoneNumber;
+            $patient->contact_no_en = $request->contactNumber_en;
+            $patient->contact_no_bn = $request->contactNumber_bn;
             $patient->present_address = $request->presentAddress;
             $patient->permanent_address = $request->permanentAddress;
             $patient->birth_date = $request->birthDate;
             $patient->gender = $request->gender;
-            $patient->blood_type = $request->bloodType;
+            $patient->blood_id = $request->bloodId;
             $patient->status = $request->status;
 
             if ($request->hasFile('image')) {
@@ -136,7 +142,7 @@ class PatientController extends Controller
             if(File::exists($image_path)) 
                 File::delete($image_path);
             
-            Toastr::warning('Deleted Permanently!');
+            Toastr::warning('Patient Deleted Permanently!');
             return redirect()->back();
         }
     }
