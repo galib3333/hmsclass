@@ -34,10 +34,8 @@
 </head>
 
 <body class="bg-theme bg-theme1">
-
     <!-- Start wrapper-->
     <div id="wrapper">
-
         <!--Start sidebar-wrapper-->
         <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
             <div class="brand-logo">
@@ -53,125 +51,129 @@
                         <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                
                 <!-- Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li>
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <i class="fa fa-users"></i><span>HRM</span>
                     </a>
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdown" style="min-width: 250px;">
-                        <ul class="dropList mb-1" style="list-style:none">
-                        <li>
+                    <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
+                        <li class="dropdown-item">
                             <a href="{{ route('user.index') }}">
-                                <i class="fa fa-user"></i> <span>User List</span>
+                                <i class="fa fa-user"></i> <span>Users</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
                             <a href="{{ route('role.index') }}">
-                                <i class="zmdi zmdi-account-circle"></i> <span>Role List</span>
+                                <i class="zmdi zmdi-account-circle"></i> <span>Roles</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
                             <a href="{{ 'doctorlist' }}">
-                                <i class="fa fa-user-md"></i></i><span>Doctors List</span>
+                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
                             <a href="{{ route('patients.index') }}">
-                                <i class="fa fa-wheelchair"></i><span>Patients List</span>
+                                <i class="fa fa-wheelchair"></i><span>Patients</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
                             <a href="{{ route('employees.index') }}">
-                                <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
+                                <i class="zmdi zmdi-mood-bad"></i><span>Employees</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
                             <a href="{{ route('blood.index') }}">
                                 <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
                             </a>
                         </li>
-                    </ul>
                         <!-- Add more items as needed -->
-                    </div>
                 </li>
+            </ul>
 
-                <li>
-                    <a href="{{ route('user.index') }}">
-                        <i class="zmdi zmdi-account-circle"></i> <span>User List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('role.index') }}">
-                        <i class="zmdi zmdi-account-circle"></i> <span>Role List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ 'doctorlist' }}">
-                        <i class="fa fa-user-md"></i></i><span>Doctors List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('patients.index') }}">
-                        <i class="fa fa-wheelchair"></i><span>Patients List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('employees.index') }}">
-                        <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('blood.index') }}">
-                        <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="forms.html">
-                        <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('user.index') }}">
+                    <i class="zmdi zmdi-account-circle"></i> <span>User List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('role.index') }}">
+                    <i class="zmdi zmdi-account-circle"></i> <span>Role List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ 'doctorlist' }}">
+                    <i class="fa fa-user-md"></i></i><span>Doctors List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('patients.index') }}">
+                    <i class="fa fa-wheelchair"></i><span>Patients List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('employees.index') }}">
+                    <i class="zmdi zmdi-mood-bad"></i><span>Employees List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('blood.index') }}">
+                    <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="tables.html">
-                        <i class="zmdi zmdi-grid"></i> <span>Tables</span>
-                    </a>
-                </li>
+            <li>
+                <a href="forms.html">
+                    <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="calendar.html">
-                        <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-                        <small class="badge float-right badge-light">New</small>
-                    </a>
-                </li>
+            <li>
+                <a href="tables.html">
+                    <i class="zmdi zmdi-grid"></i> <span>Tables</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="profile.html">
-                        <i class="zmdi zmdi-face"></i> <span>Profile</span>
-                    </a>
-                </li>
+            <li>
+                <a href="calendar.html">
+                    <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
+                    <small class="badge float-right badge-light">New</small>
+                </a>
+            </li>
 
-                <li>
-                    <a href="login.html" target="_blank">
-                        <i class="zmdi zmdi-lock"></i> <span>Login</span>
-                    </a>
-                </li>
+            <li>
+                <a href="profile.html">
+                    <i class="zmdi zmdi-face"></i> <span>Profile</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="register.html" target="_blank">
-                        <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-                    </a>
-                </li>
+            <li>
+                <a href="login.html" target="_blank">
+                    <i class="zmdi zmdi-lock"></i> <span>Login</span>
+                </a>
+            </li>
 
-                <li class="sidebar-header">LABELS</li>
-                <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i> <span>Important</span></a>
-                </li>
-                <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i>
-                        <span>Warning</span></a></li>
-                <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i> <span>Information</span></a>
-                </li>
+            <li>
+                <a href="register.html" target="_blank">
+                    <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">LABELS</li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i>
+                    <span>Important</span></a>
+            </li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i>
+                    <span>Warning</span></a></li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i>
+                    <span>Information</span></a>
+            </li>
 
             </ul>
 
