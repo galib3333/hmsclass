@@ -76,25 +76,24 @@
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
-                            <a href="{{ route('patients.index') }}">
-                                <i class="fa fa-wheelchair"></i><span>Patients</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
                             <a href="{{ route('employees.index') }}">
                                 <i class="zmdi zmdi-mood-bad"></i><span>Employees</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('blood.index') }}">
-                                <i class="zmdi zmdi-invert-colors"></i> <span>Blood Group</span>
                             </a>
                         </li>
                         <!-- Add more items as needed -->
                 </li>
             </ul>
+            <li>
+                <a href="{{ route('patients.index') }}">
+                    <i class="fa fa-wheelchair"></i><span>Patients</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('blood.index') }}">
+                    <i class="zmdi zmdi-invert-colors"></i><span>Blood Group</span>
+                </a>
+            </li>
             <li>
                 <a href="forms.html">
                     <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>

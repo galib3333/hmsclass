@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\Backend\Employee\StoreEmployBasicRequest;
+use App\Http\Requests\Backend\Employee\UpdateEmployBasicRequest;
+use App\Models\Blood;
 use App\Models\EmployBasic;
 use App\Models\Role;
 use App\Models\User;
-use App\Models\Blood;
+use DB;
 use Exception;
 use File;
-use App\Http\Requests\Backend\Employee\StoreEmployBasicRequest;
-use App\Http\Requests\Backend\Employee\UpdateEmployBasicRequest;
 use Illuminate\Support\Facades\Hash;
-use DB;
 
 class EmployBasicController extends Controller
 {
@@ -34,7 +33,7 @@ class EmployBasicController extends Controller
         $role = Role::get();
         $blood = Blood::get();
         return view('backend.employees.create', compact('role', 'blood'));
-        
+
     }
 
     /**
@@ -60,14 +59,14 @@ class EmployBasicController extends Controller
             $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
-                    $request->image->extension();
+                $request->image->extension();
                 $request->image->move(public_path('uploads/employees'), $imageName);
                 $employee->image = $imageName;
             }
 
             $employee->created_by = currentUserId();
             if ($employee->save()) {
-                $user=new User;
+                $user = new User;
                 $user->employ_id = $employee->id;
                 $user->name_en = $request->employeeName_en;
                 $user->email = $request->EmailAddress;
@@ -75,7 +74,8 @@ class EmployBasicController extends Controller
                 $user->role_id = $request->roleId;
                 $user->status = $request->status;
                 $user->password = Hash::make($request->password);
-                if($user->save()){
+                $user->created_by = currentUserId();
+                if ($user->save()) {
                     DB::commit();
                     return redirect()->route('employees.index');
                     $this->notice::success('Employee Successfully Added');
@@ -131,22 +131,25 @@ class EmployBasicController extends Controller
             $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
-                    $request->image->extension();
+                $request->image->extension();
                 $request->image->move(public_path('uploads/employees'), $imageName);
                 $employee->image = $imageName;
             }
 
             $employee->updated_by = currentUserId();
             if ($employee->save()) {
-                $user=User::where('employ_id',$employee->id)->first();
+                $user = User::where('employ_id', $employee->id)->first();
                 $user->name_en = $request->employeeName_en;
                 $user->email = $request->EmailAddress;
                 $user->contact_no_en = $request->contactNumber_en;
                 $user->role_id = $request->roleId;
                 $user->status = $request->status;
-                if($request->password)
+                if ($request->password) {
                     $user->password = Hash::make($request->password);
-                if($user->save()){
+                }
+
+                $employee->updated_by = currentUserId();
+                if ($user->save()) {
                     DB::commit();
                     return redirect()->route('employees.index');
                     $this->notice::success('Employee Successfully Updated');
@@ -165,12 +168,13 @@ class EmployBasicController extends Controller
      */
     public function destroy($id)
     {
-        $employee= EmployBasic::findOrFail(encryptor('decrypt',$id));
-        $image_path=public_path('uploads/employees/').$employee->image;
-        
-        if($employee->delete()){
-            if(File::exists($image_path)) 
+        $employee = EmployBasic::findOrFail(encryptor('decrypt', $id));
+        $image_path = public_path('uploads/employees/') . $employee->image;
+
+        if ($employee->delete()) {
+            if (File::exists($image_path)) {
                 File::delete($image_path);
+            }
 
             $this->notice::error('Employee Deleted Permanently!');
             return redirect()->back();

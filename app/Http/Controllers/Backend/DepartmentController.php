@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\Department;
-use App\Http\Requests\StoreDepartmentRequest;
-use App\Http\Requests\UpdateDepartmentRequest;
+use App\Http\Requests\Backend\StoreDepartmentRequest;
+use App\Http\Requests\Backend\UpdateDepartmentRequest;
 
 class DepartmentController extends Controller
 {

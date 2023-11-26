@@ -14,8 +14,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('#SL') }}</th>
-                                <th scope="col">{{ __('Patient Id') }}</th>
                                 <th scope="col">{{ __('Image') }}</th>
+                                <th scope="col">{{ __('Patient Id') }}</th>
                                 <th scope="col">{{ __('Name EN') }}</th>
                                 <th scope="col">{{ __('Name BN') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
@@ -34,10 +34,10 @@
                             @forelse($patient as $p)
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
-                                    <td>{{ $p->patient_id }}</td>
                                     <td><img width="50px" src="{{ asset('public/uploads/patients/' . $p->image) }}"
                                             alt="">
                                     </td>
+                                    <td>{{ $p->patient_id }}</td>
                                     <td>{{ $p->name_en }}</td>
                                     <td>{{ $p->name_bn }}</td>
                                     <td>{{ $p->email }}</td>
