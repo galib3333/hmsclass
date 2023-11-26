@@ -94,7 +94,8 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="presentAddress"> Present Address</label>
+                                    <label for="presentAddress"> Present Address  <i
+                                        class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="presentAddress" name="presentAddress"
                                         value="{{ old('presentAddress') }}" placeholder="Enter Your PresentAddress">
                                     @if ($errors->has('presentAddress'))
@@ -102,7 +103,8 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="permanentAddress"> Permanent Address</label>
+                                    <label for="permanentAddress"> Permanent Address  <i
+                                        class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
                                         value="{{ old('permanentAddress') }}" placeholder="Enter Your Permanent Address">
                                     @if ($errors->has('permanentAddress'))
@@ -110,7 +112,8 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="birthDate">Birth Date</label>
+                                    <label for="birthDate">Birth Date  <i
+                                        class="text-danger">*</i></label>
                                     <input type="date" class="form-control" id="birthDate" name="birthDate"
                                         value="{{ old('birthDate') }}" placeholder="Enter Birth Date">
                                     @if ($errors->has('birthDate'))

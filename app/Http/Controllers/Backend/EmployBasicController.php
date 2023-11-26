@@ -65,6 +65,7 @@ class EmployBasicController extends Controller
                 $employee->image = $imageName;
             }
 
+            $employee->created_by = currentUserId();
             if ($employee->save()) {
                 $user=new User;
                 $user->employ_id = $employee->id;
@@ -83,7 +84,7 @@ class EmployBasicController extends Controller
 
         } catch (Exception $e) {
             DB::rollback();
-            dd($e);
+            // dd($e);
             return redirect()->back();
             $this->notice::error('Please try again');
         }
@@ -135,6 +136,7 @@ class EmployBasicController extends Controller
                 $employee->image = $imageName;
             }
 
+            $employee->updated_by = currentUserId();
             if ($employee->save()) {
                 $user=User::where('employ_id',$employee->id)->first();
                 $user->name_en = $request->employeeName_en;
@@ -152,7 +154,7 @@ class EmployBasicController extends Controller
             }
         } catch (Exception $e) {
             DB::rollback();
-            dd($e);
+            // dd($e);
             return redirect()->back();
             $this->notice::error('Please try again');
         }

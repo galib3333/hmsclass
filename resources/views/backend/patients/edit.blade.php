@@ -19,29 +19,36 @@
                             @method('PATCH')
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="patientId">Patient Id <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="patientId" name="patientId"
-                                        value="{{ old('patientId', $patient->patient_id) }}" placeholder="Enter Patient ID">
-                                    @if ($errors->has('patientId'))
-                                        <span class="text-danger"> {{ $errors->first('patientId') }}</span>
+                                    <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
+                                    <select class="form-control" name="bloodId" id="bloodId">
+                                        <option value="">Select Blood Group</option>
+                                        @forelse($blood as $b)
+                                            <option value="{{ $b->id }}"
+                                                {{ old('bloodId', $patient->blood_id) == $b->id ? 'selected' : '' }}>
+                                                {{ $b->blood_type_name }}</option>
+                                        @empty
+                                            <option value="">No Blood Group found</option>
+                                        @endforelse
+                                    </select>
+                                    @if ($errors->has('bloodId'))
+                                        <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName"
-                                        value="{{ old('firstName', $patient->first_name) }}"
-                                        placeholder="Enter Your First Name">
-                                    @if ($errors->has('firstName'))
-                                        <span class="text-danger"> {{ $errors->first('firstName') }}</span>
+                                    <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"
+                                        value="{{ old('patientNameEN', $patient->name_en) }}" placeholder="Enter Your Name In English">
+                                    @if ($errors->has('patientNameEN'))
+                                        <span class="text-danger"> {{ $errors->first('patientNameEN') }}</span>
                                     @endif
                                 </div>
+
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName"
-                                        value="{{ old('lastName', $patient->last_name) }}"
-                                        placeholder="Enter Your Last Name">
-                                    @if ($errors->has('lastName'))
-                                        <span class="text-danger"> {{ $errors->first('lastName') }}</span>
+                                    <label for="patientNameBN">Name (Bangla)</label>
+                                    <input type="text" class="form-control" id="patientNameBN" name="patientNameBN"
+                                        value="{{ old('patientNameBN', $patient->name_bn) }}" placeholder="Enter Employee Name In Bangla">
+                                    @if ($errors->has('patientNameBN'))
+                                        <span class="text-danger"> {{ $errors->first('patientNameBN') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
@@ -54,12 +61,22 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="phoneNumber">Phone Number <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
-                                        value="{{ old('phoneNumber', $patient->phone) }}"
-                                        placeholder="Enter Your Phone Number">
-                                    @if ($errors->has('phoneNumber'))
-                                        <span class="text-danger"> {{ $errors->first('phoneNumber') }}</span>
+                                    <label for="contactNumber_en">Contact Number (English) <i
+                                            class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="contactNumber_en" name="contactNumber_en"
+                                        value="{{ old('contactNumber_en', $patient->contact_no_en) }}"
+                                        placeholder="Enter Your Contect Number In English">
+                                    @if ($errors->has('contactNumber_en'))
+                                        <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="contactNumber_bn">Contact Number (Bangla)</label>
+                                    <input type="text" class="form-control" id="contactNumber_bn" name="contactNumber_bn"
+                                        value="{{ old('contactNumber_bn', $patient->contact_no_bn) }}"
+                                        placeholder="Enter Your Contect Number In Bangla">
+                                    @if ($errors->has('contactNumber_bn'))
+                                        <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
@@ -81,21 +98,11 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="birthDate"> Birth Date</label>
-                                    <input type="text" class="form-control" id="birthDate" name="birthDate"
-                                        value="{{ old('birthDate', $patient->birth_date) }}"
-                                        placeholder="Enter Your Birth Date">
+                                    <label for="birthDate">Birth Date</label>
+                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                        value="{{ old('birthDate', $patient->birth_date) }}" placeholder="Enter Birth Date">
                                     @if ($errors->has('birthDate'))
                                         <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="bloodType">Blood Type</label>
-                                    <input type="text" class="form-control" id="bloodType" name="bloodType"
-                                        value="{{ old('bloodType', $patient->blood_type) }}"
-                                        placeholder="Enter Your bloodType">
-                                    @if ($errors->has('bloodType'))
-                                        <span class="text-danger"> {{ $errors->first('bloodType') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -116,9 +123,9 @@
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select id="gender" class="form-control" name="gender">
-                                            <option value="male" @if (old('gender') == 'male') selected @endif>Male
+                                            <option value="Male" @if (old('gender') == 'Male') selected @endif>Male
                                             </option>
-                                            <option value="female" @if (old('gender') == 'female') selected @endif>
+                                            <option value="Female" @if (old('gender') == 'Female') selected @endif>
                                                 Female</option>
                                         </select>
                                         @if ($errors->has('gender'))

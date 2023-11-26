@@ -50,6 +50,7 @@ class UserController extends Controller
             $user->full_access = $request->fullAccess;
             $user->password = Hash::make($request->password);
 
+            $user->created_by = currentUserId();
             if ($user->save()) {
                 return redirect()->route('user.index');
                 Toastr::success('Successfully Saved User!');
@@ -100,6 +101,7 @@ class UserController extends Controller
             if ($request->password)
                 $user->password = Hash::make($request->password);
 
+                $user->updated_by = currentUserId();
             if ($user->save()) {
                 return redirect()->route('user.index');
                 Toastr::success('Successfully Updated User!');

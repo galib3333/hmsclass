@@ -61,15 +61,18 @@ class PatientController extends Controller
                 $patient->image = $imageName;
             }
 
+            $patient->created_by = currentUserId();
             if ($patient->save()) {
-                return redirect()->route('patients.index')->with('success', 'Successfully Saved Patient');
+                $this->notice::success('Successfully Saved Patient. Patient ID: ' . $patient->patient_id);
+                return redirect()->route('patients.index');
             } else {
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again');
             }
-
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
         }
     }
 
@@ -99,8 +102,8 @@ class PatientController extends Controller
         try {
             $patient = Patient::findOrFail(\encryptor('decrypt', $id));
             $patient->patient_id = $request->patientId;
-            $patient->name_en = $request->firstName;
-            $patient->name_bn = $request->lastName;
+            $patient->name_en = $request->patientNameEN;
+            $patient->name_bn = $request->patientNameBN;
             $patient->email = $request->emailAddress;
             $patient->contact_no_en = $request->contactNumber_en;
             $patient->contact_no_bn = $request->contactNumber_bn;
@@ -118,15 +121,19 @@ class PatientController extends Controller
                 $patient->image = $imageName;
             }
 
+            $patient->updated_by = currentUserId();
             if ($patient->save()) {
-                return redirect()->route('patients.index')->with('success', 'Successfully Saved Patient');
+                return redirect()->route('patients.index');
+                $this->notice::success('Successfully Updated Patient');
             } else {
-                return redirect()->back()->withInput()->with('error', 'Please try again');
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again');
             }
 
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput()->with('error', 'Please try again');
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
         }
     }
 

@@ -38,6 +38,8 @@ class BloodController extends Controller
             $blood = new Blood();
             $blood->blood_type_name = $request->bloodTypeName;
             $blood->status = $request->status;
+            
+            $blood->created_by = currentUserId();
             if ($blood->save()) {
                 return redirect()->route('blood.index');
                 $this->notice::success('Blood Group Successfully Added');
@@ -79,6 +81,7 @@ class BloodController extends Controller
             $blood = Blood::findOrFail(\encryptor('decrypt', $id));
             $blood->blood_type_name = $request->bloodTypeName;
             $blood->status = $request->status;
+            $blood->updated_by = currentUserId();
             if ($blood->save()) {
                 return redirect()->route('blood.index');
                 $this->notice::success('Blood Group Successfully Added');

@@ -17,14 +17,14 @@
                         <form method="post" action="{{route('patients.store')}}" enctype="multipart/form-data" >
                             @csrf
                             <div class="row">
-                                <div class="form-group col-md-6 col-12">
+                                {{-- <div class="form-group col-md-6 col-12">
                                     <label for="patientId">patient Id <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="patientId" name="patientId"
                                         value="{{ old('patientId') }}" placeholder="Enter Patient ID">
                                     @if ($errors->has('patientId'))
                                         <span class="text-danger"> {{ $errors->first('patientId') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
                                 <div class="form-group col-md-6 col-12">
                                     <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"

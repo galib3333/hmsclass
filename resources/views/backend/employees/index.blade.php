@@ -45,7 +45,7 @@
                                     <td>{{ $e->permanent_address }}</td>
                                     <td>{{ $e->gender }}</td>
                                     <td>{{ $e->birth_date }}</td>
-                                    <td>{{ $e->blood->blood_type_name }}</td>
+                                    <td>{{ $e->blood?->blood_type_name }}</td>
                                     <td>{{ $e->role?->name }}</td>
 
                                     <td>{{ $e->status == 1 ? 'Active' : 'Inactive' }}</td>

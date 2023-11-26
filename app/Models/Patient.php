@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Blood;
+use Illuminate\Support\Str;
 
 class Patient extends Model
 {
@@ -29,6 +30,19 @@ class Patient extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->patient_id = (string) Str::uuid();
+        });
+
+        static::updating(function ($model) {
+            unset($model->patient_id);
+        });
+    }
 
     public function blood()
     {
