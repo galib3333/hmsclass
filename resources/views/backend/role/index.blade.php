@@ -47,7 +47,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <th colspan="8" class="text-center">No Pruduct Found</th>
+                                    <th colspan="8" class="text-center">No Role Found</th>
                                 </tr>
                             @endforelse
                         </tbody>

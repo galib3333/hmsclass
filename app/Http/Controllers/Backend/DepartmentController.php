@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\Department;
-use App\Http\Requests\Backend\StoreDepartmentRequest;
-use App\Http\Requests\Backend\UpdateDepartmentRequest;
+use Exception;
+use App\Http\Requests\Backend\Department\StoreDepartmentRequest;
+use App\Http\Requests\Backend\Department\UpdateDepartmentRequest;
 
 class DepartmentController extends Controller
 {
@@ -15,7 +16,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $department = Department::paginate(10);
+        return view('backend.department.index', compact('department'));
     }
 
     /**
@@ -23,7 +25,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $department = Department::get();
+        return view('backend.department.create', compact('department'));
     }
 
     /**
@@ -31,13 +34,31 @@ class DepartmentController extends Controller
      */
     public function store(StoreDepartmentRequest $request)
     {
-        //
+        try {
+            $department = new Department();
+            $department->dep_name = $request->depName;
+            $department->dep_des = $request->depDes;
+            $department->status = $request->status;
+
+            $department->created_by = currentUserId();
+            if ($department->save()) {
+                return redirect()->route('department.index');
+                $this->notice::success('Department Successfully Saved');
+            } else {
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again');
+            }
+        } catch (Exception $e) {
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Department $department)
+    public function show($id)
     {
         //
     }
@@ -45,24 +66,46 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Department $department)
+    public function edit($id)
     {
-        //
+        $department = Department::findOrFail(encryptor('decrypt', $id));
+        return view('backend.department.edit', compact('department'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDepartmentRequest $request, Department $department)
+    public function update(UpdateDepartmentRequest $request, $id)
     {
-        //
+        try {
+            $department = Department::findOrFail(\encryptor('decrypt', $id));
+            $department->dep_name = $request->depName;
+            $department->dep_des = $request->depDes;
+            $department->status = $request->status;
+            $department->created_by = currentUserId();
+            if ($department->save()) {
+                return redirect()->route('department.index');
+                $this->notice::success('Department Successfully Updated');
+            } else {
+                return redirect()->back()->withInput();
+                $this->notice::error('Please try again');
+            }
+        } catch (Exception $e) {
+            dd($e);
+            return redirect()->back()->withInput();
+            $this->notice::error('Please try again');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        //
+        $department = Department::findOrFail(encryptor('decrypt', $id));
+        if ($department->delete()) {
+            $this->notice::warning('Department Deleted Permanently!');
+            return redirect()->back();
+        }
     }
 }

@@ -49,7 +49,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <th colspan="8" class="text-center">No User Found</th>
+                                    <th colspan="8" class="text-center">No Blood Group Found</th>
                                 </tr>
                             @endforelse
                         </tbody>

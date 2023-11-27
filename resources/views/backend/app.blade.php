@@ -95,6 +95,16 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('department.index') }}">
+                    <i class="fa fa-cube"></i><span>Department</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('designation.index') }}">
+                    <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
+                </a>
+            </li>
+            <li>
                 <a href="forms.html">
                     <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
                 </a>

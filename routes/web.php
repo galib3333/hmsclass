@@ -4,6 +4,8 @@ use App\Http\Controllers\Backend\AuthenticationController as auth;
 use App\Http\Controllers\Backend\BackendController as backend;
 use App\Http\Controllers\Backend\UserController as user;
 use App\Http\Controllers\Backend\PatientController as patient;
+use App\Http\Controllers\Backend\DepartmentController as department;
+use App\Http\Controllers\Backend\DesignationController as designation;
 use App\Http\Controllers\Backend\EmployBasicController as employee;
 use App\Http\Controllers\Backend\BloodController as blood;
 use App\Http\Controllers\Frontend\FrontendController as frontend;
@@ -48,18 +50,20 @@ Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('user', user::class);
-Route::resource('role', role::class);
-Route::get('permission/{role}', [permission::class, 'index'])->name('permission.list');
-Route::post('permission/{role}', [permission::class, 'save'])->name('permission.save');
-Route::resource('/patients', patient::class);
-Route::resource('/user', user::class);
-Route::resource('/employees', employee::class);
-Route::resource('/blood', blood::class);
+  Route::resource('role', role::class);
+  Route::get('permission/{role}', [permission::class, 'index'])->name('permission.list');
+  Route::post('permission/{role}', [permission::class, 'save'])->name('permission.save');
+  Route::resource('/patients', patient::class);
+  Route::resource('/user', user::class);
+  Route::resource('/employees', employee::class);
+  Route::resource('/blood', blood::class);
+  Route::resource('/department', department::class);
+  Route::resource('/designation', designation::class);
 });
 
 
 Route::middleware(['checkauth'])->prefix('admin')->group(function () {
-   Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
+  Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
 });
 
 
@@ -73,5 +77,5 @@ Route::get('/contact', [contact::class, 'index'])->name('contact');
 // })->name('dashboard');
 
 Route::get('/registration', function () {
-    return view('frontend.patientregistration');
+  return view('frontend.patientregistration');
 });
