@@ -12,7 +12,7 @@ use App\Http\Requests\Backend\User\AddNewRequest;
 use App\Http\Requests\Backend\User\UpdateRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
-use Toastr;
+
 
 class UserController extends Controller
 {
@@ -52,17 +52,17 @@ class UserController extends Controller
 
             $user->created_by = currentUserId();
             if ($user->save()) {
+                $this->notice::success('Successfully Saved User!');
                 return redirect()->route('user.index');
-                Toastr::success('Successfully Saved User!');
             } else {
+                $this->notice::error('Please try again');
                 return redirect()->back()->withInput();
-                Toastr::error('Please try again!');
             }
 
         } catch (Exception $e) {
             dd($e);
+            $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            Toastr::error('Please try again!');
         }
     }
 
@@ -101,19 +101,19 @@ class UserController extends Controller
             if ($request->password)
                 $user->password = Hash::make($request->password);
 
-                $user->updated_by = currentUserId();
+            $user->updated_by = currentUserId();
             if ($user->save()) {
+                $this->notice::success('Successfully Updated User!');
                 return redirect()->route('user.index');
-                Toastr::success('Successfully Updated User!');
             } else {
+                $this->notice::error('Please try again');
                 return redirect()->back()->withInput();
-                Toastr::error('Please try again!');
             }
 
         } catch (Exception $e) {
             dd($e);
+            $this->notice::error('Please try again');
             return redirect()->back()->withInput();
-            Toastr::error('Please try again!');
         }
     }
 
@@ -129,7 +129,7 @@ class UserController extends Controller
             if (File::exists($image_path))
                 File::delete($image_path);
 
-            Toastr::warning('Deleted Permanently!');
+            $this->notice::error('User Deleted Permanently!');
             return redirect()->back();
         }
     }

@@ -11,7 +11,6 @@ use App\Http\Requests\Backend\Patient\StorePatientRequest;
 use App\Http\Requests\Backend\Patient\UpdatePatientRequest;
 use Exception;
 use File;
-use Toastr;
 
 class PatientController extends Controller
 {
@@ -66,13 +65,13 @@ class PatientController extends Controller
                 $this->notice::success('Successfully Saved Patient. Patient ID: ' . $patient->patient_id);
                 return redirect()->route('patients.index');
             } else {
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -123,17 +122,17 @@ class PatientController extends Controller
 
             $patient->updated_by = currentUserId();
             if ($patient->save()) {
-                return redirect()->route('patients.index');
                 $this->notice::success('Successfully Updated Patient');
+                return redirect()->route('patients.index');
             } else {
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
             }
 
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -148,8 +147,8 @@ class PatientController extends Controller
         if($patient->delete()){
             if(File::exists($image_path)) 
                 File::delete($image_path);
-            
-            Toastr::warning('Patient Deleted Permanently!');
+
+            $this->notice::error('Patient Deleted Permanently!');
             return redirect()->back();
         }
     }

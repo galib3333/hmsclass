@@ -26,7 +26,7 @@ class DesignationController extends Controller
     public function create()
     {
         $designation = Designation::get();
-        return view('backend.designation.create', compact('designation'));  
+        return view('backend.designation.create', compact('designation'));
     }
 
     /**
@@ -45,13 +45,13 @@ class DesignationController extends Controller
                 $this->notice::success('Designation Successfully Saved');
                 return redirect()->route('designation.index');
             } else {
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -88,13 +88,13 @@ class DesignationController extends Controller
                 $this->notice::success('Designation Successfully Updated');
                 return redirect()->route('designation.index');
             } else {
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -103,8 +103,8 @@ class DesignationController extends Controller
      */
     public function destroy($id)
     {
-        $designation= Designation::findOrFail(encryptor('decrypt',$id));
-        if($designation->delete()){
+        $designation = Designation::findOrFail(encryptor('decrypt', $id));
+        if ($designation->delete()) {
             $this->notice::warning('Designation Deleted Permanently!');
             return redirect()->back();
         }

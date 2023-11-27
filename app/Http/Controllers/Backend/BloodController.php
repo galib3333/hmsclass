@@ -38,20 +38,20 @@ class BloodController extends Controller
             $blood = new Blood();
             $blood->blood_type_name = $request->bloodTypeName;
             $blood->status = $request->status;
-            
+
             $blood->created_by = currentUserId();
             if ($blood->save()) {
-                return redirect()->route('blood.index');
                 $this->notice::success('Blood Group Successfully Added');
+                return redirect()->route('blood.index');
             } else {
-                return redirect()->back();
                 $this->notice::error('Please try again');
+                return redirect()->back();
             }
 
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back();
             $this->notice::error('Please try again');
+            return redirect()->back();
         }
     }
 
@@ -83,17 +83,16 @@ class BloodController extends Controller
             $blood->status = $request->status;
             $blood->updated_by = currentUserId();
             if ($blood->save()) {
-                return redirect()->route('blood.index');
                 $this->notice::success('Blood Group Successfully Added');
+                return redirect()->route('blood.index');
             } else {
-                return redirect()->back();
                 $this->notice::error('Please try again');
+                return redirect()->back();
             }
-
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back();
             $this->notice::error('Please try again');
+            return redirect()->back();
         }
     }
 
@@ -102,8 +101,8 @@ class BloodController extends Controller
      */
     public function destroy(string $id)
     {
-        $blood= Blood::findOrFail(encryptor('decrypt',$id));
-        if($blood->delete()){
+        $blood = Blood::findOrFail(encryptor('decrypt', $id));
+        if ($blood->delete()) {
             $this->notice::error('Blood Group Deleted Permanently!');
             return redirect()->back();
         }

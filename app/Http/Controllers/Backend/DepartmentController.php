@@ -39,19 +39,18 @@ class DepartmentController extends Controller
             $department->dep_name = $request->depName;
             $department->dep_des = $request->depDes;
             $department->status = $request->status;
-
             $department->created_by = currentUserId();
             if ($department->save()) {
-                return redirect()->route('department.index');
                 $this->notice::success('Department Successfully Saved');
+                return redirect()->route('department.index');
             } else {
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -84,16 +83,16 @@ class DepartmentController extends Controller
             $department->status = $request->status;
             $department->created_by = currentUserId();
             if ($department->save()) {
-                return redirect()->route('department.index');
                 $this->notice::success('Department Successfully Updated');
+                return redirect()->route('department.index');
             } else {
-                return redirect()->back()->withInput();
                 $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
             }
         } catch (Exception $e) {
             dd($e);
-            return redirect()->back()->withInput();
             $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
         }
     }
 

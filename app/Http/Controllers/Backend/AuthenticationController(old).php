@@ -80,9 +80,11 @@ class AuthenticationController extends Controller
             if ($user) {
                 if (Hash::check($request->password, $user->password)) {
                     $this->setSession($user);
-                    return redirect()->route('dashboard')->with('success', 'Successfully logged in!');
+                    $this->notice::success('Successfully logged in!');
+                    return redirect()->route('dashboard');
                 } else {
-                    return redirect()->route('login')->with('error', 'Invalid password! Please try again');
+                    $this->notice::error('Invalid password! Please try again');
+                    return redirect()->route('login');
                 }
             } else {
                 return redirect()->route('login')->with('error', 'Invalid ' . $fieldType . '! Please try again');

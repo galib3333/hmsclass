@@ -59,7 +59,7 @@ class EmployBasicController extends Controller
             $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
-                $request->image->extension();
+                    $request->image->extension();
                 $request->image->move(public_path('uploads/employees'), $imageName);
                 $employee->image = $imageName;
             }
@@ -77,16 +77,15 @@ class EmployBasicController extends Controller
                 $user->created_by = currentUserId();
                 if ($user->save()) {
                     DB::commit();
-                    return redirect()->route('employees.index');
                     $this->notice::success('Employee Successfully Added');
+                    return redirect()->route('employees.index');
                 }
             }
-
         } catch (Exception $e) {
             DB::rollback();
             // dd($e);
-            return redirect()->back();
             $this->notice::error('Please try again');
+            return redirect()->back();
         }
     }
 
@@ -131,7 +130,7 @@ class EmployBasicController extends Controller
             $employee->status = $request->status;
             if ($request->hasFile('image')) {
                 $imageName = rand(111, 999) . time() . '.' .
-                $request->image->extension();
+                    $request->image->extension();
                 $request->image->move(public_path('uploads/employees'), $imageName);
                 $employee->image = $imageName;
             }
@@ -151,15 +150,15 @@ class EmployBasicController extends Controller
                 $employee->updated_by = currentUserId();
                 if ($user->save()) {
                     DB::commit();
-                    return redirect()->route('employees.index');
                     $this->notice::success('Employee Successfully Updated');
+                    return redirect()->route('employees.index');
                 }
             }
         } catch (Exception $e) {
             DB::rollback();
             // dd($e);
-            return redirect()->back();
             $this->notice::error('Please try again');
+            return redirect()->back();
         }
     }
 
