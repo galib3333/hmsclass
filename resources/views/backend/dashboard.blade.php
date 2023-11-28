@@ -13,7 +13,7 @@
                         <div class="progress my-3" style="height:3px;">
                             <div class="progress-bar" style="width:55%"></div>
                         </div>
-                        <p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2%
+                        <p class="mb-0 text-white small-font">Investigation<span class="float-right">+4.2%
                                 <i class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <div class="progress my-3" style="height:3px;">
                             <div class="progress-bar" style="width:55%"></div>
                         </div>
-                        <p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i
+                        <p class="mb-0 text-white small-font">Total Patients<span class="float-right">+1.2% <i
                                     class="zmdi zmdi-long-arrow-up"></i></span>
                         </p>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="progress my-3" style="height:3px;">
                             <div class="progress-bar" style="width:55%"></div>
                         </div>
-                        <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i
+                        <p class="mb-0 text-white small-font">Appointments<span class="float-right">+5.2% <i
                                     class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <div class="progress my-3" style="height:3px;">
                             <div class="progress-bar" style="width:55%"></div>
                         </div>
-                        <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i
+                        <p class="mb-0 text-white small-font">Total Admitted <span class="float-right">+2.2% <i
                                     class="zmdi zmdi-long-arrow-up"></i></span></p>
                     </div>
                 </div>

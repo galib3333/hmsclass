@@ -76,6 +76,6 @@ Route::get('/contact', [contact::class, 'index'])->name('contact');
 //     return view('welcome');
 // })->name('dashboard');
 
-Route::get('/registration', function () {
-  return view('frontend.patientregistration');
-});
+// Route::get('/registration', function () {
+//   return view('frontend.patientregistration');
+// });
