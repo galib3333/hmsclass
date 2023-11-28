@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('employ_id')->references('id')->on('employ_basics')->onDelete('cascade');
             $table->unsignedBigInteger('designation_id');
             $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
-            $table->unsignedBigInteger('depertment_id');
-            $table->foreign('depertment_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->text('biography');
             $table->string('specialist');
             $table->text('education');

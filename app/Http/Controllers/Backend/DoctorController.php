@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
-use App\Http\Requests\StoreDoctorRequest;
-use App\Http\Requests\UpdateDoctorRequest;
+use App\Models\Department;
+use App\Models\Designation;
+use App\Models\EmployBasic;
+use App\Http\Requests\Backend\Doctor\StoreDoctorRequest;
+use App\Http\Requests\Backend\Doctor\UpdateDoctorRequest;
+use Exception;
 
 class DoctorController extends Controller
 {
@@ -14,7 +18,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctor = Doctor::with(['employee', 'designation', 'department'])->paginate(10);
+        return view('backend.doctor.index', compact('doctor'));
     }
 
     /**
@@ -22,7 +27,10 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        $department = Department::get();
+        $designation = Designation::get();
+        $employee = EmployBasic::get();
+        return view('backend.doctor.create', compact('department', 'designation', 'employee'));
     }
 
     /**
@@ -30,7 +38,28 @@ class DoctorController extends Controller
      */
     public function store(StoreDoctorRequest $request)
     {
-        //
+        try {
+            $doctor = new Department();
+            $doctor->designation_id = $request->designationId;
+            $doctor->department_id = $request->departmentId;
+            $doctor->biography = $request->biography;
+            $doctor->specialist = $request->specialist;
+            $doctor->education = $request->education;
+            $doctor->fees = $request->fees;
+            $doctor->status = $request->status;
+            $doctor->created_by = currentUserId();
+            if ($doctor->save()) {
+                $this->notice::success('Doctor Successfully Saved');
+                return redirect()->route('doctor.index');
+            } else {
+                $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
+            }
+        } catch (Exception $e) {
+            dd($e);
+            $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -44,24 +73,53 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Doctor $doctor)
+    public function edit($id)
     {
-        //
+        $doctor = Department::findOrFail(encryptor('decrypt', $id));
+        $department = Department::get();
+        $designation = Designation::get();
+        $employee = EmployBasic::get();
+        return view('backend.doctor.edit', compact('doctor', 'department', 'designation', 'employee'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDoctorRequest $request, Doctor $doctor)
+    public function update(UpdateDoctorRequest $request, $id)
     {
-        //
+        try {
+            $doctor = Department::findOrFail(\encryptor('decrypt', $id));
+            $doctor->designation_id = $request->designationId;
+            $doctor->department_id = $request->departmentId;
+            $doctor->biography = $request->biography;
+            $doctor->specialist = $request->specialist;
+            $doctor->education = $request->education;
+            $doctor->fees = $request->fees;
+            $doctor->status = $request->status;
+            $doctor->updated_by = currentUserId();
+            if ($doctor->save()) {
+                $this->notice::success('Doctor Successfully Updated');
+                return redirect()->route('doctor.index');
+            } else {
+                $this->notice::error('Please try again');
+                return redirect()->back()->withInput();
+            }
+        } catch (Exception $e) {
+            dd($e);
+            $this->notice::error('Please try again');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Doctor $doctor)
+    public function destroy($id)
     {
-        //
+        $doctor = Department::findOrFail(encryptor('decrypt', $id));
+        if ($doctor->delete()) {
+            $this->notice::error('Doctor Deleted Permanently!');
+            return redirect()->back();
+        }
     }
 }

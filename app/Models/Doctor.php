@@ -12,7 +12,7 @@ class Doctor extends Model
     protected $fillable = [
         'employ_id',
         'designation_id',
-        'depertment_id',
+        'department_id',
         'biography',
         'specialist',
         'education',

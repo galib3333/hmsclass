@@ -54,7 +54,7 @@
                 <!-- Dropdown Menu -->
                 <li>
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                        <i class="fa fa-users"></i><span>HRM</span>
+                        <i class="fa fa-h-square"></i><span>HRM</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
                         <li class="dropdown-item">
@@ -70,14 +70,14 @@
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
-                            <a href="{{ 'doctorlist' }}">
+                            <a href="{{ route('doctor.index') }}">
                                 <i class="fa fa-user-md"></i></i><span>Doctors</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('employees.index') }}">
-                                <i class="zmdi zmdi-mood-bad"></i><span>Employees</span>
+                                <i class="fa fa-users"></i><span>Employees</span>
                             </a>
                         </li>
                         <!-- Add more items as needed -->

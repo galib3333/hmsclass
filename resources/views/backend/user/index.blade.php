@@ -13,11 +13,12 @@
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('#SL') }}</th>
+                                <th scope="col">{{ __('Image') }}</th>
                                 <th scope="col">{{ __('Name') }}</th>
                                 <th scope="col">{{ __('Email') }}</th>
                                 <th scope="col">{{ __('Contact') }}</th>
                                 <th scope="col">{{ __('Role') }}</th>
-                                <th scope="col">{{ __('Image') }}</th>
+
                                 <th scope="col">{{ __('Status') }}</th>
                                 <th class="white-space-nowrap">{{ __('Action') }}</th>
                             </tr>
@@ -26,12 +27,15 @@
                             @forelse($user as $u)
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
+                                    <td><img width="50px"
+                                            src="{{ asset('public/uploads/employees/' . $u->employBasic?->image) }}"
+                                            alt="">
+                                    </td>
                                     <td>{{ $u->name_en }}</td>
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->contact_no_en }}</td>
                                     <td>{{ $u->role?->name }}</td>
-                                    <td><img width="50px" src="{{ asset('public/uploads/employees/' . $u->employBasic?->image) }}"
-                                            alt=""></td>
+
                                     <td>
                                         @if ($u->status == 1)
                                             {{ __('Active') }}

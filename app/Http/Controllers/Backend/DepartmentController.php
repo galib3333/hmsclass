@@ -103,7 +103,7 @@ class DepartmentController extends Controller
     {
         $department = Department::findOrFail(encryptor('decrypt', $id));
         if ($department->delete()) {
-            $this->notice::warning('Department Deleted Permanently!');
+            $this->notice::error('Department Deleted Permanently!');
             return redirect()->back();
         }
     }

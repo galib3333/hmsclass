@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AuthenticationController as auth;
 use App\Http\Controllers\Backend\BackendController as backend;
 use App\Http\Controllers\Backend\UserController as user;
 use App\Http\Controllers\Backend\PatientController as patient;
+use App\Http\Controllers\Backend\DoctorController as doctor;
 use App\Http\Controllers\Backend\DepartmentController as department;
 use App\Http\Controllers\Backend\DesignationController as designation;
 use App\Http\Controllers\Backend\EmployBasicController as employee;
@@ -59,6 +60,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/blood', blood::class);
   Route::resource('/department', department::class);
   Route::resource('/designation', designation::class);
+  Route::resource('/doctor', doctor::class);
 });
 
 

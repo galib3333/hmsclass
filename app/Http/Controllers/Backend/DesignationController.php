@@ -105,7 +105,7 @@ class DesignationController extends Controller
     {
         $designation = Designation::findOrFail(encryptor('decrypt', $id));
         if ($designation->delete()) {
-            $this->notice::warning('Designation Deleted Permanently!');
+            $this->notice::error('Designation Deleted Permanently!');
             return redirect()->back();
         }
     }
