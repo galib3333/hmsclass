@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DoctorController as doctor;
 use App\Http\Controllers\Backend\DepartmentController as department;
 use App\Http\Controllers\Backend\DesignationController as designation;
 use App\Http\Controllers\Backend\RoomCatController as roomCat;
+use App\Http\Controllers\Backend\RoomListController as roomList;
 use App\Http\Controllers\Backend\EmployBasicController as employee;
 use App\Http\Controllers\Backend\BloodController as blood;
 use App\Http\Controllers\Frontend\FrontendController as frontend;
@@ -64,6 +65,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/designation', designation::class);
   Route::resource('/doctor', doctor::class);
   Route::resource('/roomCat', roomCat::class);
+  Route::resource('/roomList', roomList::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
 });
 

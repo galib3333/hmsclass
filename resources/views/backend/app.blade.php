@@ -62,6 +62,7 @@
                                 <i class="fa fa-user"></i> <span>Users</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('userProfile') }}">
                                 <i class="fa fa-user"></i> <span>User Profile</span>
@@ -97,7 +98,12 @@
                     <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
                         <li class="dropdown-item">
                             <a href="{{ route('roomCat.index') }}">
-                                <i class="fa fa-user"></i> <span>Room Category</span>
+                                <i class="fa fa-th-large" aria-hidden="true"></i><span>Room Category</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('roomList.index') }}">
+                                <i class="fa fa-hospital-o" aria-hidden="true"></i><span>Rooms</span>
                             </a>
                         </li>
                         {{-- <li class="dropdown-item">

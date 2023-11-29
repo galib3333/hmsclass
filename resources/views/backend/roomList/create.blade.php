@@ -1,114 +1,75 @@
 @extends('backend.app')
 
-@section('title', trans('Create Patient'))
+@section('title', trans('Create Room'))
 
 @section('content')
     <!-- // Basic multiple Column Form section start -->
     <div class="container-fluid">
-
         <div class="row mt-3">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('patients.index') }}" class="btn btn-light px-2 mb-3">Patient List<i
-                            class="fa fa-list px-2"></i></a>
+                        <a href="{{ route('roomList.index') }}" class="btn btn-light px-2 mb-3">Room List<i
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Patient Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('patients.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('roomList.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                {{-- <div class="form-group col-md-6 col-12">
-                                    <label for="patientId">patient Id <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="patientId" name="patientId"
-                                        value="{{ old('patientId') }}" placeholder="Enter Patient ID">
-                                    @if ($errors->has('patientId'))
-                                        <span class="text-danger"> {{ $errors->first('patientId') }}</span>
-                                    @endif
-                                </div> --}}
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"
-                                        value="{{ old('patientNameEN') }}" placeholder="Enter Employee Name In English">
-                                    @if ($errors->has('patientNameEN'))
-                                        <span class="text-danger"> {{ $errors->first('patientNameEN') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="patientNameBN">Name (Bangla)</label>
-                                    <input type="text" class="form-control" id="patientNameBN" name="patientNameBN"
-                                        value="{{ old('patientNameBN') }}" placeholder="Enter Employee Name In Bangla">
-                                    @if ($errors->has('patientNameBN'))
-                                        <span class="text-danger"> {{ $errors->first('patientNameBN') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
-                                    <select class="form-control" name="bloodId" id="bloodId">
+                                    <label for="roomCatId">Room Category<i class="text-danger">*</i></label>
+                                    <select class="form-control" name="roomCatId" id="roomCatId">
                                         <option value="">Select Blood Group</option>
-                                        @forelse($blood as $b)
-                                            <option value="{{ $b->id }}"
-                                                {{ old('bloodId') == $b->id ? 'selected' : '' }}>
-                                                {{ $b->blood_type_name }}</option>
+                                        @forelse($roomCat as $rc)
+                                            <option value="{{ $rc->id }}"
+                                                {{ old('roomCatId') == $rc->id ? 'selected' : '' }}>
+                                                {{ $rc->room_cat_name }}</option>
                                         @empty
-                                            <option value="">No Blood Group found</option>
+                                            <option value="">No Room Category found</option>
                                         @endforelse
                                     </select>
-                                    @if ($errors->has('bloodId'))
-                                        <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
+                                    @if ($errors->has('roomCatId'))
+                                        <span class="text-danger"> {{ $errors->first('roomCatId') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="emailAddress">Email <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="emailAddress" name="emailAddress"
-                                        value="{{ old('emailAddress') }}" placeholder="Enter Email Address">
-                                    @if ($errors->has('emailAddress'))
-                                        <span class="text-danger"> {{ $errors->first('emailAddress') }}</span>
+                                    <label for="roomNo">Room Number<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="roomNo" name="roomNo"
+                                        value="{{ old('roomNo') }}" placeholder="Enter Room Number">
+                                    @if ($errors->has('roomNo'))
+                                        <span class="text-danger"> {{ $errors->first('roomNo') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="contactNumber_en">Contact Number (English) <i
-                                            class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="contactNumber_en" name="contactNumber_en"
-                                        value="{{ old('contactNumber_en') }}"
-                                        placeholder="Enter Your Contect Number In English">
-                                    @if ($errors->has('contactNumber_en'))
-                                        <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
+                                    <label for="floorNo">Floor Number</label>
+                                    <input type="text" class="form-control" id="floorNo" name="floorNo"
+                                        value="{{ old('floorNo') }}" placeholder="Enter Employee Name In Bangla">
+                                    @if ($errors->has('floorNo'))
+                                        <span class="text-danger"> {{ $errors->first('floorNo') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="contactNumber_bn">Contact Number (Bangla)</label>
-                                    <input type="text" class="form-control" id="contactNumber_bn" name="contactNumber_bn"
-                                        value="{{ old('contactNumber_bn') }}"
-                                        placeholder="Enter Your Contect Number In Bangla">
-                                    @if ($errors->has('contactNumber_bn'))
-                                        <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
+                                    <label for="description">Room Description<i class="text-danger">*</i></label>
+                                    <textarea type="text" class="form-control" id="description" name="description" value="{{ old('description') }}"
+                                        placeholder="Enter Room Description"></textarea>
+                                    @if ($errors->has('description'))
+                                        <span class="text-danger"> {{ $errors->first('description') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="presentAddress"> Present Address</label>
-                                    <input type="text" class="form-control" id="presentAddress" name="presentAddress"
-                                        value="{{ old('presentAddress') }}"
-                                        placeholder="Enter Your PresentAddress">
-                                    @if ($errors->has('presentAddress'))
-                                        <span class="text-danger"> {{ $errors->first('presentAddress') }}</span>
+                                    <label for="capacity">Room Capacity<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="capacity" name="capacity"
+                                        value="{{ old('capacity') }}" placeholder="Enter Room Capacity">
+                                    @if ($errors->has('capacity'))
+                                        <span class="text-danger"> {{ $errors->first('capacity') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="permanentAddress"> Permanent Address</label>
-                                    <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
-                                        value="{{ old('permanentAddress') }}"
-                                        placeholder="Enter Your Permanent Address">
-                                    @if ($errors->has('permanentAddress'))
-                                        <span class="text-danger"> {{ $errors->first('permanentAddress') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="birthDate">Birth Date</label>
-                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
-                                        value="{{ old('birthDate') }}" placeholder="Enter Birth Date">
-                                    @if ($errors->has('birthDate'))
-                                        <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" id="price" name="price"
+                                        value="{{ old('price') }}" placeholder="Enter Room Price">
+                                    @if ($errors->has('price'))
+                                        <span class="text-danger"> {{ $errors->first('price') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -125,38 +86,17 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="gender">Gender</label>
-                                        <select id="gender" class="form-control" name="gender">
-                                            <option value="male" @if (old('gender') == 'male') selected @endif>Male
-                                            </option>
-                                            <option value="female" @if (old('gender') == 'female') selected @endif>
-                                                Female</option>
-                                        </select>
-                                        @if ($errors->has('gender'))
-                                            <span class="text-danger"> {{ $errors->first('gender') }}</span>
-                                        @endif
+                            </div>
+                                <div class="form-group py-2 px-3">
+                                    <div class="icheck-material-white">
+                                        <input type="checkbox" id="user-checkbox1" checked="" />
+                                        <label for="user-checkbox1">I Agree with Terms & Conditions</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="image">Image</label>
-                                        <input type="file" id="image" class="form-control" placeholder="Image"
-                                            name="image">
-                                    </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>
+                                        Save</button>
                                 </div>
-                            </div>
-                            <div class="form-group py-2 px-3">
-                                <div class="icheck-material-white">
-                                    <input type="checkbox" id="user-checkbox1" checked="" />
-                                    <label for="user-checkbox1">I Agree with Terms & Conditions</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>
-                                    Save</button>
-                            </div>
                         </form>
                     </div>
                 </div>
