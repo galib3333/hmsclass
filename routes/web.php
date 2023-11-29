@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\PatientController as patient;
 use App\Http\Controllers\Backend\DoctorController as doctor;
 use App\Http\Controllers\Backend\DepartmentController as department;
 use App\Http\Controllers\Backend\DesignationController as designation;
+use App\Http\Controllers\Backend\RoomCatController as roomCat;
 use App\Http\Controllers\Backend\EmployBasicController as employee;
 use App\Http\Controllers\Backend\BloodController as blood;
 use App\Http\Controllers\Frontend\FrontendController as frontend;
@@ -35,6 +36,7 @@ Route::get('/login', [auth::class, 'signInForm'])->name('login');
 Route::post('/login', [auth::class, 'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 
+
 // Route::get('/auth/github/redirect', function () {
 //   return Socialite::driver('github')->redirect();
 // });
@@ -61,6 +63,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/department', department::class);
   Route::resource('/designation', designation::class);
   Route::resource('/doctor', doctor::class);
+  Route::resource('/roomCat', roomCat::class);
+  Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
 });
 
 
@@ -80,4 +84,7 @@ Route::get('/contact', [contact::class, 'index'])->name('contact');
 
 // Route::get('/registration', function () {
 //   return view('frontend.patientregistration');
+// });
+// Route::get('/userprofiles', function () {
+//   return view('backend.profiles.userProfile');
 // });

@@ -51,7 +51,7 @@
                         <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <!-- Dropdown Menu -->
+                <!-- Dropdown Menu START -->
                 <li>
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <i class="fa fa-h-square"></i><span>HRM</span>
@@ -60,6 +60,11 @@
                         <li class="dropdown-item">
                             <a href="{{ route('user.index') }}">
                                 <i class="fa fa-user"></i> <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('userProfile') }}">
+                                <i class="fa fa-user"></i> <span>User Profile</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
@@ -80,31 +85,71 @@
                                 <i class="fa fa-users"></i><span>Employees</span>
                             </a>
                         </li>
-                        <!-- Add more items as needed -->
+                    </ul>
+                    <!-- Add more items as needed -->
                 </li>
-            </ul>
-            <li>
-                <a href="{{ route('patients.index') }}">
-                    <i class="fa fa-wheelchair"></i><span>Patients</span>
-                </a>
-            </li>
+                <!-- Dropdown Menu END-->
+                <!-- Dropdown Menu START -->
+                <li>
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="fa fa-h-square"></i><span>Room Management</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
+                        <li class="dropdown-item">
+                            <a href="{{ route('roomCat.index') }}">
+                                <i class="fa fa-user"></i> <span>Room Category</span>
+                            </a>
+                        </li>
+                        {{-- <li class="dropdown-item">
+                            <a href="{{ route('userProfile') }}">
+                                <i class="fa fa-user"></i> <span>User Profile</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('role.index') }}">
+                                <i class="zmdi zmdi-account-circle"></i> <span>Roles</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('doctor.index') }}">
+                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('employees.index') }}">
+                                <i class="fa fa-users"></i><span>Employees</span>
+                            </a>
+                        </li> --}}
+                    </ul>
+                    <!-- Add more items as needed -->
+                </li>
+                <!-- Dropdown Menu END-->
 
-            <li>
-                <a href="{{ route('blood.index') }}">
-                    <i class="zmdi zmdi-invert-colors"></i><span>Blood Group</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('department.index') }}">
-                    <i class="fa fa-cube"></i><span>Department</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('designation.index') }}">
-                    <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
-                </a>
-            </li>
-            <li>
+                <li>
+                    <a href="{{ route('patients.index') }}">
+                        <i class="fa fa-wheelchair"></i><span>Patients</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('blood.index') }}">
+                        <i class="zmdi zmdi-invert-colors"></i><span>Blood Group</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('department.index') }}">
+                        <i class="fa fa-cube"></i><span>Department</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('designation.index') }}">
+                        <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
+                    </a>
+                </li>
+                {{-- <li>
                 <a href="forms.html">
                     <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
                 </a>
@@ -139,17 +184,17 @@
                 <a href="register.html" target="_blank">
                     <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
                 </a>
-            </li>
+            </li> --}}
 
-            <li class="sidebar-header">LABELS</li>
-            <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i>
-                    <span>Important</span></a>
-            </li>
-            <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i>
-                    <span>Warning</span></a></li>
-            <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i>
-                    <span>Information</span></a>
-            </li>
+                <li class="sidebar-header">LABELS</li>
+                <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i>
+                        <span>Important</span></a>
+                </li>
+                <li><a href="javaScript:void();"><i class="zmdi zmdi-chart-donut text-success"></i>
+                        <span>Warning</span></a></li>
+                <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i>
+                        <span>Information</span></a>
+                </li>
 
             </ul>
 
@@ -203,7 +248,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-item user-details">
-                                <a href="javaScript:void();">
+                                <a href="{{ route('userProfile') }}">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
                                                 src="{{ asset('public/uploads/employees/' .request()->session()->get('image')) }}"

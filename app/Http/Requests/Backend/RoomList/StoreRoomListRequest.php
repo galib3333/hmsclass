@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Backend\RoomList;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRoomListRequest extends FormRequest
+class StoreRoomListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

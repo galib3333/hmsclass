@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('patient_medi_cat', function (Blueprint $table) {
             $table->id();
-            $table->string('medicine_name');
+            $table->string('medicine_cat_name');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

@@ -79,4 +79,9 @@ class AuthenticationController extends Controller
         request()->session()->flush();
         return redirect('login')->with('danger','Successfully Logged Out');
     }
+
+    public function userProfile()
+    {
+        return view('backend.profiles.userProfile');
+    }
 }

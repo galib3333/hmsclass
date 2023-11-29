@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\RoomCat;
+use Exception;
 use App\Http\Requests\Backend\RoomCat\StoreRoomCatRequest;
 use App\Http\Requests\Backend\RoomCat\UpdateRoomCatRequest;
 
@@ -33,7 +34,7 @@ class RoomCatController extends Controller
     public function store(StoreRoomCatRequest $request)
     {
         try {
-            $roomCat = new Blood();
+            $roomCat = new RoomCat();
             $roomCat->room_cat_name = $request->roomCatName;
             $roomCat->status = $request->status;
 
@@ -64,7 +65,7 @@ class RoomCatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RoomCat $id)
+    public function edit($id)
     {
         $roomCat = RoomCat::findOrFail(encryptor('decrypt', $id));
         return view('backend.roomCat.edit', compact('roomCat'));
@@ -73,14 +74,14 @@ class RoomCatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRoomCatRequest $request, RoomCat $id)
+    public function update(UpdateRoomCatRequest $request, $id)
     {
         try {
-            $blood = Blood::findOrFail(\encryptor('decrypt', $id));
+            $roomCat = RoomCat::findOrFail(\encryptor('decrypt', $id));
             $roomCat->room_cat_name = $request->roomCatName;
             $roomCat->status = $request->status;
 
-            $roomCat->created_by = currentUserId();
+            $roomCat->updated_by = currentUserId();
             if ($roomCat->save()) {
                 $this->notice::success('Room Category Successfully Updated');
                 return redirect()->route('roomCat.index');
@@ -99,7 +100,7 @@ class RoomCatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RoomCat $id)
+    public function destroy($id)
     {
         $roomCat = RoomCat::findOrFail(encryptor('decrypt', $id));
         if ($roomCat->delete()) {

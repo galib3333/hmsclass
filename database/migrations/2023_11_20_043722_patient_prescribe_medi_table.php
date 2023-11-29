@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('prescribe_id')->references('id')->on('patient_prescribe')->onDelete('cascade');
             $table->unsignedBigInteger('medicine_cat_id')->nullable();
             $table->foreign('medicine_cat_id')->references('id')->on('patient_medi_cat')->onDelete('cascade');
-            $table->string('_name');
+            $table->string('medi_name');
             $table->string('dose');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();

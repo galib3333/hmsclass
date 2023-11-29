@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\RoomList;
-use App\Http\Requests\StoreRoomListRequest;
-use App\Http\Requests\UpdateRoomListRequest;
+use App\Models\RoomCat;
+use Exception;
+use App\Http\Requests\Backend\RoomList\StoreRoomListRequest;
+use App\Http\Requests\Backend\RoomList\UpdateRoomListRequest;
 
 class RoomListController extends Controller
 {
@@ -15,7 +17,8 @@ class RoomListController extends Controller
      */
     public function index()
     {
-        //
+        $roomList = RoomList::paginate(10);
+        return view('backend.roomList.index', compact('roomList'));
     }
 
     /**
@@ -23,7 +26,9 @@ class RoomListController extends Controller
      */
     public function create()
     {
-        //
+        $roomList = RoomList::get();
+        $roomCat = RoomCat::get();
+        return view('backend.roomList.create', compact('roomList', 'roomCat'));   
     }
 
     /**
@@ -31,7 +36,30 @@ class RoomListController extends Controller
      */
     public function store(StoreRoomListRequest $request)
     {
-        //
+        try {
+            $roomList = new RoomList();
+            $roomList->room_cat_id = $request->roomCatId;
+            $roomList->room_no = $request->roomNo;
+            $roomList->floor_no = $request->floorNo;
+            $roomList->description = $request->description;
+            $roomList->capacity = $request->capacity;
+            $roomList->price = $request->price;
+            $roomList->status = $request->status;
+
+            $roomList->created_by = currentUserId();
+            if ($roomList->save()) {
+                $this->notice::success('Room Successfully Added');
+                return redirect()->route('roomList.index');
+            } else {
+                $this->notice::error('Please try again');
+                return redirect()->back();
+            }
+
+        } catch (Exception $e) {
+            dd($e);
+            $this->notice::error('Please try again');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -45,24 +73,53 @@ class RoomListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RoomList $roomList)
+    public function edit($id)
     {
-        //
+        $roomList = RoomList::findOrFail(encryptor('decrypt', $id));
+        $roomCat = RoomCat::get();
+        return view('backend.roomList.edit', compact('roomList', 'roomCat'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRoomListRequest $request, RoomList $roomList)
+    public function update(UpdateRoomListRequest $request, $id)
     {
-        //
+        try {
+            $roomList = RoomList::findOrFail(\encryptor('decrypt', $id));
+            $roomList->room_cat_id = $request->roomCatId;
+            $roomList->room_no = $request->roomNo;
+            $roomList->floor_no = $request->floorNo;
+            $roomList->description = $request->description;
+            $roomList->capacity = $request->capacity;
+            $roomList->price = $request->price;
+            $roomList->status = $request->status;
+
+            $roomList->updated_by = currentUserId();
+            if ($roomList->save()) {
+                $this->notice::success('Room Successfully Updated');
+                return redirect()->route('roomList.index');
+            } else {
+                $this->notice::error('Please try again');
+                return redirect()->back();
+            }
+
+        } catch (Exception $e) {
+            dd($e);
+            $this->notice::error('Please try again');
+            return redirect()->back();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RoomList $roomList)
+    public function destroy($id)
     {
-        //
+        $roomList = RoomList::findOrFail(encryptor('decrypt', $id));
+        if ($roomList->delete()) {
+            $this->notice::error('Room Deleted Permanently!');
+            return redirect()->back();
+        }
     }
 }

@@ -118,4 +118,5 @@ class AuthenticationController extends Controller
         return redirect('login')->with('danger', 'Successfully signed out');
     }
 
+    
 }
