@@ -19,7 +19,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="roomCatId">Room Category<i class="text-danger">*</i></label>
                                     <select class="form-control" name="roomCatId" id="roomCatId">
-                                        <option value="">Select Blood Group</option>
+                                        <option value="">Select Room Category</option>
                                         @forelse($roomCat as $rc)
                                             <option value="{{ $rc->id }}"
                                                 {{ old('roomCatId') == $rc->id ? 'selected' : '' }}>

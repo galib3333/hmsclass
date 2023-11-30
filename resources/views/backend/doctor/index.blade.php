@@ -6,25 +6,20 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('doctor.create') }}" class="btn btn-light px-2 mb-3">Add Doctor<i class="fa fa-plus px-2"></i></a>
+                <a href="{{ route('doctor.create') }}" class="btn btn-light px-2 mb-3">Add Doctor<i
+                        class="fa fa-plus px-2"></i></a>
                 <h5 class="card-title">Doctor Table</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">{{ __('#SL') }}</th>
-                                <th scope="col">{{ __('Name EN') }}</th>
-                                <th scope="col">{{ __('Name BN') }}</th>
-                                <th scope="col">{{ __('Email') }}</th>
-                                <th scope="col">{{ __('Contact Number EN') }}</th>
-                                <th scope="col">{{ __('Contact Number BN') }}</th>
-                                <th scope="col">{{ __('Present Address') }}</th>
-                                <th scope="col">{{ __('Permanent Address') }}</th>
-                                <th scope="col">{{ __('Gender') }}</th>
-                                <th scope="col">{{ __('Birth Date') }}</th>
-                                <th scope="col">{{ __('Blood Group') }}</th>
-                                <th scope="col">{{ __('Role') }}</th>
                                 <th scope="col">{{ __('Image') }}</th>
+                                <th scope="col">{{ __('Name EN') }}</th>
+                                <th scope="col">{{ __('Department') }}</th>
+                                <th scope="col">{{ __('Designation') }}</th>
+                                <th scope="col">{{ __('Email') }}</th>
+                                <th scope="col">{{ __('Contact No EN') }}</th>
                                 <th scope="col">{{ __('Status') }}</th>
                                 <th class="white-space-nowrap">{{ __('Action') }}</th>
                             </tr>
@@ -33,20 +28,14 @@
                             @forelse($doctor as $doc)
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
-                                    <td>{{ $doc->employee->name_en }}</td>
-                                    <td>{{ $doc->email }}</td>
-                                    <td>{{ $doc->contact_no_en }}</td>
-                                    <td>{{ $doc->role?->type }}</td>
                                     <td><img width="50px" src="{{ asset('public/uploads/employees/' . $doc->image) }}"
                                             alt=""></td>
-                                    <td>
-                                        @if ($doc->status == 1)
-                                            {{ __('Active') }}
-                                        @else
-                                            {{ __('Inactive') }}
-                                        @endif
-                                    </td>
-                                    <!-- or <td>{{ $u->status == 1 ? 'Active' : 'Inactive' }}</td>-->
+                                    <td>{{ $doc->employee->name_en }}</td>
+                                    <td>{{ $doc->department->dep_name }}</td>
+                                    <td>{{ $doc->employee->email }}</td>
+                                    <td>{{ $doc->employee->email }}</td>
+                                    <td>{{ $doc->employee->contact_no_en }}</td>
+                                    <td>{{ $u->status == 1 ? 'Active' : 'Inactive' }}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('doctor.edit', encryptor('encrypt', $doc->id)) }}">
                                             <i class="fa fa-edit"></i>

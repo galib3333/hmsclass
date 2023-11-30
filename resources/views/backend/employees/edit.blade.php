@@ -172,7 +172,7 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>
-                                    Save</button>
+                                    Update</button>
                             </div>
                         </form>
                     </div>

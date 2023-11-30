@@ -29,8 +29,8 @@ class DoctorController extends Controller
     {
         $department = Department::get();
         $designation = Designation::get();
-        $employee = EmployBasic::get();
-        return view('backend.doctor.create', compact('department', 'designation', 'employee'));
+        $doctors  = EmployBasic::get();
+        return view('backend.doctor.create', compact('department', 'designation', 'doctors'));
     }
 
     /**
@@ -40,6 +40,7 @@ class DoctorController extends Controller
     {
         try {
             $doctor = new Department();
+            $doctor->employ_id = $request->employId;
             $doctor->designation_id = $request->designationId;
             $doctor->department_id = $request->departmentId;
             $doctor->biography = $request->biography;
@@ -75,7 +76,7 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $doctor = Department::findOrFail(encryptor('decrypt', $id));
+        $doctor = Doctor::findOrFail(encryptor('decrypt', $id));
         $department = Department::get();
         $designation = Designation::get();
         $employee = EmployBasic::get();
@@ -88,7 +89,8 @@ class DoctorController extends Controller
     public function update(UpdateDoctorRequest $request, $id)
     {
         try {
-            $doctor = Department::findOrFail(\encryptor('decrypt', $id));
+            $doctor = Doctor::findOrFail(\encryptor('decrypt', $id));
+            $doctor->employ_id = $request->employId;
             $doctor->designation_id = $request->designationId;
             $doctor->department_id = $request->departmentId;
             $doctor->biography = $request->biography;
@@ -116,7 +118,7 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctor = Department::findOrFail(encryptor('decrypt', $id));
+        $doctor = Doctor::findOrFail(encryptor('decrypt', $id));
         if ($doctor->delete()) {
             $this->notice::error('Doctor Deleted Permanently!');
             return redirect()->back();

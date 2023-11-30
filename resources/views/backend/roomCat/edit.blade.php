@@ -32,9 +32,9 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="1" @if (old('status') == 1) selected @endif>Active
+                                            <option value="1" @if (old('status', $roomCat->status) == 1) selected @endif>Active
                                             </option>
-                                            <option value="0" @if (old('status') == 0) selected @endif>
+                                            <option value="0" @if (old('status', $roomCat->status) == 0) selected @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>
-                                    Save</button>
+                                    Update</button>
                             </div>
                         </form>
                     </div>

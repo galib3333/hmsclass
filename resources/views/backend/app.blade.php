@@ -39,7 +39,7 @@
         <!--Start sidebar-wrapper-->
         <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="{{ route('dashboard') }}">
                     <img src="{{ asset('public/assets/images/logo.png') }}" class="logo-icon" alt="logo icon">
                     <h5 class="logo-text">NewLife HMS</h5>
                 </a>
@@ -47,7 +47,7 @@
             <ul class="sidebar-menu do-nicescrol">
                 <li class="sidebar-header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="{{ 'dashboard' }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="zmdi zmdi-view-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -137,6 +137,11 @@
                 <li>
                     <a href="{{ route('patients.index') }}">
                         <i class="fa fa-wheelchair"></i><span>Patients</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('pAdmit.index') }}">
+                        <i class="fa fa-wheelchair"></i><span>Patient Admission</span>
                     </a>
                 </li>
 

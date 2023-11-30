@@ -11,12 +11,31 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('doctor.index') }}" class="btn btn-light px-2 mb-3">Doctor List<i
-                            class="fa fa-list px-2"></i></a>
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Doctor Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('doctor.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('doctor.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="employId">Doctor<i class="text-danger">*</i></label>
+                                    {{-- @php
+                                        dd($doctors);
+                                    @endphp --}}
+                                    <select class="form-control" name="employId" id="employId">
+                                        <option value="">Select Doctor</option>
+                                        @forelse($doctors as $doctor)
+                                            <option value="{{ $doctor->id }}"
+                                                {{ old('employId') == $doctor->id ? 'selected' : '' }}>
+                                                {{ $doctor->name_en }}</option>
+                                        @empty
+                                            <option value="">No Doctor found</option>
+                                        @endforelse
+                                    </select>
+                                    @if ($errors->has('employId'))
+                                        <span class="text-danger"> {{ $errors->first('employId') }}</span>
+                                    @endif
+                                </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="departmentId">Departments<i class="text-danger">*</i></label>
                                     <select class="form-control" name="departmentId" id="departmentId">
@@ -51,8 +70,8 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="biography">Biography<i class="text-danger">*</i></label>
-                                    <textarea class="form-control" id="biography" name="biography"
-                                        value="{{ old('biography') }}" placeholder="Enter Biography"></textarea>
+                                    <textarea class="form-control" id="biography" name="biography" value="{{ old('biography') }}"
+                                        placeholder="Enter Biography"></textarea>
                                     @if ($errors->has('biography'))
                                         <span class="text-danger"> {{ $errors->first('biography') }}</span>
                                     @endif
@@ -68,8 +87,8 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="education">Education Details<i class="text-danger">*</i></label>
-                                    <textarea class="form-control" id="education" name="education"
-                                        value="{{ old('education') }}" placeholder="Enter Education Information"></textarea>
+                                    <textarea class="form-control" id="education" name="education" value="{{ old('education') }}"
+                                        placeholder="Enter Education Information"></textarea>
                                     @if ($errors->has('education'))
                                         <span class="text-danger"> {{ $errors->first('education') }}</span>
                                     @endif
@@ -77,8 +96,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="fees">Fees<i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="fees" name="fees"
-                                        value="{{ old('fees') }}"
-                                        placeholder="Enter Fee">
+                                        value="{{ old('fees') }}" placeholder="Enter Fee">
                                     @if ($errors->has('fees'))
                                         <span class="text-danger"> {{ $errors->first('fees') }}</span>
                                     @endif

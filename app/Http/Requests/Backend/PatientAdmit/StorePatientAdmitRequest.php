@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Backend\PatientAdmit;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePatientAdmitRequest extends FormRequest
+class StorePatientAdmitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
