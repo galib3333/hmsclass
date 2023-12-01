@@ -93,7 +93,7 @@
                 <!-- Dropdown Menu START -->
                 <li>
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                        <i class="fa fa-h-square"></i><span>Room Management</span>
+                        <i class="fa fa-bed" aria-hidden="true"></i><span>Room Management</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
                         <li class="dropdown-item">
@@ -141,7 +141,12 @@
                 </li>
                 <li>
                     <a href="{{ route('pAdmit.index') }}">
-                        <i class="fa fa-wheelchair"></i><span>Patient Admission</span>
+                        <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Admission</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('prescription') }}">
+                        <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Prescription</span>
                     </a>
                 </li>
 

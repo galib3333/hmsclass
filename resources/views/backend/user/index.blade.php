@@ -18,7 +18,6 @@
                                 <th scope="col">{{ __('Email') }}</th>
                                 <th scope="col">{{ __('Contact') }}</th>
                                 <th scope="col">{{ __('Role') }}</th>
-
                                 <th scope="col">{{ __('Status') }}</th>
                                 <th class="white-space-nowrap">{{ __('Action') }}</th>
                             </tr>

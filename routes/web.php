@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\BlogController as blog;
 use App\Http\Controllers\Frontend\ContactController as contact;
 use App\Http\Controllers\Backend\RoleController as role;
 use App\Http\Controllers\Backend\PermissionController as permission;
+use App\Http\Controllers\Backend\PrescriptionController as prescription;
 
 // use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
@@ -69,6 +70,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/roomList', roomList::class);
   Route::resource('/pAdmit', patientAdmit::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
+  Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
 });
 
 

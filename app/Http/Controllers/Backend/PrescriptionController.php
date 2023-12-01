@@ -65,4 +65,9 @@ class PrescriptionController extends Controller
     {
         //
     }
+
+    public function prescription()
+    {
+        return view('backend.prescription.prescription');
+    }
 }
