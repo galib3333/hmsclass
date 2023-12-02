@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', trans('Create Blood Group'))
+@section('title', trans('Create Shift'))
 
 @section('content')
     <!-- // Basic multiple Column Form section start -->
@@ -10,19 +10,35 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('blood.index') }}" class="btn btn-light px-2 mb-3">Blood Group List<i
+                        <a href="{{ route('shift.index') }}" class="btn btn-light px-2 mb-3">Shift List<i
                             class="fa fa-list px-2"></i></a>
-                        <div class="card-title">Blood Group Create Form</div>
+                        <div class="card-title">Shift Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('blood.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{route('shift.store')}}" enctype="multipart/form-data" >
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="bloodTypeName">Blood Group<i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="bloodTypeName" name="bloodTypeName"
-                                        value="{{ old('bloodTypeName') }}" placeholder="Enter Blood Group Name">
-                                    @if ($errors->has('bloodTypeName'))
-                                        <span class="text-danger"> {{ $errors->first('bloodTypeName') }}</span>
+                                    <label for="shiftName">Shift Name<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="shiftName" name="shiftName"
+                                        value="{{ old('shiftName') }}" placeholder="Enter Shift Name">
+                                    @if ($errors->has('shiftName'))
+                                        <span class="text-danger"> {{ $errors->first('shiftName') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="startTime">Start Time<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="startTime" name="startTime"
+                                        value="{{ old('startTime') }}" placeholder="Enter Start Time">
+                                    @if ($errors->has('startTime'))
+                                        <span class="text-danger"> {{ $errors->first('startTime') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="endTime">End Time<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="endTime" name="endTime"
+                                        value="{{ old('endTime') }}" placeholder="Enter End Time">
+                                    @if ($errors->has('endTime'))
+                                        <span class="text-danger"> {{ $errors->first('endTime') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">

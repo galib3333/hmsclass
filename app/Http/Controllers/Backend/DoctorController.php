@@ -29,8 +29,8 @@ class DoctorController extends Controller
     {
         $department = Department::get();
         $designation = Designation::get();
-        $doctors  = EmployBasic::get();
-        return view('backend.doctor.create', compact('department', 'designation', 'doctors'));
+        $employee  = EmployBasic::get();
+        return view('backend.doctor.create', compact('department', 'designation', 'employee'));
     }
 
     /**

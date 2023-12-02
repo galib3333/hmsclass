@@ -86,6 +86,24 @@
                                 <i class="fa fa-users"></i><span>Employees</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('shift.index') }}">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i><span>Shift</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('day.index') }}">
+                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Day</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('schedule.index') }}">
+                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Schedule</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- Add more items as needed -->
                 </li>

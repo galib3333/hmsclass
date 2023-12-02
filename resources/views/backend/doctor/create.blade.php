@@ -24,10 +24,10 @@
                                     @endphp --}}
                                     <select class="form-control" name="employId" id="employId">
                                         <option value="">Select Doctor</option>
-                                        @forelse($doctors as $doctor)
-                                            <option value="{{ $doctor->id }}"
-                                                {{ old('employId') == $doctor->id ? 'selected' : '' }}>
-                                                {{ $doctor->name_en }}</option>
+                                        @forelse($employee as $e)
+                                            <option value="{{ $e->id }}"
+                                                {{ old('employId') == $e->id ? 'selected' : '' }}>
+                                                {{ $e->name_en }}</option>
                                         @empty
                                             <option value="">No Doctor found</option>
                                         @endforelse

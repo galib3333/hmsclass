@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Blood;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Day;
 use Exception;
-use App\Http\Requests\Backend\Blood\StoreBloodRequest;
-use App\Http\Requests\Backend\Blood\UpdateBloodRequest;
 
-class BloodController extends Controller
+class DayController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $blood = Blood::paginate(10);
-        return view('backend.blood.index', compact('blood'));
+        $day = Day::paginate(10);
+        return view('backend.day.index', compact('day'));
     }
 
     /**
@@ -24,23 +23,23 @@ class BloodController extends Controller
      */
     public function create()
     {
-        return view('backend.blood.create');
+       
+        return view('backend.day.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBloodRequest $request)
+    public function store(Request $request)
     {
         try {
-            $blood = new Blood();
-            $blood->blood_type_name = $request->bloodTypeName;
-            $blood->status = $request->status;
-
-            $blood->created_by = currentUserId();
-            if ($blood->save()) {
-                $this->notice::success('Blood Group Successfully Added');
-                return redirect()->route('blood.index');
+            $day = new Day();
+            $day->day_name = $request->dayName;
+            $day->status = $request->status;
+            $day->created_by = currentUserId();
+            if ($day->save()) {
+                $this->notice::success('Day Successfully Added');
+                return redirect()->route('day.index');
             } else {
                 $this->notice::error('Please try again');
                 return redirect()->back();
@@ -66,27 +65,28 @@ class BloodController extends Controller
      */
     public function edit(string $id)
     {
-        $blood = Blood::findOrFail(encryptor('decrypt', $id));
-        return view('backend.blood.edit', compact('blood'));
+        $day = Day::findOrFail(encryptor('decrypt', $id));
+        return view('backend.day.edit', compact('day'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBloodRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
         try {
-            $blood = Blood::findOrFail(\encryptor('decrypt', $id));
-            $blood->blood_type_name = $request->bloodTypeName;
-            $blood->status = $request->status;
-            $blood->updated_by = currentUserId();
-            if ($blood->save()) {
-                $this->notice::success('Blood Group Successfully Added');
-                return redirect()->route('blood.index');
+            $day = Day::findOrFail(\encryptor('decrypt', $id));
+            $day->day_name = $request->dayName;
+            $day->status = $request->status;
+            $day->updated_by = currentUserId();
+            if ($day->save()) {
+                $this->notice::success('Day Successfully Updated');
+                return redirect()->route('day.index');
             } else {
                 $this->notice::error('Please try again');
                 return redirect()->back();
             }
+
         } catch (Exception $e) {
             dd($e);
             $this->notice::error('Please try again');
@@ -99,9 +99,9 @@ class BloodController extends Controller
      */
     public function destroy(string $id)
     {
-        $blood = Blood::findOrFail(encryptor('decrypt', $id));
-        if ($blood->delete()) {
-            $this->notice::error('Blood Group Deleted Permanently!');
+        $day = Day::findOrFail(encryptor('decrypt', $id));
+        if ($day->delete()) {
+            $this->notice::error('Day Deleted Permanently!');
             return redirect()->back();
         }
     }

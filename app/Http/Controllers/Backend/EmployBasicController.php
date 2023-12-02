@@ -30,8 +30,8 @@ class EmployBasicController extends Controller
      */
     public function create()
     {
-        $doctors = EmployBasic::whereHas('role', function ($query) {
-            $query->where('name', 'doctor');
+        $employee = EmployBasic::whereHas('role', function ($query) {
+            $query->where('name', 'employee');
         })->get();
         $role = Role::get();
         $blood = Blood::get();
