@@ -76,6 +76,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/day', day::class);
   Route::resource('/schedule', schedule::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
+  Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
   Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
 });
 

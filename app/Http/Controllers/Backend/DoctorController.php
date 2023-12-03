@@ -18,7 +18,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctor = Doctor::with(['employee', 'designation', 'department'])->paginate(10);
+        $doctor = Doctor::paginate(10);
         return view('backend.doctor.index', compact('doctor'));
     }
 
@@ -123,5 +123,10 @@ class DoctorController extends Controller
             $this->notice::error('Doctor Deleted Permanently!');
             return redirect()->back();
         }
+    }
+
+    public function doctorProfile()
+    {
+        return view('backend.profiles.doctorProfile');
     }
 }

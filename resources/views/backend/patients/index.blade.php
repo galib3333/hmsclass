@@ -48,15 +48,14 @@
                                     <td>{{ $p->birth_date }}</td>
                                     <td>{{ $p->gender }}</td>
                                     <td>{{ $p->blood?->blood_type_name }}</td>
-                                    <td>{{ $p->status }}</td>
-                                    <td>
+                                    {{-- <td>
                                         @if ($p->status == 1)
                                             {{ __('Active') }}
                                         @else
                                             {{ __('Inactive') }}
                                         @endif
-                                    </td>
-                                    <!-- or <td>{{ $p->status == 1 ? 'Active' : 'Inactive' }}</td>-->
+                                    </td> --}}
+                                    <td>{{ $p->status == 1 ? 'Active' : 'Inactive' }}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('patients.edit', encryptor('encrypt', $p->id)) }}">
                                             <i class="fa fa-edit"></i>
