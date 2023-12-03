@@ -11,20 +11,12 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('patients.index') }}" class="btn btn-light px-2 mb-3">Patient List<i
-                            class="fa fa-list px-2"></i></a>
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Patient Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('patients.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('patients.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                {{-- <div class="form-group col-md-6 col-12">
-                                    <label for="patientId">patient Id <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="patientId" name="patientId"
-                                        value="{{ old('patientId') }}" placeholder="Enter Patient ID">
-                                    @if ($errors->has('patientId'))
-                                        <span class="text-danger"> {{ $errors->first('patientId') }}</span>
-                                    @endif
-                                </div> --}}
                                 <div class="form-group col-md-6 col-12">
                                     <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"
@@ -88,8 +80,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="presentAddress"> Present Address</label>
                                     <input type="text" class="form-control" id="presentAddress" name="presentAddress"
-                                        value="{{ old('presentAddress') }}"
-                                        placeholder="Enter Your PresentAddress">
+                                        value="{{ old('presentAddress') }}" placeholder="Enter Your PresentAddress">
                                     @if ($errors->has('presentAddress'))
                                         <span class="text-danger"> {{ $errors->first('presentAddress') }}</span>
                                     @endif
@@ -97,8 +88,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="permanentAddress"> Permanent Address</label>
                                     <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
-                                        value="{{ old('permanentAddress') }}"
-                                        placeholder="Enter Your Permanent Address">
+                                        value="{{ old('permanentAddress') }}" placeholder="Enter Your Permanent Address">
                                     @if ($errors->has('permanentAddress'))
                                         <span class="text-danger"> {{ $errors->first('permanentAddress') }}</span>
                                     @endif
