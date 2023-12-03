@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', trans('Update Patient'))
+@section('title', trans('Update Patient Admit'))
 
 @section('content')
     <!-- // Basic multiple Column Form section start -->
@@ -10,108 +10,130 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('patients.index') }}" class="btn btn-light px-2 mb-3">Patient List<i
+                        <a href="{{ route('pAdmit.index') }}" class="btn btn-light px-2 mb-3">Patient List<i
                             class="fa fa-list px-2"></i></a>
-                        <div class="card-title">Patient Update Form</div>
+                        <div class="card-title">Patient Admit Update Form</div>
                         <hr>
-                        <form method="post" action="{{ route('patients.update', encryptor('encrypt', $patient->id)) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('pAdmit.update', encryptor('encrypt', $pAdmit->id)) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
-                                    <select class="form-control" name="bloodId" id="bloodId">
-                                        <option value="">Select Blood Group</option>
-                                        @forelse($blood as $b)
-                                            <option value="{{ $b->id }}"
-                                                {{ old('bloodId', $patient->blood_id) == $b->id ? 'selected' : '' }}>
-                                                {{ $b->blood_type_name }}</option>
+                                    <label for="patientId">Patient Name <i class="text-danger">*</i></label>
+                                    <select class="form-control" name="bloodId" id="patientId">
+                                        <option value="">Select Patient</option>
+                                        @forelse($patient as $p)
+                                            <option value="{{ $p->id }}"
+                                                {{ old('patientId', $pAdmit->patient_id) == $p->id ? 'selected' : '' }}>
+                                                {{ $p->name_en }}</option>
                                         @empty
-                                            <option value="">No Blood Group found</option>
+                                            <option value="">No Patient Name found</option>
                                         @endforelse
                                     </select>
-                                    @if ($errors->has('bloodId'))
-                                        <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
+                                    @if ($errors->has('patientId'))
+                                        <span class="text-danger"> {{ $errors->first('patientId') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"
-                                        value="{{ old('patientNameEN', $patient->name_en) }}" placeholder="Enter Your Name In English">
-                                    @if ($errors->has('patientNameEN'))
-                                        <span class="text-danger"> {{ $errors->first('patientNameEN') }}</span>
+                                    <label for="roomId">Room Number <i class="text-danger">*</i></label>
+                                    <select class="form-control" name="bloodId" id="roomId">
+                                        <option value="">Select Room Number</option>
+                                        @forelse($roomList as $rl)
+                                            <option value="{{ $rl->id }}"
+                                                {{ old('roomId', $pAdmit->room_id) == $rl->id ? 'selected' : '' }}>
+                                                {{ $rl->room_no }}</option>
+                                        @empty
+                                            <option value="">No Room Number found</option>
+                                        @endforelse
+                                    </select>
+                                    @if ($errors->has('roomId'))
+                                        <span class="text-danger"> {{ $errors->first('roomId') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="fatherName">Father's Name<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="fatherName" name="fatherName"
+                                        value="{{ old('fatherName', $pAdmit->father_name) }}" placeholder="Enter Father's Name">
+                                    @if ($errors->has('fatherName'))
+                                        <span class="text-danger"> {{ $errors->first('fatherName') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="motherName">Mother's Name<i class="text-danger">*</i></label>
+                                    <input type="text" class="form-control" id="motherName" name="motherName"
+                                        value="{{ old('motherName', $pAdmit->mother_name) }}" placeholder="Enter Mother's Name">
+                                    @if ($errors->has('motherName'))
+                                        <span class="text-danger"> {{ $errors->first('motherName') }}</span>
                                     @endif
                                 </div>
 
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="patientNameBN">Name (Bangla)</label>
-                                    <input type="text" class="form-control" id="patientNameBN" name="patientNameBN"
-                                        value="{{ old('patientNameBN', $patient->name_bn) }}" placeholder="Enter Employee Name In Bangla">
-                                    @if ($errors->has('patientNameBN'))
-                                        <span class="text-danger"> {{ $errors->first('patientNameBN') }}</span>
+                                    <label for="husbandName">Husband's Name</label>
+                                    <input type="text" class="form-control" id="husbandName" name="husbandName"
+                                        value="{{ old('husbandName', $pAdmit->husband_name) }}" placeholder="Enter Husband's Name">
+                                    @if ($errors->has('husbandName'))
+                                        <span class="text-danger"> {{ $errors->first('husbandName') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="emailAddress">Email <i class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="emailAddress" name="emailAddress"
-                                        value="{{ old('emailAddress', $patient->email) }}"
-                                        placeholder="Enter Email Address">
-                                    @if ($errors->has('emailAddress'))
-                                        <span class="text-danger"> {{ $errors->first('emailAddress') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6 col-12">
-                                    <label for="contactNumber_en">Contact Number (English) <i
+                                    <label for="doctorRef">Doctor's Ref<i
                                             class="text-danger">*</i></label>
-                                    <input type="text" class="form-control" id="contactNumber_en" name="contactNumber_en"
-                                        value="{{ old('contactNumber_en', $patient->contact_no_en) }}"
-                                        placeholder="Enter Your Contect Number In English">
-                                    @if ($errors->has('contactNumber_en'))
-                                        <span class="text-danger"> {{ $errors->first('contactNumber_en') }}</span>
+                                    <input type="text" class="form-control" id="doctorRef" name="doctorRef"
+                                        value="{{ old('doctorRef', $pAdmit->doctor_ref) }}"
+                                        placeholder="Enter Doctor's Ref">
+                                    @if ($errors->has('doctorRef'))
+                                        <span class="text-danger"> {{ $errors->first('doctorRef') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="contactNumber_bn">Contact Number (Bangla)</label>
-                                    <input type="text" class="form-control" id="contactNumber_bn" name="contactNumber_bn"
-                                        value="{{ old('contactNumber_bn', $patient->contact_no_bn) }}"
-                                        placeholder="Enter Your Contect Number In Bangla">
-                                    @if ($errors->has('contactNumber_bn'))
-                                        <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
+                                    <label for="problem">Problem</label>
+                                    <textarea type="text" class="form-control" id="problem" name="problem"
+                                        placeholder="Enter Your Problem">{{ old('problem', $pAdmit->problem) }}</textarea>
+                                    @if ($errors->has('problem'))
+                                        <span class="text-danger"> {{ $errors->first('problem') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="presentAddress">Present Address</label>
-                                    <input type="text" class="form-control" id="presentAddress" name="presentAddress"
-                                        value="{{ old('presentAddress', $patient->present_address) }}"
-                                        placeholder="Enter Your PresentAddress">
-                                    @if ($errors->has('presentAddress'))
-                                        <span class="text-danger"> {{ $errors->first('presentAddress') }}</span>
+                                    <label for="admitDate">Date of Admit</label>
+                                    <input type="date" class="form-control" id="admitDate" name="admitDate"
+                                        value="{{ old('admitDate', $pAdmit->admit_date) }}"
+                                        placeholder="Enter Your Admit Date">
+                                    @if ($errors->has('admitDate'))
+                                        <span class="text-danger"> {{ $errors->first('admitDate') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="permanentAddress"> Permanent Address</label>
-                                    <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
-                                        value="{{ old('permanentAddress', $patient->permanent_address) }}"
-                                        placeholder="Enter Your Permanent Address">
-                                    @if ($errors->has('permanentAddress'))
-                                        <span class="text-danger"> {{ $errors->first('permanentAddress') }}</span>
+                                    <label for="guardian">Guardian</label>
+                                    <input type="text" class="form-control" id="guardian" name="guardian"
+                                        value="{{ old('guardian', $pAdmit->guardian) }}"
+                                        placeholder="Enter Your Guardian's Name">
+                                    @if ($errors->has('guardian'))
+                                        <span class="text-danger"> {{ $errors->first('guardian') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="birthDate">Birth Date</label>
-                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
-                                        value="{{ old('birthDate', $patient->birth_date) }}" placeholder="Enter Birth Date">
-                                    @if ($errors->has('birthDate'))
-                                        <span class="text-danger"> {{ $errors->first('birthDate') }}</span>
+                                    <label for="relation">Relation</label>
+                                    <input type="text" class="form-control" id="relation" name="relation"
+                                        value="{{ old('relation', $pAdmit->relation) }}" placeholder="Enter Relation With Guardian">
+                                    @if ($errors->has('relation'))
+                                        <span class="text-danger"> {{ $errors->first('relation') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="condition">Patient's Condition</label>
+                                    <input type="text" class="form-control" id="condition" name="condition"
+                                        value="{{ old('condition', $pAdmit->condition) }}" placeholder="Enter Patient's Condition">
+                                    @if ($errors->has('condition'))
+                                        <span class="text-danger"> {{ $errors->first('condition') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="1" @if (old('status', $patient->status) == 1) selected @endif>Active
+                                            <option value="1" @if (old('status', $pAdmit->status) == 1) selected @endif>Active
                                             </option>
-                                            <option value="0" @if (old('status', $patient->status) == 0) selected @endif>
+                                            <option value="0" @if (old('status', $pAdmit->status) == 0) selected @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))
@@ -119,27 +141,27 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="gender">Gender</label>
-                                        <select id="gender" class="form-control" name="gender">
-                                            <option value="Male" @if (old('gender') == 'Male') selected @endif>Male
-                                            </option>
-                                            <option value="Female" @if (old('gender') == 'Female') selected @endif>
-                                                Female</option>
-                                        </select>
-                                        @if ($errors->has('gender'))
-                                            <span class="text-danger"> {{ $errors->first('gender') }}</span>
-                                        @endif
+                                <div class="form-group col-md-6 col-12">
+                                    <label for="maritalStatus">Marital Status: <i class="text-danger">*</i></label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalStatus" id="single" value="single" checked>
+                                        <label class="form-check-label" for="single">Single</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalStatus" id="married" value="married">
+                                        <label class="form-check-label" for="married">Married</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalStatus" id="divorced" value="divorced">
+                                        <label class="form-check-label" for="divorced">Divorced</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="maritalStatus" id="widowed" value="widowed">
+                                        <label class="form-check-label" for="widowed">Widowed</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="image">Image</label>
-                                        <input type="file" id="image" class="form-control" placeholder="Image"
-                                            name="image">
-                                    </div>
-                                </div>
+                                
+                                
                             </div>
                             <div class="form-group py-2 px-3">
                                 <div class="icheck-material-white">
