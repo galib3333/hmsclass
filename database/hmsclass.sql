@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2023 at 04:55 AM
+-- Generation Time: Dec 03, 2023 at 08:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -92,7 +92,10 @@ INSERT INTO `blood` (`id`, `blood_type_name`, `status`, `created_by`, `updated_b
 (3, 'B+', 1, NULL, NULL, NULL, '2023-11-25 22:39:58', '2023-11-25 22:39:58'),
 (4, 'B-', 1, NULL, NULL, NULL, '2023-11-25 22:40:05', '2023-11-25 22:40:05'),
 (5, 'AB+', 1, NULL, NULL, NULL, '2023-11-25 22:40:13', '2023-11-25 22:40:13'),
-(6, 'AB-', 1, NULL, NULL, NULL, '2023-11-25 22:40:19', '2023-11-25 22:40:19');
+(6, 'AB-', 1, NULL, NULL, NULL, '2023-11-25 22:40:19', '2023-11-25 22:40:19'),
+(7, 'dgdfgdfg', 1, 2, NULL, '2023-12-01 23:32:18', '2023-12-01 23:31:06', '2023-12-01 23:32:18'),
+(8, 'dfgdgf', 1, 2, NULL, '2023-12-01 23:32:16', '2023-12-01 23:32:09', '2023-12-01 23:32:16'),
+(9, 'adssadads', 1, 2, NULL, '2023-12-01 23:34:06', '2023-12-01 23:34:02', '2023-12-01 23:34:06');
 
 -- --------------------------------------------------------
 
@@ -110,6 +113,16 @@ CREATE TABLE `days` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `days`
+--
+
+INSERT INTO `days` (`id`, `day_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'ttttt', 1, 2, 2, '2023-12-01 23:41:17', '2023-12-01 23:40:39', '2023-12-01 23:41:17'),
+(2, 'Sunday', 1, 2, 2, NULL, '2023-12-01 23:41:26', '2023-12-03 00:54:41'),
+(3, 'Monday', 1, 2, 2, NULL, '2023-12-01 23:58:03', '2023-12-03 00:54:50'),
+(4, 'Tuesday', 1, 2, 2, NULL, '2023-12-02 00:09:52', '2023-12-03 00:55:17');
 
 -- --------------------------------------------------------
 
@@ -154,11 +167,11 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `dep_name`, `dep_des`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'dsfgdfgsfd', 'sdfsdfsdf', 1, 2, NULL, NULL, '2023-11-26 22:26:55', '2023-11-26 22:26:55'),
+(1, 'Internal Medicine', 'sdfsdfsdf', 1, 2, NULL, NULL, '2023-11-26 22:26:55', '2023-12-03 00:29:38'),
 (2, 'ffffffffffffff', 'gdfgdfg', 0, 2, NULL, '2023-11-26 22:32:21', '2023-11-26 22:27:30', '2023-11-26 22:32:21'),
-(3, 'ghjghhhhhhhhhhhhhhhhhhh', 'hhhhhhhhhhhhh', 0, 2, NULL, NULL, '2023-11-27 00:10:13', '2023-11-27 00:12:45'),
-(4, 'h', 'fghfgh', 1, 2, NULL, NULL, '2023-11-27 00:50:13', '2023-11-27 00:50:13'),
-(5, 'rtyrtyrt', 'yrtyrty', 1, 2, NULL, NULL, '2023-11-27 00:51:08', '2023-11-27 00:51:08');
+(3, 'Surgery', 'hhhhhhhhhhhhh', 0, 2, NULL, NULL, '2023-11-27 00:10:13', '2023-12-03 00:29:52'),
+(4, 'Pediatrics', 'fghfgh', 1, 2, NULL, NULL, '2023-11-27 00:50:13', '2023-12-03 00:30:09'),
+(5, 'Obstetrics and Gynecology', 'yrtyrty', 1, 2, NULL, NULL, '2023-11-27 00:51:08', '2023-12-03 00:30:27');
 
 -- --------------------------------------------------------
 
@@ -183,9 +196,10 @@ CREATE TABLE `designations` (
 --
 
 INSERT INTO `designations` (`id`, `desig_name`, `desig_des`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'fghfghfgh', 'fghfgh', 0, 2, NULL, NULL, '2023-11-27 00:02:45', '2023-11-27 00:05:52'),
-(2, 'ghghg', 'hghghgh', 0, 2, NULL, NULL, '2023-11-27 00:06:38', '2023-11-27 00:06:38'),
-(3, 'gggggggggggg', 'gggggggggggg', 1, 2, NULL, NULL, '2023-11-27 00:09:18', '2023-11-27 00:09:18');
+(1, 'Cardiologist', 'fghfgh', 1, 2, NULL, NULL, '2023-11-27 00:02:45', '2023-12-03 00:31:07'),
+(2, 'General Surgeon', 'hghghgh', 1, 2, NULL, NULL, '2023-11-27 00:06:38', '2023-12-03 00:31:29'),
+(3, 'Pediatrician', 'gggggggggggg', 1, 2, NULL, NULL, '2023-11-27 00:09:18', '2023-12-03 00:31:44'),
+(4, 'Anesthesiologist', 'dsfsdfsfd', 1, 2, NULL, NULL, '2023-12-03 00:32:07', '2023-12-03 00:32:07');
 
 -- --------------------------------------------------------
 
@@ -247,7 +261,8 @@ INSERT INTO `employ_basics` (`id`, `role_id`, `name_en`, `name_bn`, `email`, `co
 (8, 2, 'arabi hamid', 'arabi hamid', 'ashkaiser@gmail.com', '018375755766', NULL, 'Male', '2023-11-23', 1, '4081701059505.jpg', 'ctg', 'dfxgdfgdfg', 1, NULL, 2, '0000-00-00 00:00:00', '2023-11-25 21:20:55', '2023-11-26 23:05:32'),
 (9, 3, 'Kamal Uddin', NULL, 'k@gmail.com', '12569', NULL, 'Male', '1999-11-23', 5, '7341701146353.jpg', 'dfdfdf', 'dfdfdf', 1, 2, 2, NULL, '2023-11-27 22:39:13', '2023-11-27 22:39:45'),
 (10, 2, 'Joshim Uddin', NULL, 'j@gmail.com', '25865', NULL, 'Male', '1999-11-23', 6, '3681701146701.jpg', 'dfgdfgdf', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-11-27 22:45:01', '2023-11-28 22:40:51'),
-(11, 2, 'Farabi', NULL, 'f@gmail.com', '01458795687', NULL, 'Male', '2023-11-11', 1, '1911701146852.jpg', 'dfgdfgdg', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-11-27 22:47:32', '2023-11-29 21:32:08');
+(11, 2, 'Farabi', NULL, 'f@gmail.com', '01458795687', NULL, 'Male', '2023-11-11', 1, '1911701146852.jpg', 'dfgdfgdg', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-11-27 22:47:32', '2023-11-29 21:32:08'),
+(12, 2, 'Farin', NULL, 'h@gmail.com', '1444444', NULL, 'Male', '2023-12-21', 3, '1921701580482.jpg', 'dfgdfgdfg', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-12-02 23:14:42', '2023-12-03 00:28:11');
 
 -- --------------------------------------------------------
 
@@ -265,6 +280,13 @@ CREATE TABLE `invest_cats` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `invest_cats`
+--
+
+INSERT INTO `invest_cats` (`id`, `invset_cat_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'ddddd', 1, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -387,10 +409,10 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `patient_id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `present_address`, `permanent_address`, `image`, `birth_date`, `gender`, `blood_id`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, '09e7733a-e3df-4aef-a2ec-bdc6ab801add', 'sdfsdfsdfsdf', NULL, 'ddfsdf@gmail.com', '556454', NULL, 'zxczxczcx', 'zczczxc', '5931701056459.jpg', '2023-11-15', 'Male', 1, 0, NULL, 2, NULL, '2023-11-25 21:53:52', '2023-11-26 21:40:59'),
-(2, '9ab3d3db-e872-4f7a-98d7-a04f9d80df07', 'sdsdsd', NULL, 'sdsd@gmail.com', '334343434', NULL, 'dfgdfgdfg', 'dfgdfgdfg', '4251701056480.jpg', '2023-11-23', 'Male', 3, 0, NULL, 2, NULL, '2023-11-25 22:04:02', '2023-11-26 21:41:20'),
+(1, '09e7733a-e3df-4aef-a2ec-bdc6ab801add', 'Kamal', NULL, 'kamal@gmail.com', '556454', NULL, 'zxczxczcx', 'zczczxc', '5931701056459.jpg', '2023-11-15', 'Male', 1, 1, NULL, 2, NULL, '2023-11-25 21:53:52', '2023-12-03 00:33:09'),
+(2, '9ab3d3db-e872-4f7a-98d7-a04f9d80df07', 'Jamal', NULL, 'jamal@gmail.com', '334343434', NULL, 'dfgdfgdfg', 'dfgdfgdfg', '4251701056480.jpg', '2023-11-23', 'Male', 3, 1, NULL, 2, NULL, '2023-11-25 22:04:02', '2023-12-03 00:33:24'),
 (3, '12eedb1b-3db0-4877-9b95-b4de71a2aa1e', 'yrtrtyrty', NULL, 'ttt@gmail.com', '454444', NULL, 'fghfghfgh', 'cvfgh', '8951700975607.jpg', '2023-11-17', 'Male', 6, 0, 2, 2, '2023-11-25 23:49:02', '2023-11-25 23:13:28', '2023-11-25 23:49:02'),
-(4, '7ac41718-6045-4cb4-90ef-adeeedbbf4a4', 'fffffffff', NULL, 'yy@gmail.com', '5555', NULL, 'dfgdfg', 'cfgf', '9701701056490.jpg', '2023-11-21', 'Male', 4, 1, 2, 2, NULL, '2023-11-26 00:25:39', '2023-11-29 00:40:03');
+(4, '7ac41718-6045-4cb4-90ef-adeeedbbf4a4', 'Kashem', NULL, 'kashem@gmail.com', '5555', NULL, 'dfgdfg', 'cfgf', '9701701056490.jpg', '2023-11-21', 'Male', 4, 1, 2, 2, NULL, '2023-11-26 00:25:39', '2023-12-03 00:33:51');
 
 -- --------------------------------------------------------
 
@@ -425,7 +447,8 @@ CREATE TABLE `patient_admits` (
 --
 
 INSERT INTO `patient_admits` (`id`, `patient_id`, `father_name`, `mother_name`, `husband_name`, `marital_status`, `doctor_ref`, `problem`, `admit_date`, `room_id`, `guardian`, `relation`, `condition`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'dfgdfgdfg', 'dfgdfgdfg', 'dfgdfgdfg', 'single', 'fdgdfgdfg', 'dfgdfg', '2023-11-16', NULL, 'dfgdfg', 'dfgdfg', 'dfgdfgdfg', 1, 2, NULL, NULL, '2023-11-30 01:13:52', '2023-11-30 01:13:52');
+(1, NULL, 'dfgdfgdfg', 'dfgdfgdfg', 'dfgdfgdfg', 'single', 'fdgdfgdfg', 'dfgdfg', '2023-11-16', NULL, 'dfgdfg', 'dfgdfg', 'dfgdfgdfg', 1, 2, NULL, NULL, '2023-11-30 01:13:52', '2023-11-30 01:13:52'),
+(2, NULL, 'kamal', 'jamila', 'jamal', 'married', 'karim', 'dfgdfgdfg', '2023-12-19', NULL, 'dfgdfgdfg', 'fgdfgdfg', 'fgdfgdfg', 1, 2, NULL, NULL, '2023-12-03 00:52:55', '2023-12-03 00:52:55');
 
 -- --------------------------------------------------------
 
@@ -623,8 +646,9 @@ CREATE TABLE `room_cats` (
 --
 
 INSERT INTO `room_cats` (`id`, `room_cat_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'hhhhhhhhhhhhhhhh', 0, 2, 2, NULL, '2023-11-28 23:24:55', '2023-11-29 21:54:07'),
-(2, 'ghhhhhhhhhhhhhhhj', 0, 2, NULL, '2023-11-28 23:29:51', '2023-11-28 23:29:36', '2023-11-28 23:29:51');
+(1, 'AC', 1, 2, 2, NULL, '2023-11-28 23:24:55', '2023-12-03 00:55:59'),
+(2, 'ghhhhhhhhhhhhhhhj', 0, 2, NULL, '2023-11-28 23:29:51', '2023-11-28 23:29:36', '2023-11-28 23:29:51'),
+(3, 'Non-AC', 1, 2, NULL, NULL, '2023-12-03 00:55:54', '2023-12-03 00:55:54');
 
 -- --------------------------------------------------------
 
@@ -674,6 +698,14 @@ CREATE TABLE `schedules` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `schedules`
+--
+
+INSERT INTO `schedules` (`id`, `employ_id`, `day_id`, `shift_id`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 10, 2, 2, 1, 2, 2, NULL, '2023-12-02 01:02:05', '2023-12-02 01:09:45'),
+(2, 11, 4, 2, 1, 2, NULL, NULL, '2023-12-02 01:10:25', '2023-12-02 01:10:25');
+
 -- --------------------------------------------------------
 
 --
@@ -692,6 +724,14 @@ CREATE TABLE `shifts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shifts`
+--
+
+INSERT INTO `shifts` (`id`, `s_name`, `start`, `end_time`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'fgdfgdfg', 'fgdfgdfg', 'dddddddddddddd', 0, 2, NULL, '2023-12-01 22:20:25', '2023-12-01 22:18:40', '2023-12-01 22:20:25'),
+(2, 'fdfgdfg', 'dfgdfgdf', 'dfgdfg', 1, 2, NULL, NULL, '2023-12-02 01:01:46', '2023-12-02 01:01:46');
 
 -- --------------------------------------------------------
 
@@ -764,7 +804,8 @@ INSERT INTO `users` (`id`, `employ_id`, `role_id`, `name_en`, `email`, `contact_
 (2, 6, 1, 'Asadullah Al Galib', 'galib@gmail.com', '018375755799', '$2y$12$JrYgams5nXcHmqlnk7aUTOnC2rtZ1aABHLbt7ElC2ghErwzkv2kZ2', 'en', 1, 1, NULL, 2, NULL, '2023-11-23 00:42:44', '2023-11-26 23:05:47', NULL),
 (4, 9, 3, 'Kamal Uddin', 'k@gmail.com', '12569', '$2y$12$SlQqXma10cbi6q3TvviR5OuPXl/K0QSZTxrtvbN6ygGErLMvYJaQe', 'en', 0, 1, 2, NULL, NULL, '2023-11-27 22:39:13', '2023-11-28 22:31:35', NULL),
 (5, 10, 2, 'Joshim Uddin', 'j@gmail.com', '25865', '$2y$12$8NwZWWrJlpXYmk5TvmBwvupiY1IJaH1wE.bW4jlOMWZLVYCC.GJMq', 'en', 0, 1, 2, 2, NULL, '2023-11-27 22:45:02', '2023-11-28 22:40:52', NULL),
-(6, 11, 2, 'Farabi', 'f@gmail.com', '01458795687', '$2y$12$7T0vRQVY0XM8UBwxZySNV.i5JFdTeVfHdKMvk8SpKR2bykq.lmJje', 'en', 0, 1, 2, 2, NULL, '2023-11-27 22:47:33', '2023-11-29 21:32:08', NULL);
+(6, 11, 2, 'Farabi', 'f@gmail.com', '01458795687', '$2y$12$7T0vRQVY0XM8UBwxZySNV.i5JFdTeVfHdKMvk8SpKR2bykq.lmJje', 'en', 0, 1, 2, 2, NULL, '2023-11-27 22:47:33', '2023-11-29 21:32:08', NULL),
+(7, 12, 2, 'Farin', 'h@gmail.com', '1444444', '$2y$12$0gngcPLvjSZ/bvuKk6duhONwwW0lRATmIzfqdBpmnBfL9q573MiKG', 'en', 0, 1, 2, 2, NULL, '2023-12-02 23:14:43', '2023-12-03 00:26:55', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1011,13 +1052,13 @@ ALTER TABLE `births`
 -- AUTO_INCREMENT for table `blood`
 --
 ALTER TABLE `blood`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `days`
 --
 ALTER TABLE `days`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `deaths`
@@ -1035,7 +1076,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `designations`
 --
 ALTER TABLE `designations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `doctors`
@@ -1047,13 +1088,13 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `employ_basics`
 --
 ALTER TABLE `employ_basics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `invest_cats`
 --
 ALTER TABLE `invest_cats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invest_lists`
@@ -1083,7 +1124,7 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `patient_admits`
 --
 ALTER TABLE `patient_admits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `patient_medi_cat`
@@ -1137,7 +1178,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `room_cats`
 --
 ALTER TABLE `room_cats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `room_lists`
@@ -1149,13 +1190,13 @@ ALTER TABLE `room_lists`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tests`
@@ -1173,7 +1214,7 @@ ALTER TABLE `test_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
