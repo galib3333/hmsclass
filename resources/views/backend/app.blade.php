@@ -73,19 +73,6 @@
                             <a href="{{ route('role.index') }}">
                                 <i class="zmdi zmdi-account-circle"></i> <span>Roles</span>
                             </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('doctor.index') }}">
-                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('doctorProfile') }}">
-                                <i class="fa fa-user"></i> <span>Doctor's Profile</span>
-                            </a>
-                        </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('employees.index') }}">
@@ -147,6 +134,16 @@
                 </li>
                 <!-- Dropdown Menu END-->
 
+                <li>
+                    <a href="{{ route('doctor.index') }}">
+                        <i class="fa fa-user-md"></i></i><span>Doctors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('doctorProfile') }}">
+                        <i class="fa fa-user"></i> <span>Doctor's Profile</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{{ route('patients.index') }}">
                         <i class="fa fa-wheelchair"></i><span>Patients</span>

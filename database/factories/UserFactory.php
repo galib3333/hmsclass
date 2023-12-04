@@ -2,40 +2,30 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\EmployBasic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
-    protected static ?string $password;
+    protected $model = User::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'employ_id' => EmployBasic::factory(),
+            'role_id' => null,
+            'name_en' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'contact_no_en' => $this->faker->phoneNumber,
+            'password' => Hash::make('password'),
+            'language' => 'en',
+            'full_access' => false,
+            'status' => $this->faker->randomElement([1, 0]),
+            'created_by' => 1,
+            'updated_by' => 1,
+            'remember_token' => null, // This is automatically handled by Laravel
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
     }
 }
