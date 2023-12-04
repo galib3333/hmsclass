@@ -17,6 +17,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
+                            <input type="hidden" name="uptoken" value="{{ encryptor('encrypt', $roomList->id) }}">
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
                                     <label for="roomCatId">Room Category<i class="text-danger">*</i></label>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\DepartmentController as department;
 use App\Http\Controllers\Backend\DesignationController as designation;
 use App\Http\Controllers\Backend\RoomCatController as roomCat;
 use App\Http\Controllers\Backend\RoomListController as roomList;
+use App\Http\Controllers\Backend\InvestListController as invest;
 use App\Http\Controllers\Backend\ShiftController as shift;
 use App\Http\Controllers\Backend\DayController as day;
 use App\Http\Controllers\Backend\ScheduleController as schedule;
@@ -77,6 +78,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/day', day::class);
   Route::resource('/schedule', schedule::class);
   Route::resource('/investCat', investCat::class);
+  Route::resource('/invest', invest::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
   Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
   Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');

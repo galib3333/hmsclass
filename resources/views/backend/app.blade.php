@@ -110,6 +110,18 @@
                                 <i class="fa fa-eercast" aria-hidden="true"></i><span>Schedule</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('investCat.index') }}">
+                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Investigation Category</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('invest.index') }}">
+                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Investigations</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- Add more items as needed -->
                 </li>
@@ -164,11 +176,6 @@
                 <li>
                     <a href="{{ route('designation.index') }}">
                         <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('investCat.index') }}">
-                        <i class="fa fa-suitcase" aria-hidden="true"></i><span>Investigation Category</span>
                     </a>
                 </li>
                 {{-- <li>
