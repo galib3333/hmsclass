@@ -130,29 +130,6 @@
                                 <i class="fa fa-hospital-o" aria-hidden="true"></i><span>Rooms</span>
                             </a>
                         </li>
-                        {{-- <li class="dropdown-item">
-                            <a href="{{ route('userProfile') }}">
-                                <i class="fa fa-user"></i> <span>User Profile</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('role.index') }}">
-                                <i class="zmdi zmdi-account-circle"></i> <span>Roles</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('doctor.index') }}">
-                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('employees.index') }}">
-                                <i class="fa fa-users"></i><span>Employees</span>
-                            </a>
-                        </li> --}}
                     </ul>
                     <!-- Add more items as needed -->
                 </li>
@@ -187,6 +164,11 @@
                 <li>
                     <a href="{{ route('designation.index') }}">
                         <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('investCat.index') }}">
+                        <i class="fa fa-suitcase" aria-hidden="true"></i><span>Investigation Category</span>
                     </a>
                 </li>
                 {{-- <li>

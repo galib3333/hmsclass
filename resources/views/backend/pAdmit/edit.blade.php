@@ -11,10 +11,11 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('pAdmit.index') }}" class="btn btn-light px-2 mb-3">Patient List<i
-                            class="fa fa-list px-2"></i></a>
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Patient Admit Update Form</div>
                         <hr>
-                        <form method="post" action="{{ route('pAdmit.update', encryptor('encrypt', $pAdmit->id)) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('pAdmit.update', encryptor('encrypt', $pAdmit->id)) }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="row">
@@ -53,7 +54,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="fatherName">Father's Name<i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="fatherName" name="fatherName"
-                                        value="{{ old('fatherName', $pAdmit->father_name) }}" placeholder="Enter Father's Name">
+                                        value="{{ old('fatherName', $pAdmit->father_name) }}"
+                                        placeholder="Enter Father's Name">
                                     @if ($errors->has('fatherName'))
                                         <span class="text-danger"> {{ $errors->first('fatherName') }}</span>
                                     @endif
@@ -61,7 +63,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="motherName">Mother's Name<i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="motherName" name="motherName"
-                                        value="{{ old('motherName', $pAdmit->mother_name) }}" placeholder="Enter Mother's Name">
+                                        value="{{ old('motherName', $pAdmit->mother_name) }}"
+                                        placeholder="Enter Mother's Name">
                                     @if ($errors->has('motherName'))
                                         <span class="text-danger"> {{ $errors->first('motherName') }}</span>
                                     @endif
@@ -70,14 +73,14 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="husbandName">Husband's Name</label>
                                     <input type="text" class="form-control" id="husbandName" name="husbandName"
-                                        value="{{ old('husbandName', $pAdmit->husband_name) }}" placeholder="Enter Husband's Name">
+                                        value="{{ old('husbandName', $pAdmit->husband_name) }}"
+                                        placeholder="Enter Husband's Name">
                                     @if ($errors->has('husbandName'))
                                         <span class="text-danger"> {{ $errors->first('husbandName') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="doctorRef">Doctor's Ref<i
-                                            class="text-danger">*</i></label>
+                                    <label for="doctorRef">Doctor's Ref<i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="doctorRef" name="doctorRef"
                                         value="{{ old('doctorRef', $pAdmit->doctor_ref) }}"
                                         placeholder="Enter Doctor's Ref">
@@ -87,8 +90,7 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="problem">Problem</label>
-                                    <textarea type="text" class="form-control" id="problem" name="problem"
-                                        placeholder="Enter Your Problem">{{ old('problem', $pAdmit->problem) }}</textarea>
+                                    <textarea type="text" class="form-control" id="problem" name="problem" placeholder="Enter Your Problem">{{ old('problem', $pAdmit->problem) }}</textarea>
                                     @if ($errors->has('problem'))
                                         <span class="text-danger"> {{ $errors->first('problem') }}</span>
                                     @endif
@@ -114,7 +116,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="relation">Relation</label>
                                     <input type="text" class="form-control" id="relation" name="relation"
-                                        value="{{ old('relation', $pAdmit->relation) }}" placeholder="Enter Relation With Guardian">
+                                        value="{{ old('relation', $pAdmit->relation) }}"
+                                        placeholder="Enter Relation With Guardian">
                                     @if ($errors->has('relation'))
                                         <span class="text-danger"> {{ $errors->first('relation') }}</span>
                                     @endif
@@ -122,7 +125,8 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="condition">Patient's Condition</label>
                                     <input type="text" class="form-control" id="condition" name="condition"
-                                        value="{{ old('condition', $pAdmit->condition) }}" placeholder="Enter Patient's Condition">
+                                        value="{{ old('condition', $pAdmit->condition) }}"
+                                        placeholder="Enter Patient's Condition">
                                     @if ($errors->has('condition'))
                                         <span class="text-danger"> {{ $errors->first('condition') }}</span>
                                     @endif
@@ -131,7 +135,8 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="1" @if (old('status', $pAdmit->status) == 1) selected @endif>Active
+                                            <option value="1" @if (old('status', $pAdmit->status) == 1) selected @endif>
+                                                Active
                                             </option>
                                             <option value="0" @if (old('status', $pAdmit->status) == 0) selected @endif>
                                                 Inactive</option>
@@ -144,24 +149,30 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="maritalStatus">Marital Status: <i class="text-danger">*</i></label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="single" value="single" checked>
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="single" value="single"
+                                            {{ old('maritalStatus', $pAdmit->maritalStatus) == 'single' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="single">Single</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="married" value="married">
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="married" value="married"
+                                            {{ old('maritalStatus', $pAdmit->maritalStatus) == 'married' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="married">Married</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="divorced" value="divorced">
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="divorced" value="divorced"
+                                            {{ old('maritalStatus', $pAdmit->maritalStatus) == 'divorced' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="divorced">Divorced</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="widowed" value="widowed">
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="widowed" value="widowed"
+                                            {{ old('maritalStatus', $pAdmit->maritalStatus) == 'widowed' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="widowed">Widowed</label>
                                     </div>
                                 </div>
-                                
-                                
                             </div>
                             <div class="form-group py-2 px-3">
                                 <div class="icheck-material-white">
