@@ -31,11 +31,11 @@ class PatientAdmit extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Patient::class, 'patient_id');
+        return $this->belongsTo(Patient::class, 'patient_id','id');
     }
 
-    public function room()
+    public function roomList()
     {
-        return $this->belongsTo(RoomList::class, 'room_id');
+        return $this->belongsTo(RoomList::class, 'room_id','id');
     }
 }

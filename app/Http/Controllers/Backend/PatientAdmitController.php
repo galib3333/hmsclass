@@ -56,7 +56,7 @@ class PatientAdmitController extends Controller
             $pAdmit->created_by = currentUserId();
             if ($pAdmit->save()) {
                 $this->notice::success('Successfully Saved Patient.');
-                return redirect()->route('patients.index');
+                return redirect()->route('pAdmit.index');
             } else {
                 $this->notice::error('Please try again');
                 return redirect()->back()->withInput();

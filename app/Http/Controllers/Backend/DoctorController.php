@@ -29,7 +29,7 @@ class DoctorController extends Controller
     {
         $department = Department::get();
         $designation = Designation::get();
-        $employee  = EmployBasic::get();
+        $employee  = EmployBasic::where('role_id',2)->get();
         return view('backend.doctor.create', compact('department', 'designation', 'employee'));
     }
 
@@ -39,7 +39,7 @@ class DoctorController extends Controller
     public function store(StoreDoctorRequest $request)
     {
         try {
-            $doctor = new Department();
+            $doctor = new Doctor();
             $doctor->employ_id = $request->employId;
             $doctor->designation_id = $request->designationId;
             $doctor->department_id = $request->departmentId;

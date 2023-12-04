@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
                                     <label for="patientId">Patient Name <i class="text-danger">*</i></label>
-                                    <select class="form-control" name="bloodId" id="patientId">
+                                    <select class="form-control" name="patientId" id="patientId">
                                         <option value="">Select Patient</option>
                                         @forelse($patient as $p)
                                             <option value="{{ $p->id }}"
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="roomId">Room Number <i class="text-danger">*</i></label>
-                                    <select class="form-control" name="bloodId" id="roomId">
+                                    <select class="form-control" name="roomId" id="roomId">
                                         <option value="">Select Room Number</option>
                                         @forelse($roomList as $rl)
                                             <option value="{{ $rl->id }}"
