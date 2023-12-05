@@ -159,6 +159,11 @@
                         <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Prescription</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('test.index') }}">
+                        <i class="fa fa-ambulance" aria-hidden="true"></i><span>Test</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ route('blood.index') }}">

@@ -14,6 +14,8 @@ use App\Http\Controllers\Backend\ShiftController as shift;
 use App\Http\Controllers\Backend\DayController as day;
 use App\Http\Controllers\Backend\ScheduleController as schedule;
 use App\Http\Controllers\Backend\InvestCatController as investCat;
+use App\Http\Controllers\Backend\TestController as test;
+use App\Http\Controllers\Backend\TestDetailController as testDetail;
 use App\Http\Controllers\Backend\PatientAdmitController as patientAdmit;
 use App\Http\Controllers\Backend\EmployBasicController as employee;
 use App\Http\Controllers\Backend\BloodController as blood;
@@ -79,6 +81,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/schedule', schedule::class);
   Route::resource('/investCat', investCat::class);
   Route::resource('/invest', invest::class);
+  Route::resource('/test', Test::class);
+  Route::resource('/testDetail', testDetail::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
   Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
   Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
