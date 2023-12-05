@@ -9,25 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>@yield('title',env('APP_NAME'))</title>
+    <title>@yield('title', env('APP_NAME'))</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- style css -->
-    <link rel="stylesheet" href="{{asset('public/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
     <!-- Responsive-->
-    <link rel="stylesheet" href="{{asset('public/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/responsive.css') }}">
     <!-- fevicon -->
-    <link rel="icon" href="{{asset('public/images/fevicon.png" type="image/gif')}}" />
+    <link rel="icon" href="{{ asset('public/images/fevicon.png" type="image/gif') }}" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="{{asset('public/css/jquery.mCustomScrollbar.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/jquery.mCustomScrollbar.min.css') }}">
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- owl stylesheets -->
-    <link rel="stylesheet" href="{{asset('public/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
         media="screen">
 </head>
@@ -49,7 +50,8 @@
                         <a class="nav-link" href="doctor.html">Doctor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="logo_main" href="{{'home'}}"><img src="{{asset('public/images/logo.png')}}"></a>
+                        <a class="logo_main" href="{{ 'home' }}"><img
+                                src="{{ asset('public/images/logo.png') }}"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="depatments.html">Depatments</a>
@@ -61,16 +63,16 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="{{asset('public/images/search-icon.png')}}"></a>
+                        <a class="nav-link" href="#"><img src="{{ asset('public/images/search-icon.png') }}"></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('login')}}">LOGIN</a>
+                        <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <nav class="mobile_header navbar navbar-expand-lg navbar-light bg-light">
-            <div class="logo"><a href="index.html"><img src="{{asset('public/images/logo.png')}}"></a></div>
+            <div class="logo"><a href="index.html"><img src="{{ asset('public/images/logo.png') }}"></a></div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
                 aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -87,7 +89,7 @@
                         <a class="nav-link" href="doctor.html">Doctor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="logo_main" href="index.html"><img src="{{asset('public/images/logo.png')}}"></a>
+                        <a class="logo_main" href="index.html"><img src="{{ asset('public/images/logo.png') }}"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="depatments.html">Depatments</a>
@@ -99,7 +101,8 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="{{asset('public/images/search-icon.png')}}"></a>
+                        <a class="nav-link" href="#"><img
+                                src="{{ asset('public/images/search-icon.png') }}"></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">LOGIN</a>
@@ -297,17 +300,17 @@
                     class="d-flex flex-column flex-lg-row justify-content-between align-items-center align-items-lg-baseline">
                     <div class="social-box">
                         <a href="">
-                            <img src="{{asset('public/images/fb-icon.png')}}" alt="" />
+                            <img src="{{ asset('public/images/fb-icon.png') }}" alt="" />
                         </a>
 
                         <a href="">
-                            <img src="{{asset('public/images/twitter-icon.png')}}" alt="" />
+                            <img src="{{ asset('public/images/twitter-icon.png') }}" alt="" />
                         </a>
                         <a href="">
-                            <img src="{{asset('public/images/linkedin-icon.png')}}" alt="" />
+                            <img src="{{ asset('public/images/linkedin-icon.png') }}" alt="" />
                         </a>
                         <a href="">
-                            <img src="{{asset('public/images/instagram-icon.png')}}" alt="" />
+                            <img src="{{ asset('public/images/instagram-icon.png') }}" alt="" />
                         </a>
                     </div>
                     <div class="form_container mt-5">
@@ -335,16 +338,20 @@
     </div>
     <!-- copyright section end -->
     <!-- Javascript files-->
-    <script src="{{asset('public/js/jquery.min.js')}}"></script>
-    <script src="{{asset('public/js/popper.min.js')}}"></script>
-    <script src="{{asset('public/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('public/js/jquery-3.0.0.min.js')}}"></script>
-    <script src="{{asset('public/js/plugin.js')}}"></script>
+    <script src="{{ asset('public/js/jquery.min.js') }}"></script>
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+    <script src="{{ asset('public/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('public/js/jquery-3.0.0.min.js') }}"></script>
+    <script src="{{ asset('public/js/plugin.js') }}"></script>
     <!-- sidebar -->
-    <script src="{{asset('public/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script src="{{asset('public/js/custom.js')}}"></script>
+    <script src="{{ asset('public/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('public/js/custom.js') }}"></script>
     <!-- javascript -->
-    <script src="{{asset('public/js/owl.carousel.js')}}"></script>
+    <script src="{{ asset('public/js/owl.carousel.js') }}"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 
