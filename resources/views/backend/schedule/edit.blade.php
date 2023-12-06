@@ -39,7 +39,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="dayId">Day<i class="text-danger">*</i></label>
                                     <select class="form-control" name="dayId" id="dayId">
-                                        <option value="">Select Role</option>
+                                        <option value="">Select Day</option>
                                         @forelse($day as $d)
                                             <option value="{{ $d->id }}"
                                                 {{ old('dayId', $schedule->day_id) == $d->id ? 'selected' : '' }}>
@@ -55,7 +55,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="shiftId">Shift<i class="text-danger">*</i></label>
                                     <select class="form-control" name="shiftId" id="shiftId">
-                                        <option value="">Select Role</option>
+                                        <option value="">Select Shift</option>
                                         @forelse($shift as $s)
                                             <option value="{{ $s->id }}"
                                                 {{ old('shiftId', $schedule->shift_id) == $s->id ? 'selected' : '' }}>
