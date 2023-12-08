@@ -10,7 +10,7 @@ use App\Models\Blood;
 use App\Http\Requests\Backend\Patient\StorePatientRequest;
 use App\Http\Requests\Backend\Patient\UpdatePatientRequest;
 use Exception;
-use File;
+use Illuminate\Support\Facades\File;
 
 class PatientController extends Controller
 {
