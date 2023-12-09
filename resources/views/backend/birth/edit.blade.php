@@ -86,6 +86,7 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
+                                            <option value="">Select Status</option>
                                             <option value="1" @if (old('status', $birth->status) == 1) selected @endif>
                                                 Active
                                             </option>

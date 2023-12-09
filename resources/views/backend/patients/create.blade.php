@@ -20,7 +20,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="patientNameEN">Name (English) <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="patientNameEN" name="patientNameEN"
-                                        value="{{ old('patientNameEN') }}" placeholder="Enter Employee Name In English">
+                                        value="{{ old('patientNameEN') }}" placeholder="Enter Name In English">
                                     @if ($errors->has('patientNameEN'))
                                         <span class="text-danger"> {{ $errors->first('patientNameEN') }}</span>
                                     @endif
@@ -29,7 +29,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="patientNameBN">Name (Bangla)</label>
                                     <input type="text" class="form-control" id="patientNameBN" name="patientNameBN"
-                                        value="{{ old('patientNameBN') }}" placeholder="Enter Employee Name In Bangla">
+                                        value="{{ old('patientNameBN') }}" placeholder="Enter Name In Bangla">
                                     @if ($errors->has('patientNameBN'))
                                         <span class="text-danger"> {{ $errors->first('patientNameBN') }}</span>
                                     @endif
@@ -105,6 +105,7 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
+                                            <option value="">Select Status</option>
                                             <option value="1" @if (old('status') == 1) selected @endif>Active
                                             </option>
                                             <option value="0" @if (old('status') == 0) selected @endif>
@@ -119,6 +120,7 @@
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select id="gender" class="form-control" name="gender">
+                                            <option value="">Select Gender</option>
                                             <option value="male" @if (old('gender') == 'male') selected @endif>Male
                                             </option>
                                             <option value="female" @if (old('gender') == 'female') selected @endif>

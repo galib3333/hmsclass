@@ -15,14 +15,14 @@ class FrontendController extends Controller
         return view("frontend.home");
     }
 
-    public function create()
+    public function registCreate()
     {
         $patient = Patient::get();
         $blood = Blood::get();
         return view('frontend.home', compact('patient', 'blood'));    
     }
 
-    public function store(StorePatientRequest $request)
+    public function registStore(StorePatientRequest $request)
     {
         try {
             $patient = new Patient();
