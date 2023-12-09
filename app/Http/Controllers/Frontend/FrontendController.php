@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\Blood;
 use Exception;
-use File;
 use App\Http\Requests\Backend\Patient\StorePatientRequest;
 class FrontendController extends Controller
 {
