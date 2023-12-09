@@ -138,6 +138,7 @@
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select id="gender" class="form-control" name="gender">
+                                            <option>Select Gender</option>
                                             <option value="Male" @if (old('gender') == 'Male') selected @endif>Male
                                             </option>
                                             <option value="Female" @if (old('gender') == 'Female') selected @endif>

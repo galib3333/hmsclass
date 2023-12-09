@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Backend\Birth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBirthRequest extends FormRequest
+class UpdateBirthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

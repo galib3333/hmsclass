@@ -23,6 +23,9 @@
     <link href="{{ asset('public/assets/css/animate.css') }}" rel="stylesheet" type="text/css" />
     <!-- Icons CSS-->
     <link href="{{ asset('public/assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Sidebar CSS-->
     <link href="{{ asset('public/assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
@@ -88,25 +91,25 @@
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('day.index') }}">
-                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Day</span>
+                                <i class="fa-solid fa-hourglass-start"></i><span>Day</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('schedule.index') }}">
-                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Schedule</span>
+                                <i class="fa-solid fa-calendar-plus"></i><span>Schedule</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('investCat.index') }}">
-                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Investigation Category</span>
+                                <i class="fa-solid fa-file-signature"></i><span>Investigation Category</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('invest.index') }}">
-                                <i class="fa fa-eercast" aria-hidden="true"></i><span>Investigations</span>
+                                <i class="fa-solid fa-user-secret"></i><span>Investigations</span>
                             </a>
                         </li>
                     </ul>
@@ -133,35 +136,64 @@
                     <!-- Add more items as needed -->
                 </li>
                 <!-- Dropdown Menu END-->
-
+                <!-- Dropdown Menu START -->
                 <li>
-                    <a href="{{ route('doctor.index') }}">
-                        <i class="fa fa-user-md"></i></i><span>Doctors</span>
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="fa fa-user-md"></i><span>Doctors</span>
                     </a>
+                    <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
+                        <li class="dropdown-item">
+                            <a href="{{ route('doctor.index') }}">
+                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('doctorProfile') }}">
+                                <i class="fa fa-user"></i> <span>Doctor's Profile</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('department.index') }}">
+                                <i class="fa fa-cube"></i><span>Department</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('designation.index') }}">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Add more items as needed -->
                 </li>
+                <!-- Dropdown Menu END-->
+                <!-- Dropdown Menu START -->
                 <li>
-                    <a href="{{ route('doctorProfile') }}">
-                        <i class="fa fa-user"></i> <span>Doctor's Profile</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('patients.index') }}">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <i class="fa fa-wheelchair"></i><span>Patients</span>
                     </a>
+                    <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
+                        <li class="dropdown-item">
+                            <a href="{{ route('patients.index') }}">
+                                <i class="fa fa-wheelchair"></i><span>Patients</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('pAdmit.index') }}">
+                                <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Admission</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('prescription') }}">
+                                <i class="fa-solid fa-prescription"></i><span>Patient Prescription</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Add more items as needed -->
                 </li>
-                <li>
-                    <a href="{{ route('pAdmit.index') }}">
-                        <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Admission</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('prescription') }}">
-                        <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Prescription</span>
-                    </a>
-                </li>
+                <!-- Dropdown Menu END-->
                 <li>
                     <a href="{{ route('test.index') }}">
-                        <i class="fa fa-ambulance" aria-hidden="true"></i><span>Test</span>
+                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test</span>
                     </a>
                 </li>
 
@@ -171,52 +203,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('department.index') }}">
-                        <i class="fa fa-cube"></i><span>Department</span>
+                    <a href="{{ route('birth.index') }}">
+                        <i class="zmdi zmdi-invert-colors"></i><span>Birth Information</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('designation.index') }}">
-                        <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
-                    </a>
-                </li>
-                {{-- <li>
-                <a href="forms.html">
-                    <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="tables.html">
-                    <i class="zmdi zmdi-grid"></i> <span>Tables</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="calendar.html">
-                    <i class="zmdi zmdi-calendar-check"></i> <span>Calendar</span>
-                    <small class="badge float-right badge-light">New</small>
-                </a>
-            </li>
-
-            <li>
-                <a href="profile.html">
-                    <i class="zmdi zmdi-face"></i> <span>Profile</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="login.html" target="_blank">
-                    <i class="zmdi zmdi-lock"></i> <span>Login</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="register.html" target="_blank">
-                    <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
-                </a>
-            </li> --}}
-
                 <li class="sidebar-header">LABELS</li>
                 <li><a href="javaScript:void();"><i class="zmdi zmdi-coffee text-danger"></i>
                         <span>Important</span></a>
@@ -226,9 +216,7 @@
                 <li><a href="javaScript:void();"><i class="zmdi zmdi-share text-info"></i>
                         <span>Information</span></a>
                 </li>
-
             </ul>
-
         </div>
         <!--End sidebar-wrapper-->
 
@@ -248,7 +236,6 @@
                         </form>
                     </li>
                 </ul>
-
                 <ul class="navbar-nav align-items-center right-nav-link">
                     <li class="nav-item dropdown-lg">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect"
@@ -316,14 +303,12 @@
 
         <div class="content-wrapper">
             <div class="container-fluid">
-
                 <!--Start Dashboard Content-->
                 @yield('content')
                 <!--End Dashboard Content-->
                 <!--start overlay-->
                 <div class="overlay toggle-menu"></div>
                 <!--end overlay-->
-
             </div>
         </div>
         <!--End content-wrapper-->
@@ -359,10 +344,8 @@
                     <li id="theme5"></li>
                     <li id="theme6"></li>
                 </ul>
-
                 <p class="mb-0">Gradient Background</p>
                 <hr>
-
                 <ul class="switcher">
                     <li id="theme7"></li>
                     <li id="theme8"></li>
@@ -374,21 +357,16 @@
                     <li id="theme14"></li>
                     <li id="theme15"></li>
                 </ul>
-
             </div>
         </div>
         <!--end color switcher-->
-
     </div><!--End wrapper-->
-
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/popper.min.js') }}"></script>
     <script src="assets/js/bootstrap.min.js')}}"></script>
-
     <!-- simplebar js -->
     <script src="{{ asset('public/assets/plugins/simplebar/js/simplebar.js') }}"></script>
     <!-- sidebar-menu js -->
@@ -398,16 +376,11 @@
     <!-- Custom scripts -->
     <script src="{{ asset('public/assets/js/app-script.js') }}"></script>
     <!-- Chart js -->
-
     <script src="{{ asset('public/assets/plugins/Chart.js/Chart.min.js') }}"></script>
-
     <!-- Index js -->
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
-
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     {!! Toastr::message() !!}
-
-
 </body>
 
 </html>
