@@ -493,13 +493,13 @@
                                                     <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
                                                     <select class="form-select" name="bloodId" id="bloodId">
                                                         <option value="">Select Blood Group</option>
-                                                        {{-- @forelse($blood as $b)
+                                                        @forelse($blood as $b)
                                                             <option value="{{ $b->id }}"
                                                                 {{ old('bloodId') == $b->id ? 'selected' : '' }}>
                                                                 {{ $b->blood_type_name }}</option>
                                                         @empty
                                                             <option value="">No Blood Group found</option>
-                                                        @endforelse --}}
+                                                        @endforelse
                                                     </select>
                                                     @if ($errors->has('bloodId'))
                                                         <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
@@ -614,13 +614,13 @@
                                             {{-- <div class="form-group mt-3">
                                                 <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
                                             </div> --}}
-                                            {{-- <div class="my-3">
+                                            <div class="my-3">
                                                 <div class="loading">Loading</div>
                                                 <div class="error-message"></div>
                                                 <div class="sent-message">Your appointment request has been sent
                                                     successfully.
                                                     Thank you!</div>
-                                            </div> --}}
+                                            </div>
                                             <div class="text-center"><button type="submit">Register</button>
                                             </div>
                                         </form>

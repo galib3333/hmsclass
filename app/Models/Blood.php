@@ -17,4 +17,9 @@ class Blood extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function Patient()
+    {
+        return $this->hasMany(Patient::class, 'patient_id');
+    }
 }

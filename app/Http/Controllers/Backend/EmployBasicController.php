@@ -9,9 +9,9 @@ use App\Models\Blood;
 use App\Models\EmployBasic;
 use App\Models\Role;
 use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Exception;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class EmployBasicController extends Controller

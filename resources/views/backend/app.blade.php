@@ -204,7 +204,7 @@
                 </li>
                 <li>
                     <a href="{{ route('birth.index') }}">
-                        <i class="zmdi zmdi-invert-colors"></i><span>Birth Information</span>
+                        <i class="fas fa-notes-medical"></i><span>Birth Information</span>
                     </a>
                 </li>
                 <li class="sidebar-header">LABELS</li>

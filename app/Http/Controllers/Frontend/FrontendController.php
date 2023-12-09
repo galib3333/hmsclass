@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use App\Models\EmployBasic;
 use App\Models\Blood;
 use Exception;
 use App\Http\Requests\Backend\Patient\StorePatientRequest;
@@ -49,7 +50,7 @@ class FrontendController extends Controller
             $patient->created_by = currentUserId();
             if ($patient->save()) {
                 $this->notice::success('Successfully Saved Patient. Patient ID: ' . $patient->patient_id);
-                return redirect()->route('patients.index');
+                return redirect()->route('frontend.home');
             } else {
                 $this->notice::error('Please try again');
                 return redirect()->back()->withInput();
@@ -59,5 +60,11 @@ class FrontendController extends Controller
             $this->notice::error('Please try again');
             return redirect()->back()->withInput();
         }
+    }
+    public function appCreate()
+    {
+        $patient = Patient::get();
+        $employee = EmployBasic::get();
+        return view('frontend.home', compact('patient', 'employee'));    
     }
 }
