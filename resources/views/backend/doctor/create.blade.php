@@ -57,7 +57,7 @@
                                     <select class="form-control" name="designationId" id="designationId">
                                         <option value="">Select Designation</option>
                                         @forelse($designation as $des)
-                                            <option value="{{ $d->id }}"
+                                            <option value="{{ $des->id }}"
                                                 {{ old('designationId') == $des->id ? 'selected' : '' }}>
                                                 {{ $des->desig_name }}</option>
                                         @empty

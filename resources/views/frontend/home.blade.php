@@ -374,258 +374,68 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <ul class="nav nav-tabs top-icon nav-justified" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="javascript:void();" data-bs-target="#app"
-                                            data-bs-toggle="pill" class="nav-link active"><span
-                                                class="hidden-xs text-success fw-bold">Appointment</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="javascript:void();" data-bs-target="#reg"
-                                            data-bs-toggle="pill" class="nav-link"><i class="icon-note"></i> <span
-                                                class="hidden-xs text-success fw-bold">Registration</span></a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content p-3">
-                                    <div class="tab-pane active" id="app">
-
-                                        <div class="section-title">
-                                            <h2>Make an Appointment</h2>
-                                            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid
-                                                fuga
-                                                eum quidem. Sit sint
-                                                consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                                                suscipit alias ea. Quia
-                                                fugiat sit in iste officiis commodi quidem hic quas.</p>
-                                        </div>
-
-                                        <form action="forms/appointment.php" method="post" role="form"
-                                            class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-                                            <div class="row">
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" name="name" class="form-control"
-                                                        id="name" placeholder="Your Name" required>
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3 mt-md-0">
-                                                    <input type="email" class="form-control" name="email"
-                                                        id="email" placeholder="Your Email" required>
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3 mt-md-0">
-                                                    <input type="tel" class="form-control" name="phone"
-                                                        id="phone" placeholder="Your Phone" required>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <input type="datetime" name="date" class="form-control datepicker"
-                                                        id="date" placeholder="Appointment Date" required>
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <select name="department" id="department" class="form-select">
-                                                        <option value="">Select Department</option>
-                                                        <option value="Department 1">Department 1</option>
-                                                        <option value="Department 2">Department 2</option>
-                                                        <option value="Department 3">Department 3</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <select name="doctor" id="doctor" class="form-select">
-                                                        <option value="">Select Doctor</option>
-                                                        <option value="Doctor 1">Doctor 1</option>
-                                                        <option value="Doctor 2">Doctor 2</option>
-                                                        <option value="Doctor 3">Doctor 3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mt-3">
-                                                <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-                                            </div>
-                                            <div class="my-3">
-                                                <div class="loading">Loading</div>
-                                                <div class="error-message"></div>
-                                                <div class="sent-message">Your appointment request has been sent
-                                                    successfully.
-                                                    Thank you!</div>
-                                            </div>
-                                            <div class="text-center"><button type="submit">Make an Appointment</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane" id="reg">
-
-                                        <div class="section-title">
-                                            <h2>Register</h2>
-                                            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid
-                                                fuga
-                                                eum quidem. Sit sint
-                                                consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                                                suscipit alias ea. Quia
-                                                fugiat sit in iste officiis commodi quidem hic quas.</p>
-                                        </div>
-                                        <form action="{{ route('registStore') }}" method="post"
-                                            enctype="multipart/form-data role="form" class="php-email-form"
-                                            data-aos="fade-up" data-aos-delay="100">
-                                            @csrf
-                                            <div class="row">
-                                                <div class="col-md-4 form-group mt-3 mt-md-0">
-                                                    <label for="patientNameEN">Name (English) <i
-                                                            class="text-danger">*</i></label>
-                                                    <input type="text" class="form-control" id="patientNameEN"
-                                                        name="patientNameEN" value="{{ old('patientNameEN') }}"
-                                                        placeholder="Enter Name In English">
-                                                    @if ($errors->has('patientNameEN'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('patientNameEN') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3 mt-md-0">
-                                                    <label for="patientNameBN">Name (Bangla)</label>
-                                                    <input type="text" class="form-control" id="patientNameBN"
-                                                        name="patientNameBN" value="{{ old('patientNameBN') }}"
-                                                        placeholder="Enter Name In Bangla">
-                                                    @if ($errors->has('patientNameBN'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('patientNameBN') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3 mt-md-0">
-                                                    <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
-                                                    <select class="form-select" name="bloodId" id="bloodId">
-                                                        <option value="">Select Blood Group</option>
-                                                        @forelse($blood as $b)
-                                                            <option value="{{ $b->id }}"
-                                                                {{ old('bloodId') == $b->id ? 'selected' : '' }}>
-                                                                {{ $b->blood_type_name }}</option>
-                                                        @empty
-                                                            <option value="">No Blood Group found</option>
-                                                        @endforelse
-                                                    </select>
-                                                    @if ($errors->has('bloodId'))
-                                                        <span class="text-danger"> {{ $errors->first('bloodId') }}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="emailAddress">Email <i class="text-danger">*</i></label>
-                                                    <input type="text" class="form-control" id="emailAddress"
-                                                        name="emailAddress" value="{{ old('emailAddress') }}"
-                                                        placeholder="Enter Email Address">
-                                                    @if ($errors->has('emailAddress'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('emailAddress') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="contactNumber_en">Contact Number (English) <i
-                                                            class="text-danger">*</i></label>
-                                                    <input type="text" class="form-control" id="contactNumber_en"
-                                                        name="contactNumber_en" value="{{ old('contactNumber_en') }}"
-                                                        placeholder="Enter Your Contect Number In English">
-                                                    @if ($errors->has('contactNumber_en'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('contactNumber_en') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="contactNumber_bn">Contact Number (Bangla)</label>
-                                                    <input type="text" class="form-control" id="contactNumber_bn"
-                                                        name="contactNumber_bn" value="{{ old('contactNumber_bn') }}"
-                                                        placeholder="Enter Your Contect Number In Bangla">
-                                                    @if ($errors->has('contactNumber_bn'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('contactNumber_bn') }}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="presentAddress"> Present Address</label>
-                                                    <input type="text" class="form-control" id="presentAddress"
-                                                        name="presentAddress" value="{{ old('presentAddress') }}"
-                                                        placeholder="Enter Your PresentAddress">
-                                                    @if ($errors->has('presentAddress'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('presentAddress') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="permanentAddress"> Permanent Address</label>
-                                                    <input type="text" class="form-control" id="permanentAddress"
-                                                        name="permanentAddress" value="{{ old('permanentAddress') }}"
-                                                        placeholder="Enter Your Permanent Address">
-                                                    @if ($errors->has('permanentAddress'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('permanentAddress') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="birthDate">Birth Date</label>
-                                                    <input type="date" class="form-control" id="birthDate"
-                                                        name="birthDate" value="{{ old('birthDate') }}"
-                                                        placeholder="Enter Birth Date">
-                                                    @if ($errors->has('birthDate'))
-                                                        <span class="text-danger">
-                                                            {{ $errors->first('birthDate') }}</span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="status">Status</label>
-                                                    <select id="status" class="form-select" name="status">
-                                                        <option value="">Select Status</option>
-                                                        <option value="1"
-                                                            @if (old('status') == 1) selected @endif>Active
-                                                        </option>
-                                                        <option value="0"
-                                                            @if (old('status') == 0) selected @endif>
-                                                            Inactive</option>
-                                                    </select>
-                                                    @if ($errors->has('status'))
-                                                        <span class="text-danger"> {{ $errors->first('status') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <label for="gender">Gender</label>
-                                                    <select id="gender" class="form-select" name="gender">
-                                                        <option value="">Select Gender</option>
-                                                        <option value="male"
-                                                            @if (old('gender') == 'male') selected @endif>Male
-                                                        </option>
-                                                        <option value="female"
-                                                            @if (old('gender') == 'female') selected @endif>
-                                                            Female</option>
-                                                    </select>
-                                                    @if ($errors->has('gender'))
-                                                        <span class="text-danger"> {{ $errors->first('gender') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="col-md-4 form-group mt-3">
-                                                    <div class="form-group">
-                                                        <label for="image">Image</label>
-                                                        <input type="file" id="image" class="form-control"
-                                                            placeholder="Image" name="image">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{-- <div class="form-group mt-3">
-                                                <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-                                            </div> --}}
-                                            <div class="my-3">
-                                                <div class="loading">Loading</div>
-                                                <div class="error-message"></div>
-                                                <div class="sent-message">Your appointment request has been sent
-                                                    successfully.
-                                                    Thank you!</div>
-                                            </div>
-                                            <div class="text-center"><button type="submit">Register</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                
+                                <div class="section-title">
+                                    <h2>Make an Appointment</h2>
+                                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid
+                                        fuga
+                                        eum quidem. Sit sint
+                                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                                        suscipit alias ea. Quia
+                                        fugiat sit in iste officiis commodi quidem hic quas.</p>
                                 </div>
+
+                                <form action="{{ route('appStore') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-4 form-group">
+                                            <input type="text" name="name" class="form-control"
+                                                id="name" placeholder="Your Name" required>
+                                        </div>
+                                        <div class="col-md-4 form-group mt-3 mt-md-0">
+                                            <input type="email" class="form-control" name="email"
+                                                id="email" placeholder="Your Email" required>
+                                        </div>
+                                        <div class="col-md-4 form-group mt-3 mt-md-0">
+                                            <input type="tel" class="form-control" name="phone"
+                                                id="phone" placeholder="Your Phone" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 form-group mt-3">
+                                            <input type="date" name="appdate" class="form-control"
+                                                id="date" placeholder="Appointment Date" required>
+                                        </div>
+                                        <div class="col-md-4 form-group mt-3">
+                                            <select name="department_id" onchange="$('.dept').hide();$('.dept'+this.value).show()" id="department_id" class="form-select">
+                                                <option value="">Select Department</option>
+                                                @forelse($department as $dep)
+                                                <option value="{{$dep->id}}">{{$dep->dep_name}}</option>
+                                                @empty
+
+                                                @endforelse
+                                                
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 form-group mt-3">
+                                            <select name="doctor_id" id="doctor_id" class="form-select">
+                                                <option value="">Select Doctor</option>
+                                                @forelse($doctor as $dep)
+                                                <option class="dept dept{{$dep->department_id}}" value="{{$dep->employ_id}}">{{$dep->employ->name_en}}</option>
+                                                @empty
+
+                                                @endforelse
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <textarea class="form-control" name="details" rows="5" placeholder="Message (Optional)"></textarea>
+                                    </div>
+                                    
+                                    <div class="text-center"><button type="submit">Make an Appointment</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

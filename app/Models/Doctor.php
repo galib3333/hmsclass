@@ -24,7 +24,7 @@ class Doctor extends Model
 
     public function employ()
     {
-        return $this->belongsTo(EmployBasic::class, 'employ_id');
+        return $this->belongsTo(EmployBasic::class, 'employ_id','id');
     }
 
     public function designation()

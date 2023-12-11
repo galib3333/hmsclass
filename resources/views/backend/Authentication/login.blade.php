@@ -62,26 +62,6 @@
                     </div>
                     <button type="submit" class="btn btn-light btn-block">Sign In</button>
                     <div class="text-center mt-3">Sign In With</div>
-
-                    <div class="form-row mt-4">
-                        <div class="form-group mb-0 col-6">
-                            <button type="button" class="btn btn-light btn-block"><i class="fa fa-facebook-square"></i>
-                                Facebook</button>
-                        </div>
-                        <div class="form-group mb-0 col-6 text-right">
-                            <button type="button" class="btn btn-light btn-block"><i class="fa fa-twitter-square"></i>
-                                Twitter</button>
-                        </div>
-                        <div class="form-group mb-0 col-6 text-right mt-2">
-                            <a href="/auth/github/redirect" class="btn btn-light btn-block"><i class="fa fa-github-square"></i>
-                                Github</a>
-                        </div>
-                        <div class="form-group mb-0 col-6 text-right mt-2">
-                            <button type="button" class="btn btn-light btn-block"><i class="fa fa-google-plus-square"></i>
-                                Google</button>
-                        </div>
-                    </div>
-
                 </form>
             </div>
         </div>

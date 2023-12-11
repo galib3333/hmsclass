@@ -30,12 +30,12 @@
                                     <th scope="row">{{ ++$loop->index }}</th>
                                     <td><img width="50px" src="{{ asset('public/uploads/employees/' . $doc->image) }}"
                                             alt=""></td>
-                                    <td>{{ $doc->employee->name_en }}</td>
-                                    <td>{{ $doc->department->dep_name }}</td>
-                                    <td>{{ $doc->employee->email }}</td>
-                                    <td>{{ $doc->employee->email }}</td>
-                                    <td>{{ $doc->employee->contact_no_en }}</td>
-                                    <td>{{ $u->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td>{{ $doc->employ->name_en }}</td>
+                                    <td>{{ $doc->department?->dep_name }}</td>
+                                    <td>{{ $doc->designation?->desig_name }}</td>
+                                    <td>{{ $doc->employ->email }}</td>
+                                    <td>{{ $doc->employ->contact_no_en }}</td>
+                                    <td>{{ $doc->status == 1 ? 'Active' : 'Inactive' }}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('doctor.edit', encryptor('encrypt', $doc->id)) }}">
                                             <i class="fa fa-edit"></i>

@@ -5,93 +5,34 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\Patient;
-use App\Models\EmployBasic;
-use App\Models\Blood;
+use App\Models\AppointmentRequest;
+use App\Models\Department;
+use App\Models\Doctor;
 use Exception;
-use App\Http\Requests\Backend\Patient\StorePatientRequest;
-use App\Http\Requests\Backend\Appointment\StoreAppointmentRequest;
+use App\Http\Requests\Frontend\Appointment\StoreAppointmentRequest;
+
 class FrontendController extends Controller
 {
     public function index(){
-        return view("frontend.home");
-    }
-
-    public function registCreate()
-    {
-        $patient = Patient::get();
-        $blood = Blood::get();
-        return view('frontend.home', compact('patient', 'blood'));    
-    }
-
-    public function registStore(StorePatientRequest $request)
-    {
-        try {
-            $patient = new Patient();
-            $patient->patient_id = $request->patientId;
-            $patient->name_en = $request->patientNameEN;
-            $patient->name_bn = $request->patientNameBN;
-            $patient->email = $request->emailAddress;
-            $patient->contact_no_en = $request->contactNumber_en;
-            $patient->contact_no_bn = $request->contactNumber_bn;
-            $patient->present_address = $request->presentAddress;
-            $patient->permanent_address = $request->permanentAddress;
-            $patient->birth_date = $request->birthDate;
-            $patient->gender = $request->gender;
-            $patient->blood_id = $request->bloodId;
-            $patient->status = $request->status;
-
-            if ($request->hasFile('image')) {
-                $imageName = rand(111, 999) . time() . '.' .
-                    $request->image->extension();
-                $request->image->move(public_path('uploads/patients'), $imageName);
-                $patient->image = $imageName;
-            }
-
-            $patient->created_by = currentUserId();
-            if ($patient->save()) {
-                $this->notice::success('Successfully Saved Patient. Patient ID: ' . $patient->patient_id);
-                return redirect()->route('frontend.home');
-            } else {
-                $this->notice::error('Please try again');
-                return redirect()->back()->withInput();
-            }
-        } catch (Exception $e) {
-            dd($e);
-            $this->notice::error('Please try again');
-            return redirect()->back()->withInput();
-        }
-    }
-    public function appCreate()
-    {
-        $patient = Patient::get();
-        $employee = EmployBasic::get();
-        return view('frontend.home', compact('patient', 'employee'));    
+        $department = Department::get();
+        $doctor = Doctor::get();
+        return view("frontend.home", compact('department', 'doctor'));
     }
 
     public function appStore(StoreAppointmentRequest $request)
     {
         try {
-            $patient = new Patient();
-            $patient->patient_id = $request->patientId;
-            $patient->name_en = $request->patientNameEN;
-            $patient->name_bn = $request->patientNameBN;
-            $patient->email = $request->emailAddress;
-            $patient->contact_no_en = $request->contactNumber_en;
-            $patient->contact_no_bn = $request->contactNumber_bn;
-            $patient->present_address = $request->presentAddress;
-            $patient->permanent_address = $request->permanentAddress;
-            $patient->birth_date = $request->birthDate;
-            $patient->gender = $request->gender;
-            $patient->blood_id = $request->bloodId;
-            $patient->status = $request->status;
-            $patient->created_by = currentUserId();
-            if ($patient->save()) {
-                $this->notice::success('Successfully Saved Patient. Patient ID: ' . $patient->patient_id);
-                return redirect()->route('frontend.home');
-            } else {
-                $this->notice::error('Please try again');
-                return redirect()->back()->withInput();
+            $data = new AppointmentRequest;
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->phone = $request->phone;
+            $data->appdate = $request->appdate;
+            $data->department_id = $request->department_id;
+            $data->doctor_id = $request->doctor_id;
+            $data->details = $request->details;
+            if ($data->save()) {
+                $this->notice::success('We have got your request. We will contact you as soon as possible.');
+                return redirect()->route('home');
             }
         } catch (Exception $e) {
             dd($e);

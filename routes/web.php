@@ -100,8 +100,7 @@ Route::get('/', [frontend::class, 'index'])->name('home');
 Route::get('/about', [about::class, 'index'])->name('about');
 Route::get('/blog', [blog::class, 'index'])->name('blog');
 Route::get('/contact', [contact::class, 'index'])->name('contact');
-Route::get('/registCreate', [frontend::class, 'registCreate'])->name('registCreate');
-Route::post('/registStore', [frontend::class, 'registStore'])->name('registStore');
+Route::post('/appointment/create', [frontend::class, 'appStore'])->name('appStore');
 
 // Route::get('/dashboard', function () {
 //     return view('welcome');
