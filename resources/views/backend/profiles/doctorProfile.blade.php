@@ -20,9 +20,9 @@
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p>
                         <div class="icon-block">
-                            <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
-                            <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>
-                            <a href="javascript:void();"> <i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+                            <a href="javascript:void();"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="javascript:void();"> <i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="javascript:void();"><i class="fa-brands fa-google"></i></a>
                         </div>
                     </div>
 

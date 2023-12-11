@@ -433,7 +433,7 @@
                                         <textarea class="form-control" name="details" rows="5" placeholder="Message (Optional)"></textarea>
                                     </div>
                                     
-                                    <div class=" text-center"><button type="submit">Make an Appointment</button>
+                                    <div class="text-center mt-3"><button type="submit">Make an Appointment</button>
                                     </div>
                                 </form>
                             </div>
