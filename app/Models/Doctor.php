@@ -36,4 +36,8 @@ class Doctor extends Model
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
+    public function appReq()
+    {
+        return $this->hasMany(AppointmentRequest::class, 'doctor_id');
+    }
 }

@@ -88,6 +88,8 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
   Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
   Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
+  Route::get('/appointment/request', [frontend::class, 'appRequest'])->name('appRequest');
+  Route::delete('/appointment/destroy/{id}', [frontend::class, 'appdestroy'])->name('appdestroy');
 });
 
 

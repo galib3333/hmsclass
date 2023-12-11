@@ -1063,6 +1063,14 @@ section {
   transition: 0.4s;
   border-radius: 50px;
 }
+.appointment .app button[type=submit] {
+  background: #3fbbc0;
+  border: 0;
+  padding: 10px 35px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
 
 .appointment .php-email-form button[type=submit]:hover {
   background: #52c2c6;

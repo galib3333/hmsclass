@@ -385,7 +385,7 @@
                                         fugiat sit in iste officiis commodi quidem hic quas.</p>
                                 </div>
 
-                                <form action="{{ route('appStore') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('appStore') }}" method="post" enctype="multipart/form-data" class="app">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4 form-group">
@@ -433,7 +433,7 @@
                                         <textarea class="form-control" name="details" rows="5" placeholder="Message (Optional)"></textarea>
                                     </div>
                                     
-                                    <div class="text-center"><button type="submit">Make an Appointment</button>
+                                    <div class=" text-center"><button type="submit">Make an Appointment</button>
                                     </div>
                                 </form>
                             </div>

@@ -40,4 +40,18 @@ class FrontendController extends Controller
             return redirect()->back()->withInput();
         }
     }
+
+    public function appRequest(){
+        $app = AppointmentRequest::get();
+        return view("backend.appReq.appReqIndex", compact('app'));
+    }
+
+    public function appdestroy($id)
+    {
+        $app = AppointmentRequest::findOrFail(encryptor('decrypt', $id));
+        if ($app->delete()) {
+            $this->notice::error('Appointment Request Deleted Permanently!');
+            return redirect()->back();
+        }
+    }
 }

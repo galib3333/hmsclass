@@ -1,4 +1,5 @@
 @extends('backend.app')
+
 @section('title', trans("Patient's List"))
 
 @section('content')
@@ -59,6 +60,9 @@
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('patients.edit', encryptor('encrypt', $p->id)) }}">
                                             <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('appRequest') }}">
+                                            <i class="fa-solid fa-check"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="$('#form{{ $p->id }}').submit()">
                                             <i class="fa fa-trash"></i>
