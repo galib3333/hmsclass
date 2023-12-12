@@ -61,9 +61,6 @@
                                         <a href="{{ route('patients.edit', encryptor('encrypt', $p->id)) }}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('appRequest') }}">
-                                            <i class="fa-solid fa-ticket"></i>
-                                        </a>
                                         <a href="javascript:void()" onclick="$('#form{{ $p->id }}').submit()">
                                             <i class="fa fa-trash"></i>
                                         </a>
