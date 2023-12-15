@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\PatientAdmit;
-use App\Models\Patient;
-use App\Models\RoomList;
 use App\Http\Requests\Backend\PatientAdmit\StorePatientAdmitRequest;
 use App\Http\Requests\Backend\PatientAdmit\UpdatePatientAdmitRequest;
+use App\Models\Patient;
+use App\Models\PatientAdmit;
+use App\Models\RoomList;
 use Exception;
+use Illuminate\Validation\ValidationException;
 
 class PatientAdmitController extends Controller
 {
@@ -39,6 +39,14 @@ class PatientAdmitController extends Controller
     public function store(StorePatientAdmitRequest $request)
     {
         try {
+            // Validate if the room has reached its capacity
+            $room = RoomList::findOrFail($request->roomId);
+            $currentAdmits = PatientAdmit::where('room_id', $request->roomId)->count();
+
+            if ($currentAdmits >= $room->capacity) {
+                throw ValidationException::withMessages(['room' => 'Room has reached its capacity.']);
+            }
+
             $pAdmit = new PatientAdmit();
             $pAdmit->patient_id = $request->patientId;
             $pAdmit->father_name = $request->fatherName;
@@ -54,6 +62,7 @@ class PatientAdmitController extends Controller
             $pAdmit->condition = $request->condition;
             $pAdmit->status = $request->status;
             $pAdmit->created_by = currentUserId();
+
             if ($pAdmit->save()) {
                 $this->notice::success('Successfully Saved Patient.');
                 return redirect()->route('pAdmit.index');
@@ -61,6 +70,11 @@ class PatientAdmitController extends Controller
                 $this->notice::error('Please try again');
                 return redirect()->back()->withInput();
             }
+        } catch (ValidationException $e) {
+            // Handle validation exception
+            $errors = $e->errors();
+            $this->notice::error($errors['room'][0]);
+            return redirect()->back()->withInput();
         } catch (Exception $e) {
             dd($e);
             $this->notice::error('Please try again');

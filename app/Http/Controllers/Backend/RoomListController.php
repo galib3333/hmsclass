@@ -27,7 +27,7 @@ class RoomListController extends Controller
     public function create()
     {
         $roomCat = RoomCat::get();
-        return view('backend.roomList.create', compact('roomList', 'roomCat'));   
+        return view('backend.roomList.create', compact('roomCat'));   
     }
 
     /**

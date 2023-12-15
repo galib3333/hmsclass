@@ -18,7 +18,7 @@ class FrontendController extends Controller
 {
     public function index(){
         $department = Department::get();
-        $doctor = Doctor::get();
+        $doctor = Doctor::get(); 
         return view("frontend.home", compact('department', 'doctor'));
     }
 
