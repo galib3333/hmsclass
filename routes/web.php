@@ -47,21 +47,6 @@ Route::get('/login', [auth::class, 'signInForm'])->name('login');
 Route::post('/login', [auth::class, 'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
 
-
-// Route::get('/auth/github/redirect', function () {
-//   return Socialite::driver('github')->redirect();
-// });
-
-// Route::get('/auth/github/callback', function () {
-//   $user = Socialite::driver('github')->user();
-
-//   dd($user->getName(), $user->getEmail(), $user->getId());
-// });
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('user', user::class);
   Route::resource('role', role::class);
@@ -87,6 +72,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/birth', birth::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
   Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
+  Route::get('/testInvoice', [testDetail::class, 'testInvoice'])->name('testInvoice');
   Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
   Route::get('/appointment/request', [frontend::class, 'appRequest'])->name('appRequest');
   Route::delete('/appointment/destroy/{id}', [frontend::class, 'appdestroy'])->name('appdestroy');

@@ -114,4 +114,9 @@ class TestDetailController extends Controller
             return redirect()->back();
         }
     }
+
+    public function testInvoice()
+    {
+        return view('backend.test.testInvoice');
+    }
 }

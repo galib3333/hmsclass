@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\Appointment;
-use App\Http\Requests\StoreAppointmentRequest;
+use App\Http\Requests\Frontend\Appointment\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 
 class AppointmentController extends Controller

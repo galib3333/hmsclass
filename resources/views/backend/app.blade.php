@@ -127,6 +127,7 @@
                                 <i class="fa fa-th-large" aria-hidden="true"></i><span>Room Category</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('roomList.index') }}">
                                 <i class="fa fa-hospital-o" aria-hidden="true"></i><span>Rooms</span>
@@ -147,16 +148,19 @@
                                 <i class="fa fa-user-md"></i></i><span>Doctors</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('doctorProfile') }}">
                                 <i class="fa fa-user"></i> <span>Doctor's Profile</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('department.index') }}">
                                 <i class="fa fa-cube"></i><span>Department</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('designation.index') }}">
                                 <i class="fa fa-suitcase" aria-hidden="true"></i><span>Designation</span>
@@ -174,17 +178,25 @@
                     <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
                         <li class="dropdown-item">
                             <a href="{{ route('patients.index') }}">
-                                <i class="fa fa-wheelchair"></i><span>Patients</span>
+                                <i class="fa fa-wheelchair"></i><span>Patients Registration</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('pAdmit.index') }}">
                                 <i class="fa fa-ambulance" aria-hidden="true"></i><span>Patient Admission</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
                         <li class="dropdown-item">
                             <a href="{{ route('prescription') }}">
                                 <i class="fa-solid fa-prescription"></i><span>Patient Prescription</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('appRequest') }}">
+                                <i class="fa-solid fa-prescription"></i><span>Appointment request</span>
                             </a>
                         </li>
                     </ul>
@@ -194,6 +206,11 @@
                 <li>
                     <a href="{{ route('test.index') }}">
                         <i class="fas fa-dna" aria-hidden="true"></i><span>Test</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('testInvoice') }}">
+                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Invoice</span>
                     </a>
                 </li>
 
