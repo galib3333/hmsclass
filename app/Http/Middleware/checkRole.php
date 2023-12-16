@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\User; // custome
 use Illuminate\Http\Request;
-use Session; // custome
+use Illuminate\Support\Facades\Session; // custome
 
 class checkRole
 {

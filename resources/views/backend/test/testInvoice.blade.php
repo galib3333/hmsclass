@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', trans("Test Invoice"))
+@section('title', trans('Test Invoice'))
 
 @section('content')
     <div class="container-fluid">
@@ -13,8 +13,8 @@
                         <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
                             <li class="nav-item">
                                 <a href="javascript:void();" data-target="#profile" data-toggle="pill"
-                                    class="nav-link active"><i class="icon-user"></i> <span
-                                        class="hidden-xs">Prescription</span></a>
+                                    class="nav-link active"><i class="icon-user"></i> <span class="hidden-xs">Test
+                                        Invoice</span></a>
                             </li>
                         </ul>
                         <div id="printableContent">
@@ -65,58 +65,62 @@
 
                                     <hr>
                                     <div class="row">
-                                        
+
                                         <div class="col-md-12 mt-5">
                                             <div class="col-md-4 mt-5">
                                                 <label for="">Patient Test Information</label>
                                             </div>
                                             <div class="row">
-                                                    <div class="form-group col-md-4 col-12">
-                                                        <label for="invsetCatName">Investigation Category<i class="text-danger">*</i></label>
-                                                        <select class="form-control" name="invsetCatName" id="invsetCatName">
-                                                            <option value="">--Investigation Category--</option>
-                                                            {{-- @forelse($roomCat as $rc)
+                                                <div class="form-group col-md-4 col-12">
+                                                    <label for="invsetCatName">Investigation Category<i
+                                                            class="text-danger">*</i></label>
+                                                    <select class="form-control" name="invsetCatName" id="invsetCatName">
+                                                        <option value="">--Investigation Category--</option>
+                                                        {{-- @forelse($roomCat as $rc)
                                                                 <option value="{{ $rc->id }}"
                                                                     {{ old('roomCatId') == $rc->id ? 'selected' : '' }}>
                                                                     {{ $rc->room_cat_name }}</option>
                                                             @empty
                                                                 <option value="">No Room Category found</option>
                                                             @endforelse --}}
-                                                        </select>
-                                                        @if ($errors->has('roomCatId'))
-                                                            <span class="text-danger"> {{ $errors->first('roomCatId') }}</span>
-                                                        @endif
-                                                    </div>
-                                                    <div class="form-group col-md-4 col-12">
-                                                        <label for="roomCatId">Investigation Name<i class="text-danger">*</i></label>
-                                                        <select class="form-control" name="roomCatId" id="roomCatId">
-                                                            <option value="">--Investigation Name--</option>
-                                                            {{-- @forelse($roomCat as $rc)
+                                                    </select>
+                                                    @if ($errors->has('roomCatId'))
+                                                        <span class="text-danger"> {{ $errors->first('roomCatId') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group col-md-4 col-12">
+                                                    <label for="roomCatId">Investigation Name<i
+                                                            class="text-danger">*</i></label>
+                                                    <select class="form-control" name="roomCatId" id="roomCatId">
+                                                        <option value="">--Investigation Name--</option>
+                                                        {{-- @forelse($roomCat as $rc)
                                                                 <option value="{{ $rc->id }}"
                                                                     {{ old('roomCatId') == $rc->id ? 'selected' : '' }}>
                                                                     {{ $rc->room_cat_name }}</option>
                                                             @empty
                                                                 <option value="">No Room Category found</option>
                                                             @endforelse --}}
-                                                        </select>
-                                                        @if ($errors->has('roomCatId'))
-                                                            <span class="text-danger"> {{ $errors->first('roomCatId') }}</span>
-                                                        @endif
-                                                    </div>
-                                                    <div class="form-group col-md-2 col-12">
-                                                        <label for="price">Price</label>
-                                                        <input type="number" class="form-control" id="price" name="floorNo"
-                                                            value="{{ old('price') }}" placeholder="Enter Price">
-                                                        @if ($errors->has('price'))
-                                                            <span class="text-danger"> {{ $errors->first('price') }}</span>
-                                                        @endif
-                                                    </div>
-                                                    <div class="form-group col-md-2 col-12">
-                                                        <label for="price">Action</label>
-                                                        <a href="{{ route('test.create') }}" class="btn btn-light px-3 mb-3">Add Test</a>
-                                                        <a href="{{ route('test.create') }}" class="btn btn-light px-2 mb-3">Renove Test</a>
-                                                    </div>
-                                                    <hr>
+                                                    </select>
+                                                    @if ($errors->has('roomCatId'))
+                                                        <span class="text-danger"> {{ $errors->first('roomCatId') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group col-md-2 col-12">
+                                                    <label for="price">Price</label>
+                                                    <input type="number" class="form-control" id="price" name="floorNo"
+                                                        value="{{ old('price') }}" placeholder="Enter Price">
+                                                    @if ($errors->has('price'))
+                                                        <span class="text-danger"> {{ $errors->first('price') }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="form-group col-md-2 col-12">
+                                                    <label for="price">Action</label>
+                                                    <a href="{{ route('test.create') }}" class="btn btn-light px-3 mb-3">Add
+                                                        Test</a>
+                                                    <a href="{{ route('test.create') }}"
+                                                        class="btn btn-light px-2 mb-3">Renove Test</a>
+                                                </div>
+                                                <hr>
                                             </div>
                                             <div class="row justify-content-end">
                                                 <div class="form-group col-md-2 col-12 mx-5">
@@ -138,7 +142,7 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                                <div class="row justify-content-end">
+                                            <div class="row justify-content-end">
                                                 <div class="form-group col-md-2 col-12 mx-5">
                                                     <label for="price">Discount</label>
                                                     <input type="number" class="form-control" id="price" name="floorNo"
@@ -147,31 +151,31 @@
                                                         <span class="text-danger"> {{ $errors->first('price') }}</span>
                                                     @endif
                                                 </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group justify-content-end">
-                                        <button type="submit" class="btn btn-light px-3" onclick="printProfile()"><i
-                                                class="icon-lock"></i>
-                                            Print</button>
-                                    </div>
                                 </div>
-
-
-                                {{-- end of print container --}}
-                                
+                                <div class="form-group justify-content-end">
+                                    <button type="submit" class="btn btn-light px-3" onclick="printProfile()"><i
+                                            class="icon-lock"></i>
+                                        Print</button>
+                                </div>
                             </div>
+
+
+                            {{-- end of print container --}}
+
                         </div>
                     </div>
                 </div>
             </div>
-            <!--start overlay-->
-            <div class="overlay toggle-menu"></div>
-            <!--end overlay-->
-
         </div>
+        <!--start overlay-->
+        <div class="overlay toggle-menu"></div>
+        <!--end overlay-->
+
     </div>
+
     <!-- End container-fluid-->
 
     <!--Start Back To Top Button-->

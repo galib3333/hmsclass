@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\User; // custome
-use App\Models\Permission; // custome
 use Illuminate\Http\Request;
-use Session; // custome
+use Illuminate\Support\Facades\Session; // custome
 
 class checkAuth
 {

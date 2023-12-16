@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\User; //custom
 use Illuminate\Http\Request;
-use Illuminate\Http\ResponseTrait;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class isSuperadmin
 {
