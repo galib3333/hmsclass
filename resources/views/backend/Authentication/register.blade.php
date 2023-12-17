@@ -94,8 +94,6 @@
                     </div>
 
                     <button type="submit" class="btn btn-light btn-block waves-effect waves-light">Sign Up</button>
-                    <div class="text-center mt-3">Sign Up With</div>
-
                 </form>
             </div>
         </div>

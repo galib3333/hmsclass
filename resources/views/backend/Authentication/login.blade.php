@@ -61,7 +61,6 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-light btn-block">Sign In</button>
-                    <div class="text-center mt-3">Sign In With</div>
                 </form>
             </div>
         </div>
