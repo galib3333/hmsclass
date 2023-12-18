@@ -7,8 +7,6 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                {{-- <a href="{{ route('patients.create') }}" class="btn btn-light px-2 mb-3">Add Patient<i
-                        class="fa fa-plus px-2"></i></a> --}}
                 <h5 class="card-title">Appointment Request Table</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -42,7 +40,7 @@
                                         <a href="{{ route('patients.edit', encryptor('encrypt', $ar->id)) }}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('patients.edit', encryptor('encrypt', $ar->id)) }}">
+                                        <a href="{{ route('acceptRequest', encryptor('encrypt', $ar->id)) }}">
                                             <i class="fa-solid fa-check"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="$('#form{{ $ar->id }}').submit()">

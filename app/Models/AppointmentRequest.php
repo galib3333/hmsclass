@@ -15,6 +15,6 @@ class AppointmentRequest extends Model
     }
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
+        return $this->belongsTo(Doctor::class, 'doctor_id', 'employ_id');
     }
 }

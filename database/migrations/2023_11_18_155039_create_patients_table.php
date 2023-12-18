@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('patient_id');
+            $table->string('patient_id')->nullable();
             $table->string('name_en');
             $table->string('name_bn')->nullable();
             $table->string('email');
             $table->string('contact_no_en')->unique();
             $table->string('contact_no_bn')->unique()->nullable();
-            $table->text('present_address');
-            $table->text('permanent_address');
+            $table->text('present_address')->nullable();
+            $table->text('permanent_address')->nullable();
             $table->string('image')->nullable();
             $table->date('birth_date')->nullable();
-            $table->string('gender');
+            $table->string('gender')->nullable();
             $table->unsignedBigInteger('blood_id')->nullable();
             $table->foreign('blood_id')->references('id')->on('blood');
             $table->integer('status')->default(1);

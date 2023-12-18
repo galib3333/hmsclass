@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->string('gender');
+            $table->unsignedBigInteger('blood_id')->nullable();
             $table->text('details');
             $table->date('appdate');
             $table->integer('status')->default(1);

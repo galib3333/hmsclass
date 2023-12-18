@@ -40,7 +40,6 @@ class PatientController extends Controller
     {
         try {
             $patient = new Patient();
-            $patient->patient_id = $request->patientId;
             $patient->name_en = $request->patientNameEN;
             $patient->name_bn = $request->patientNameBN;
             $patient->email = $request->emailAddress;
@@ -62,6 +61,9 @@ class PatientController extends Controller
 
             $patient->created_by = currentUserId();
             if ($patient->save()) {
+                $patient->patient_id = 'PT-'.date('Ym').$patient->id;
+                $patient->save();
+
                 $this->notice::success('Successfully Saved Patient. Patient ID: ' . $patient->patient_id);
                 return redirect()->route('patients.index');
             } else {

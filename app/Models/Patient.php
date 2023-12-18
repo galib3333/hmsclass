@@ -31,18 +31,18 @@ class Patient extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        static::creating(function ($model) {
-            $model->patient_id = (string) Str::uuid();
-        });
+    //     static::creating(function ($model) {
+    //         $model->patient_id = (string) Str::uuid();
+    //     });
 
-        static::updating(function ($model) {
-            unset($model->patient_id);
-        });
-    }
+    //     static::updating(function ($model) {
+    //         unset($model->patient_id);
+    //     });
+    // }
 
     public function blood()
     {

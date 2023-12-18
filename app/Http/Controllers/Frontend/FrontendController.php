@@ -44,11 +44,6 @@ class FrontendController extends Controller
         }
     }
 
-    public function appRequest(){
-        $app = AppointmentRequest::get();
-        return view("backend.appReq.appReqIndex", compact('app'));
-    }
-
     public function appedit(string $id)
     {
         $app = AppointmentRequest::findOrFail(encryptor('decrypt', $id));

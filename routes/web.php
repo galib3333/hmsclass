@@ -27,6 +27,8 @@ use App\Http\Controllers\Frontend\ContactController as contact;
 use App\Http\Controllers\Backend\RoleController as role;
 use App\Http\Controllers\Backend\PermissionController as permission;
 use App\Http\Controllers\Backend\PrescriptionController as prescription;
+use App\Http\Controllers\Backend\AppointmentController as appointment;
+use App\Http\Controllers\Backend\PatientTestController as patienttest;
 
 // use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
@@ -69,13 +71,15 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('/invest', invest::class);
   Route::resource('/test', Test::class);
   Route::resource('/testDetail', testDetail::class);
+  Route::resource('/patienttest', patienttest::class);
   Route::resource('/birth', birth::class);
   Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
   Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
   Route::get('/testInvoice', [testDetail::class, 'testInvoice'])->name('testInvoice');
   Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
-  Route::get('/appointment/request', [frontend::class, 'appRequest'])->name('appRequest');
-  Route::delete('/appointment/destroy/{id}', [frontend::class, 'appdestroy'])->name('appdestroy');
+  Route::get('/appointment/request', [appointment::class, 'appRequest'])->name('appRequest');
+  Route::get('/appointment/accept/{id}', [appointment::class, 'acceptRequest'])->name('acceptRequest');
+  Route::delete('/appointment/destroy/{id}', [appointment::class, 'appdestroy'])->name('appdestroy');
 });
 
 

@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('test_details', function (Blueprint $table) {
+        Schema::create('patient_tests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('test_id')->nullable();
-            $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');
-            $table->unsignedBigInteger('inv_list_id')->nullable();
-            $table->foreign('inv_list_id')->references('id')->on('invest_lists')->onDelete('cascade');
+            $table->unsignedBigInteger('patient_id')->nullable();
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->double('sub_price');
+            $table->double('vat');
+            $table->double('discount');
+            $table->double('total_amount');
+            $table->double('paid');
+            $table->integer('admit_id')->nullable();
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('test_details');
+        Schema::dropIfExists('patient_tests');
     }
 };

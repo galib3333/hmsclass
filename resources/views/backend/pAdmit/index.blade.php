@@ -16,16 +16,9 @@
                                 <th scope="col">{{ __('#SL') }}</th>
                                 {{-- <th scope="col">{{ __('Image') }}</th> --}}
                                 <th scope="col">{{ __('Patient Name') }}</th>
-                                <th scope="col">{{ __("Father's Name") }}</th>
-                                <th scope="col">{{ __("Mother's Name") }}</th>
-                                <th scope="col">{{ __("Husband's Name") }}</th>
-                                <th scope="col">{{ __('Marital Status') }}</th>
                                 <th scope="col">{{ __("Doctor's Ref") }}</th>
-                                <th scope="col">{{ __('Problem') }}</th>
                                 <th scope="col">{{ __('Date of Admit') }}</th>
                                 <th scope="col">{{ __('Room Number') }}</th>
-                                <th scope="col">{{ __('Guardian') }}</th>
-                                <th scope="col">{{ __('Relation') }}</th>
                                 <th scope="col">{{ __("Patient's Condition") }}</th>
                                 <th scope="col">{{ __('Status') }}</th>
                                 <th class="white-space-nowrap">{{ __('Action') }}</th>
@@ -38,17 +31,10 @@
                                     {{-- <td><img width="50px" src="{{ asset('public/uploads/patients/' . $pa->image) }}"
                                             alt="">
                                     </td> --}}
-                                    <td>{{ $pa->patient?->name_en }}</td>
-                                    <td>{{ $pa->father_name }}</td>
-                                    <td>{{ $pa->mother_name }}</td>
-                                    <td>{{ $pa->husband_name }}</td>
-                                    <td>{{ $pa->marital_status }}</td>
+                                    <td>{{ $pa->patient?->name_en }} - {{ $pa->patient?->patient_id }}</td>
                                     <td>{{ $pa->doctor_ref }}</td>
-                                    <td>{{ $pa->problem }}</td>
                                     <td>{{ $pa->admit_date }}</td>
                                     <td>{{ $pa->roomList?->room_no }}</td>
-                                    <td>{{ $pa->guardian }}</td>
-                                    <td>{{ $pa->relation }}</td>
                                     <td>{{ $pa->condition }}</td>
                                     <td>{{ $pa->status == 1 ? 'Active' : 'Inactive' }}</td>
                                     <td class="white-space-nowrap">

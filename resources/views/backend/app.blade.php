@@ -209,7 +209,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('testInvoice') }}">
+                    <a href="{{ route('patienttest.index') }}">
                         <i class="fas fa-dna" aria-hidden="true"></i><span>Test Invoice</span>
                     </a>
                 </li>
@@ -394,6 +394,7 @@
     <script src="{{ asset('public/assets/js/app-script.js') }}"></script>
     <!-- Chart js -->
     <script src="{{ asset('public/assets/plugins/Chart.js/Chart.min.js') }}"></script>
+    @stack('scripts');
     <!-- Index js -->
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
