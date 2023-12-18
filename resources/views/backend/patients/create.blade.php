@@ -105,10 +105,12 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="">Select Status</option>
-                                            <option value="1" @if (old('status') == 1) selected @endif>Active
+                                            <option value="" @if (old('status') === null) selected @endif>Select
+                                                Status</option>
+                                            <option value="1" @if (old('status') == 1) selected @endif>
+                                                Active
                                             </option>
-                                            <option value="0" @if (old('status') == 0) selected @endif>
+                                            <option value="0" @if (old('status') == 0)  @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))

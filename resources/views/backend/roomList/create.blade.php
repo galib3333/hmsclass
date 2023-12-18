@@ -76,10 +76,11 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="">Select Status</option>
+                                            <option value="" @if (old('status') === null) selected @endif>Select
+                                                Status</option>
                                             <option value="1" @if (old('status') == 1) selected @endif>Active
                                             </option>
-                                            <option value="0" @if (old('status') == 0) selected @endif>
+                                            <option value="0" @if (old('status') == 0)  @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))
@@ -88,16 +89,16 @@
                                     </div>
                                 </div>
                             </div>
-                                <div class="form-group py-2 px-3">
-                                    <div class="icheck-material-white">
-                                        <input type="checkbox" id="user-checkbox1" checked="" />
-                                        <label for="user-checkbox1">I Agree with Terms & Conditions</label>
-                                    </div>
+                            <div class="form-group py-2 px-3">
+                                <div class="icheck-material-white">
+                                    <input type="checkbox" id="user-checkbox1" checked="" />
+                                    <label for="user-checkbox1">I Agree with Terms & Conditions</label>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>
-                                        Save</button>
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i>
+                                    Save</button>
+                            </div>
                         </form>
                     </div>
                 </div>

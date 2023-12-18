@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('pAdmit.index') }}" class="btn btn-light px-2 mb-3">Patient Admit List<i
-                            class="fa fa-list px-2"></i></a>
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Patient Admit Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('pAdmit.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('pAdmit.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
@@ -75,19 +75,16 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="doctorRef">Doctor's Ref<i
-                                            class="text-danger">*</i></label>
+                                    <label for="doctorRef">Doctor's Ref<i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="doctorRef" name="doctorRef"
-                                        value="{{ old('doctorRef') }}"
-                                        placeholder="Enter Doctor's Ref">
+                                        value="{{ old('doctorRef') }}" placeholder="Enter Doctor's Ref">
                                     @if ($errors->has('doctorRef'))
                                         <span class="text-danger"> {{ $errors->first('doctorRef') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
                                     <label for="problem">Problem</label>
-                                    <textarea type="text" class="form-control" id="problem" name="problem"
-                                        value="{{ old('problem') }}"
+                                    <textarea type="text" class="form-control" id="problem" name="problem" value="{{ old('problem') }}"
                                         placeholder="Enter Your Problem"></textarea>
                                     @if ($errors->has('problem'))
                                         <span class="text-danger"> {{ $errors->first('problem') }}</span>
@@ -96,8 +93,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="admitDate">Date of Admit</label>
                                     <input type="date" class="form-control" id="admitDate" name="admitDate"
-                                        value="{{ old('admitDate') }}"
-                                        placeholder="Enter Your Admit Date">
+                                        value="{{ old('admitDate') }}" placeholder="Enter Your Admit Date">
                                     @if ($errors->has('admitDate'))
                                         <span class="text-danger"> {{ $errors->first('admitDate') }}</span>
                                     @endif
@@ -105,8 +101,7 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="guardian">Guardian</label>
                                     <input type="text" class="form-control" id="guardian" name="guardian"
-                                        value="{{ old('guardian') }}"
-                                        placeholder="Enter Your Guardian's Name">
+                                        value="{{ old('guardian') }}" placeholder="Enter Your Guardian's Name">
                                     @if ($errors->has('guardian'))
                                         <span class="text-danger"> {{ $errors->first('guardian') }}</span>
                                     @endif
@@ -131,10 +126,13 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="">Select Status</option>
-                                            <option value="1" @if (old('status') == 1) selected @endif>Active
+                                            <option value="" @if (old('status') === null) selected @endif>
+                                                Select
+                                                Status</option>
+                                            <option value="1" @if (old('status') == 1) selected @endif>
+                                                Active
                                             </option>
-                                            <option value="0" @if (old('status') == 0) selected @endif>
+                                            <option value="0" @if (old('status') == 0)  @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))
@@ -145,19 +143,23 @@
                                 <div class="form-group col-md-6 col-12">
                                     <label for="maritalStatus">Marital Status: <i class="text-danger">*</i></label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="single" value="single" checked>
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="single" value="single" checked>
                                         <label class="form-check-label" for="single">Single</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="married" value="married">
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="married" value="married">
                                         <label class="form-check-label" for="married">Married</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="divorced" value="divorced">
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="divorced" value="divorced">
                                         <label class="form-check-label" for="divorced">Divorced</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="maritalStatus" id="widowed" value="widowed">
+                                        <input class="form-check-input" type="radio" name="maritalStatus"
+                                            id="widowed" value="widowed">
                                         <label class="form-check-label" for="widowed">Widowed</label>
                                     </div>
                                 </div>

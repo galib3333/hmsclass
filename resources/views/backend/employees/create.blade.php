@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('employees.index') }}" class="btn btn-light px-2 mb-3">Employee List<i
-                            class="fa fa-list px-2"></i></a>
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Employee Create Form</div>
                         <hr>
                         <form method="post" action="{{ route('employees.store') }}" enctype="multipart/form-data">
@@ -94,8 +94,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="presentAddress"> Present Address  <i
-                                        class="text-danger">*</i></label>
+                                    <label for="presentAddress"> Present Address <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="presentAddress" name="presentAddress"
                                         value="{{ old('presentAddress') }}" placeholder="Enter Your PresentAddress">
                                     @if ($errors->has('presentAddress'))
@@ -103,8 +102,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="permanentAddress"> Permanent Address  <i
-                                        class="text-danger">*</i></label>
+                                    <label for="permanentAddress"> Permanent Address <i class="text-danger">*</i></label>
                                     <input type="text" class="form-control" id="permanentAddress" name="permanentAddress"
                                         value="{{ old('permanentAddress') }}" placeholder="Enter Your Permanent Address">
                                     @if ($errors->has('permanentAddress'))
@@ -112,8 +110,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6 col-12">
-                                    <label for="birthDate">Birth Date  <i
-                                        class="text-danger">*</i></label>
+                                    <label for="birthDate">Birth Date <i class="text-danger">*</i></label>
                                     <input type="date" class="form-control" id="birthDate" name="birthDate"
                                         value="{{ old('birthDate') }}" placeholder="Enter Birth Date">
                                     @if ($errors->has('birthDate'))
@@ -124,10 +121,13 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option>Select Status</option>
-                                            <option value="1" @if (old('status') == 1) selected @endif>Active
+                                            <option value="" @if (old('status') === null) selected @endif>
+                                                Select
+                                                Status</option>
+                                            <option value="1" @if (old('status') == 1) selected @endif>
+                                                Active
                                             </option>
-                                            <option value="0" @if (old('status') == 0) selected @endif>
+                                            <option value="0" @if (old('status') == 0)  @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))
