@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\AppointmentRequest;
 use App\Models\Patient;
+use App\Models\EmployBasic;
 use App\Http\Requests\Frontend\Appointment\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 
@@ -17,7 +18,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $employee = EmployBasic::get();
+        $patient = Patient::get();
+        return view("backend.appReq.appAcceptList", compact('patient', 'employee'));
     }
 
     /**
