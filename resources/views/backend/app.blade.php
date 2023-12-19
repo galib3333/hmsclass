@@ -211,8 +211,8 @@
                 <!-- Dropdown Menu END-->
                 
                 <li>
-                    <a href="{{ route('patienttest.index') }}">
-                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Invoice</span>
+                    <a href="{{ route('patienttest.create') }}">
+                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Invoice Create</span>
                     </a>
                 </li>
                 <li>
