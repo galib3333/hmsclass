@@ -59,7 +59,7 @@
                                                                     <option value="{{ $rc->id }}">
                                                                         {{ $rc->invset_cat_name }}</option>
                                                                 @empty
-                                                                    <option value="">No Room Category found</option>
+                                                                    <option value="">No Investigation Category found</option>
                                                                 @endforelse
                                                             </select>
                                                         </div>
@@ -73,7 +73,7 @@
                                                                         value="{{ $rc->id }}">{{ $rc->invset_name }}
                                                                     </option>
                                                                 @empty
-                                                                    <option value="">No Room Category found</option>
+                                                                    <option value="">No Investigation found</option>
                                                                 @endforelse
                                                             </select>
                                                         </div>

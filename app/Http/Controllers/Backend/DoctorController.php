@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Doctor;
-use App\Models\Department;
-use App\Models\Designation;
-use App\Models\EmployBasic;
 use App\Http\Requests\Backend\Doctor\StoreDoctorRequest;
 use App\Http\Requests\Backend\Doctor\UpdateDoctorRequest;
+use App\Models\Department;
+use App\Models\Designation;
+use App\Models\Doctor;
+use App\Models\EmployBasic;
 use Exception;
 
 class DoctorController extends Controller
@@ -29,7 +29,7 @@ class DoctorController extends Controller
     {
         $department = Department::get();
         $designation = Designation::get();
-        $employee  = EmployBasic::where('role_id',2)->get();
+        $employee = EmployBasic::where('role_id', 2)->get();
         return view('backend.doctor.create', compact('department', 'designation', 'employee'));
     }
 
@@ -127,6 +127,26 @@ class DoctorController extends Controller
 
     public function doctorProfile()
     {
-        return view('backend.profiles.doctorProfile');
+        $doctorId = encryptor('decrypt', session('userId'));
+
+        // Fetch doctor's information from EmployBasic model
+        $doctor = EmployBasic::find($doctorId);
+        $employBasic = EmployBasic::find($doctor->employ_id);
+        $profileLabels = [
+            'Email Address', 'Department', 'Designation', 'Present Address',
+            'Permanent Address', 'Contact Number EN', 'Contact Number BN',
+            'Short Biography', 'Date Of Birth', 'Specialist', 'Gender',
+            'Blood Group', 'Education', 'Fees', 'Status'
+        ];
+
+        $profileData = [
+            $employBasic->email, $doctor->department->name_en, $doctor->designation->name_en,
+            $employBasic->present_address, $employBasic->permanent_address,
+            $employBasic->contact_no_en, $employBasic->contact_no_bn,
+            $doctor->biography, $employBasic->birth_date, $doctor->specialist,
+            $employBasic->gender, $employBasic->blood->name, $doctor->education,
+            $doctor->fees, $employBasic->status == 1 ? 'Active' : 'Inactive'
+        ];
+        return view('backend.profiles.doctorProfile', compact('doctor', 'profileData', 'profileLabels' ));
     }
 }

@@ -29,8 +29,7 @@
                     <div class="card-body border-top border-light">
                         <div class="media align-items-center">
                             <div>
-                                <img src="{{ asset('public/assets/images/d2.svg') }}" class="skill-img"
-                                    alt="skill img">
+                                <img src="{{ asset('public/assets/images/d2.svg') }}" class="skill-img" alt="skill img">
                             </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
@@ -43,8 +42,7 @@
                         </div>
                         <hr>
                         <div class="media align-items-center">
-                            <div><img src="{{ asset('public/assets/images/d4.svg') }}" class="skill-img"
-                                    alt="skill img">
+                            <div><img src="{{ asset('public/assets/images/d4.svg') }}" class="skill-img" alt="skill img">
                             </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
@@ -57,8 +55,7 @@
                         </div>
                         <hr>
                         <div class="media align-items-center">
-                            <div><img src="{{ asset('public/assets/images/d3.svg') }}" class="skill-img"
-                                    alt="skill img">
+                            <div><img src="{{ asset('public/assets/images/d3.svg') }}" class="skill-img" alt="skill img">
                             </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
@@ -71,8 +68,8 @@
                         </div>
                         <hr>
                         <div class="media align-items-center">
-                            <div><img src="{{ asset('public/assets/images/d5.svg') }}" class="skill-img"
-                                    alt="skill img"></div>
+                            <div><img src="{{ asset('public/assets/images/d5.svg') }}" class="skill-img" alt="skill img">
+                            </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
                                     <p>Surgical Oncology<span class="float-right">35%</span></p>
@@ -111,7 +108,10 @@
                                 <h5 class="mb-5">Doctor's Profile</h5>
                                 <div class="row">
                                     <div class="col-md-6 justify-content-end text-right">
-                                        <h6>Email Address</h6>
+                                        @foreach ($profileLabels as $label)
+                                            <h6>{{ ucfirst($label) }}</h6>
+                                        @endforeach
+                                        {{-- <h6>Email Address</h6>
                                         <h6>Department</h6>
                                         <h6>Designation</h6>
                                         <h6>Present Address</h6>
@@ -125,10 +125,13 @@
                                         <h6>Blood Group</h6>
                                         <h6>Education</h6>
                                         <h6>Fees</h6>
-                                        <h6>Status</h6>
+                                        <h6>Status</h6> --}}
                                     </div>
                                     <div class="col-md-6">
-                                        <h6>Email Address</h6>
+                                        @foreach ($profileData as $data)
+                                            <h6>{{ $data }}</h6>
+                                        @endforeach
+                                        {{-- <h6>Email Address</h6>
                                         <h6>Department</h6>
                                         <h6>Designation</h6>
                                         <h6>Present Address</h6>
@@ -142,7 +145,7 @@
                                         <h6>Blood Group</h6>
                                         <h6>Education</h6>
                                         <h6>Fees</h6>
-                                        <h6>Status</h6>
+                                        <h6>Status</h6> --}}
                                     </div>
                                 </div>
                                 <!--/row-->
