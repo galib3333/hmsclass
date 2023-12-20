@@ -145,13 +145,7 @@
                     <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
                         <li class="dropdown-item">
                             <a href="{{ route('doctor.index') }}">
-                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('doctorProfile') }}">
-                                <i class="fa fa-user"></i> <span>Doctor's Profile</span>
+                                <i class="fa fa-user-md"></i><span>Doctors</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>

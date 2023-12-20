@@ -22,8 +22,8 @@ class PatientTestController extends Controller
      */
     public function index()
     {
-        $testDetail = PatientTest::paginate(10);
-        return view('backend.patientstest.index', compact('testDetail'));
+        $patientstest = PatientTest::paginate(10);
+        return view('backend.patienttest.index', compact('patientstest'));
     }
 
     /**
@@ -34,7 +34,7 @@ class PatientTestController extends Controller
         $patient = Patient::get();
         $investList = InvestList::get();
         $InvestCat = InvestCat::get();
-        return view('backend.patientstest.create', compact('investList', 'InvestCat','patient'));
+        return view('backend.patienttest.create', compact('investList', 'InvestCat','patient'));
     }
 
     /**
@@ -80,7 +80,7 @@ class PatientTestController extends Controller
                     $payment->save();
                 }
                 $this->notice::success('Test Detail Successfully Added');
-                return redirect()->route('testDetail.index');
+                return redirect()->route('patienttest.index');
             } else {
                 $this->notice::error('Please try again');
                 return redirect()->back();
