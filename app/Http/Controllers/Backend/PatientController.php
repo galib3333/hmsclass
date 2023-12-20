@@ -40,6 +40,7 @@ class PatientController extends Controller
     {
         try {
             $patient = new Patient();
+            $patient->patient_id = $request->patientId;
             $patient->name_en = $request->patientNameEN;
             $patient->name_bn = $request->patientNameBN;
             $patient->email = $request->emailAddress;

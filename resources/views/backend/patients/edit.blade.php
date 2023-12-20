@@ -19,6 +19,7 @@
                             @method('PATCH')
                             <input type="hidden" name="uptoken" value="{{ encryptor('encrypt', $patient->id) }}">
                             <div class="row">
+                                <input type="hidden" name="patientId" value="{{ $patient->patient_id }}">
                                 <div class="form-group col-md-6 col-12">
                                     <label for="bloodId">Blood Group <i class="text-danger">*</i></label>
                                     <select class="form-control" name="bloodId" id="bloodId">
