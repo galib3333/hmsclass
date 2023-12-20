@@ -7,6 +7,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
+                <a href="{{ route('patienttest.create') }}" class="btn btn-light px-2 mb-3">Add Test<i
+                    class="fa fa-plus px-2"></i></a>
                 <h5 class="card-title">Test Detail</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">

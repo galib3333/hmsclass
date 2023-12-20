@@ -26,7 +26,7 @@
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{ $ar->patient?->name_en }}</td>
-                                    <td>{{ $ar->doctor?->employ?->name_en }}</td>
+                                    <td>{{ $ar->doctor->employ?->name_en }}</td>
                                     <td>{{ $ar->phone }}</td>
                                     <td>{{ $ar->appdate }}</td>
                                     <td>{{ $ar->department?->dep_name }}</td>

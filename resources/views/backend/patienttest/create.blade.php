@@ -15,6 +15,8 @@
                                         Invoice</span></a>
                             </li>
                         </ul>
+                        <a href="{{ route('patienttest.index') }}" class="btn btn-light px-2 mb-3 mt-3 mx-3">Test List<i
+                            class="fa fa-list px-2"></i></a>
                         <form action="{{ route('patienttest.store') }}" method="post">
                             @csrf
                             <div class="tab-content p-3">

@@ -19,8 +19,8 @@ class AppointmentController extends Controller
     public function index()
     {
         $employee = EmployBasic::get();
-        $patient = Patient::get();
-        return view("backend.appReq.appAcceptList", compact('patient', 'employee'));
+        $appointment = Appointment::get();
+        return view("backend.appReq.appAcceptList", compact('appointment', 'employee'));
     }
 
     /**
