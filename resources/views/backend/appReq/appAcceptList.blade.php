@@ -1,13 +1,13 @@
 @extends('backend.app')
 
-@section('title', trans("Appointment Request List"))
+@section('title', trans("Appointment Accept List"))
 
 @section('content')
     <!-- Hover table start -->
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Appointment Request Table</h5>
+                <h5 class="card-title">Appointment Accept Table</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -22,15 +22,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($app as $ar)
+                            @forelse($appointment as $ar)
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{ $ar->patient?->name_en }}</td>
-                                    <td>{{ $ar->doctor->employ?->name_en }}</td>
-                                    <td>{{ $ar->phone }}</td>
-                                    <td>{{ $ar->appdate }}</td>
-                                    <td>{{ $ar->department?->dep_name }}</td>
-                                    <td>{{ $ar->details }}</td>
+                                    <td>{{ $ar->employee?->name_en }}</td>
+                                    <td>{{ $ar->patient?->contact_no_en }}</td>
+                                    <td>{{ $ar->app_date }}</td>
+                                    <td>{{ $ar->serial }}</td>
+                                    <td>{{ $ar->problem }}</td>
                                 </tr>
                             @empty
                                 <tr>
