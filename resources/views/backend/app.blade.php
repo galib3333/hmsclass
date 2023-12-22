@@ -206,7 +206,7 @@
                 
                 <li>
                     <a href="{{ route('patienttest.create') }}">
-                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Invoice Create</span>
+                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Create</span>
                     </a>
                 </li>
                 <li>

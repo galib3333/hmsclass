@@ -48,7 +48,9 @@
                                     <td>{{ $e->blood?->blood_type_name }}</td>
                                     <td>{{ $e->role?->name }}</td>
 
-                                    <td>{{ $e->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $e->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $e->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
 
                                     {{-- <td>
                                         @if ($e->status == 1)

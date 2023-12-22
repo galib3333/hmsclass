@@ -35,7 +35,9 @@
                                     <td>{{ $r->description }}</td>
                                     <td>{{ $r->capacity }}</td>
                                     <td>{{ $r->price }}</td>
-                                    <td>{{ $r->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $r->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $r->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('roomList.edit', encryptor('encrypt', $r->id)) }}">
                                             <i class="fa fa-edit"></i>

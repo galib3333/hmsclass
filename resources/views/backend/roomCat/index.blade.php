@@ -31,7 +31,9 @@
                                             {{ __('Inactive') }}
                                         @endif
                                     </td> --}}
-                                    <td>{{ $rc->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $rc->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $rc->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('roomCat.edit', encryptor('encrypt', $rc->id)) }}">
                                             <i class="fa fa-edit"></i>

@@ -96,7 +96,7 @@ class PatientTestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TestDetail $testDetail)
+    public function show(PatientTest $testDetail)
     {
         //
     }
@@ -106,36 +106,15 @@ class PatientTestController extends Controller
      */
     public function edit($id)
     {
-        $testDetail = Test::findOrFail(encryptor('decrypt', $id));
-        $investList = InvestList::get();
-        $test = Test::get();
-        return view('backend.testDetail.edit', compact('investList','test'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestDetailRequest $request, TestDetail $testDetail)
+    public function update(UpdateTestDetailRequest $request, PatientTest $testDetail)
     {
-        try {
-            $testDetail = new testDetail();
-            $testDetail->test_id = $request->testId;
-            $testDetail->inv_list_id = $request->invIistId;
-            $testDetail->status = $request->status;
-            $testDetail->created_by = currentUserId();
-            if ($testDetail->save()) {
-                $this->notice::success('Test Detail Successfully Updated');
-                return redirect()->route('testDetail.index');
-            } else {
-                $this->notice::error('Please try again');
-                return redirect()->back();
-            }
-
-        } catch (Exception $e) {
-            dd($e);
-            $this->notice::error('Please try again');
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -143,9 +122,9 @@ class PatientTestController extends Controller
      */
     public function destroy($id)
     {
-        $testDetail = Test::findOrFail(encryptor('decrypt', $id));
-        if ($testDetail->delete()) {
-            $this->notice::error('Test Detail Deleted Permanently!');
+        $patientstest = PatientTest::findOrFail(encryptor('decrypt', $id));
+        if ($patientstest->delete()) {
+            $this->notice::error('Test Category Deleted Permanently!');
             return redirect()->back();
         }
     }

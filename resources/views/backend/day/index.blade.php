@@ -24,7 +24,9 @@
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{ $d->day_name }}</td>
-                                    <td>{{ $d->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $d->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $d->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('day.edit', encryptor('encrypt', $d->id)) }}">
                                             <i class="fa fa-edit"></i>

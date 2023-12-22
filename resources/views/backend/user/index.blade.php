@@ -34,15 +34,17 @@
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->contact_no_en }}</td>
                                     <td>{{ $u->role?->name }}</td>
-
+{{-- 
                                     <td>
                                         @if ($u->status == 1)
                                             {{ __('Active') }}
                                         @else
                                             {{ __('Inactive') }}
                                         @endif
+                                    </td> --}}
+                                    <td class="{{ $u->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $u->status == 1 ? 'Active' : 'Inactive' }}
                                     </td>
-                                    <!-- or <td>{{ $u->status == 1 ? 'Active' : 'Inactive' }}</td>-->
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('user.edit', encryptor('encrypt', $u->id)) }}">
                                             <i class="fa fa-edit"></i>

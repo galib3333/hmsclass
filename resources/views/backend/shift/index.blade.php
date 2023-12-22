@@ -28,7 +28,9 @@
                                     <td>{{ $s->s_name }}</td>
                                     <td>{{ $s->start }}</td>
                                     <td>{{ $s->end_time }}</td>
-                                    <td>{{ $s->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $s->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $s->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('shift.edit', encryptor('encrypt', $s->id)) }}">
                                             <i class="fa fa-edit"></i>

@@ -56,7 +56,9 @@
                                             {{ __('Inactive') }}
                                         @endif
                                     </td> --}}
-                                    <td>{{ $p->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $p->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $p->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('patients.edit', encryptor('encrypt', $p->id)) }}">
                                             <i class="fa fa-edit"></i>

@@ -35,7 +35,9 @@
                                     <td>{{ $doc->designation?->desig_name }}</td>
                                     <td>{{ $doc->employ->email }}</td>
                                     <td>{{ $doc->employ->contact_no_en }}</td>
-                                    <td>{{ $doc->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $doc->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $doc->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('doctor.edit', encryptor('encrypt', $doc->id)) }}">
                                             <i class="fa fa-edit"></i>

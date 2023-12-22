@@ -31,7 +31,9 @@
                                             {{ __('Inactive') }}
                                         @endif
                                     </td> --}}
-                                    <td>{{ $b->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $b->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $b->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('blood.edit', encryptor('encrypt', $b->id)) }}">
                                             <i class="fa fa-edit"></i>

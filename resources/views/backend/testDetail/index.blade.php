@@ -31,7 +31,9 @@
                                     <td>{{ $t->vat }}</td>
                                     <td>{{ $t->discount }}</td>
                                     <td>{{ $t->paid }}</td>
-                                    <td>{{ $t->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $t->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $t->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('test.edit', encryptor('encrypt', $t->id)) }}">
                                             <i class="fa fa-edit"></i>
