@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ route('roomCat.index') }}" class="btn btn-light px-2 mb-3">Room Category List<i
-                            class="fa fa-list px-2"></i></a>
+                                class="fa fa-list px-2"></i></a>
                         <div class="card-title">Room Category Create Form</div>
                         <hr>
-                        <form method="post" action="{{route('roomCat.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{ route('roomCat.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6 col-12">
@@ -29,10 +29,11 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select id="status" class="form-control" name="status">
-                                            <option value="">Select Status</option>
+                                            <option value="" @if (old('status') === null) selected @endif>Select
+                                                Status</option>
                                             <option value="1" @if (old('status') == 1) selected @endif>Active
                                             </option>
-                                            <option value="0" @if (old('status') == 0) selected @endif>
+                                            <option value="0" @if (old('status') == 0)  @endif>
                                                 Inactive</option>
                                         </select>
                                         @if ($errors->has('status'))

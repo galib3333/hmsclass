@@ -29,7 +29,9 @@
                                     <td>{{ $s->employee?->name_en }}</td>
                                     <td>{{ $s->day?->day_name }}</td>
                                     <td>{{ $s->shift?->s_name }}</td>
-                                    <td>{{ $s->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $s->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $s->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('schedule.edit', encryptor('encrypt', $s->id)) }}">
                                             <i class="fa fa-edit"></i>

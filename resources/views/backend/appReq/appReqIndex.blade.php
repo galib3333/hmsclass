@@ -35,12 +35,11 @@
                                     <td>{{ $ar->department?->dep_name }}</td>
                                     <td>{{ $ar->doctor?->employ?->name_en }}</td>
                                     <td>{{ $ar->details }}</td>
-                                    <td>{{ $ar->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $ar->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $ar->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{ route('patients.edit', encryptor('encrypt', $ar->id)) }}">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="{{ route('acceptRequest', encryptor('encrypt', $ar->id)) }}">
+                                        <a class="mx-2" href="{{ route('acceptRequest', encryptor('encrypt', $ar->id)) }}">
                                             <i class="fa-solid fa-check"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="$('#form{{ $ar->id }}').submit()">

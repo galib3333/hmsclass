@@ -33,7 +33,9 @@
                                             {{ __('Inactive') }}
                                         @endif
                                     </td> --}}
-                                    <td>{{ $des->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $des->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $des->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('designation.edit', encryptor('encrypt', $des->id)) }}">
                                             <i class="fa fa-edit"></i>

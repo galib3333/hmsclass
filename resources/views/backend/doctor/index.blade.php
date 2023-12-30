@@ -28,17 +28,22 @@
                             @forelse($doctor as $doc)
                                 <tr>
                                     <th scope="row">{{ ++$loop->index }}</th>
-                                    <td><img width="50px" src="{{ asset('public/uploads/employees/' . $doc->image) }}"
+                                    <td><img width="50px" src="{{ asset('public/uploads/employees/' . $doc->employ?->image) }}"
                                             alt=""></td>
                                     <td>{{ $doc->employ->name_en }}</td>
                                     <td>{{ $doc->department?->dep_name }}</td>
                                     <td>{{ $doc->designation?->desig_name }}</td>
                                     <td>{{ $doc->employ->email }}</td>
                                     <td>{{ $doc->employ->contact_no_en }}</td>
-                                    <td>{{ $doc->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $doc->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $doc->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('doctor.edit', encryptor('encrypt', $doc->id)) }}">
                                             <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('doctor.show', encryptor('encrypt', $doc->id)) }}">
+                                            <i class="fa fa-eye"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="$('#form{{ $doc->id }}').submit()">
                                             <i class="fa fa-trash"></i>

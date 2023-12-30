@@ -9,6 +9,7 @@ use App\Models\AppointmentRequest;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Blood;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Frontend\Appointment\StoreAppointmentRequest;
@@ -16,10 +17,12 @@ use App\Http\Requests\Frontend\Appointment\StoreAppointmentRequest;
 
 class FrontendController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $department = Department::get();
-        $doctor = Doctor::get(); 
-        return view("frontend.home", compact('department', 'doctor'));
+        $doctor = Doctor::get();
+        $blood = Blood::get();
+        return view("frontend.home", compact('department', 'doctor', 'blood'));
     }
 
     public function appStore(StoreAppointmentRequest $request)
@@ -33,6 +36,8 @@ class FrontendController extends Controller
             $data->department_id = $request->department_id;
             $data->doctor_id = $request->doctor_id;
             $data->details = $request->details;
+            $data->gender = $request->gender;
+            $data->blood_id = $request->bloodId;
             if ($data->save()) {
                 $this->notice::success('We have got your request. We will contact you as soon as possible.');
                 return redirect()->route('home');

@@ -15,7 +15,6 @@ use App\Http\Controllers\Backend\DayController as day;
 use App\Http\Controllers\Backend\ScheduleController as schedule;
 use App\Http\Controllers\Backend\InvestCatController as investCat;
 use App\Http\Controllers\Backend\BirthController as birth;
-use App\Http\Controllers\Backend\TestController as test;
 use App\Http\Controllers\Backend\TestDetailController as testDetail;
 use App\Http\Controllers\Backend\PatientAdmitController as patientAdmit;
 use App\Http\Controllers\Backend\EmployBasicController as employee;
@@ -43,56 +42,50 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
  */
-Route::get('/register', [auth::class, 'signUpForm'])->name('register');
-Route::post('/register', [auth::class, 'signUpStore'])->name('register.store');
-Route::get('/login', [auth::class, 'signInForm'])->name('login');
-Route::post('/login', [auth::class, 'signInCheck'])->name('login.check');
-Route::get('/logout', [auth::class, 'signOut'])->name('logOut');
-
+Route::get('register', [auth::class, 'signUpForm'])->name('register');
+Route::post('register', [auth::class, 'signUpStore'])->name('register.store');
+Route::get('login', [auth::class, 'signInForm'])->name('login');
+Route::post('login', [auth::class, 'signInCheck'])->name('login.check');
+Route::get('logout', [auth::class, 'signOut'])->name('logOut');
 Route::middleware(['checkrole'])->prefix('admin')->group(function () {
   Route::resource('user', user::class);
   Route::resource('role', role::class);
   Route::get('permission/{role}', [permission::class, 'index'])->name('permission.list');
   Route::post('permission/{role}', [permission::class, 'save'])->name('permission.save');
-  Route::resource('/patients', patient::class);
-  Route::resource('/user', user::class);
-  Route::resource('/employees', employee::class);
-  Route::resource('/blood', blood::class);
-  Route::resource('/department', department::class);
-  Route::resource('/designation', designation::class);
-  Route::resource('/doctor', doctor::class);
-  Route::resource('/roomCat', roomCat::class);
-  Route::resource('/roomList', roomList::class);
-  Route::resource('/pAdmit', patientAdmit::class);
-  Route::resource('/shift', shift::class);
-  Route::resource('/day', day::class);
-  Route::resource('/schedule', schedule::class);
-  Route::resource('/investCat', investCat::class);
-  Route::resource('/invest', invest::class);
-  Route::resource('/test', Test::class);
-  Route::resource('/testDetail', testDetail::class);
-  Route::resource('/patienttest', patienttest::class);
-  Route::resource('/birth', birth::class);
-  Route::get('/userProfile', [auth::class, 'userProfile'])->name('userProfile');
-  Route::get('/doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
-  Route::get('/testInvoice', [testDetail::class, 'testInvoice'])->name('testInvoice');
-  Route::get('/prescription', [prescription::class, 'prescription'])->name('prescription');
-  Route::get('/appointment/request', [appointment::class, 'appRequest'])->name('appRequest');
-  Route::get('/appointment/accept/{id}', [appointment::class, 'acceptRequest'])->name('acceptRequest');
-  Route::delete('/appointment/destroy/{id}', [appointment::class, 'appdestroy'])->name('appdestroy');
+  Route::resource('patients', patient::class);
+  Route::resource('user', user::class);
+  Route::resource('employees', employee::class);
+  Route::resource('blood', blood::class);
+  Route::resource('department', department::class);
+  Route::resource('designation', designation::class);
+  Route::resource('doctor', doctor::class);
+  Route::resource('roomCat', roomCat::class);
+  Route::resource('roomList', roomList::class);
+  Route::resource('pAdmit', patientAdmit::class);
+  Route::resource('shift', shift::class);
+  Route::resource('day', day::class);
+  Route::resource('schedule', schedule::class);
+  Route::resource('investCat', investCat::class);
+  Route::resource('invest', invest::class);
+  Route::resource('testDetail', testDetail::class);
+  Route::resource('patienttest', patienttest::class);
+  Route::resource('birth', birth::class);
+  Route::get('userProfile', [auth::class, 'userProfile'])->name('userProfile');
+  Route::get('doctorProfile', [doctor::class, 'doctorProfile'])->name('doctorProfile');
+  Route::get('prescription', [prescription::class, 'prescription'])->name('prescription');
+  Route::get('appointment/request', [appointment::class, 'appRequest'])->name('appRequest');
+  Route::get('appointment/accepted', [appointment::class, 'index'])->name('appAccepted');
+  Route::get('appointment/accept/{id}', [appointment::class, 'acceptRequest'])->name('acceptRequest');
+  Route::delete('appointment/destroy/{id}', [appointment::class, 'appdestroy'])->name('appdestroy');
 });
-
-
 Route::middleware(['checkauth'])->prefix('admin')->group(function () {
-  Route::get('/dashboard', [backend::class, 'index'])->name('dashboard');
+  Route::get('dashboard', [backend::class, 'index'])->name('dashboard');
 });
-
-
 Route::get('/', [frontend::class, 'index'])->name('home');
-Route::get('/about', [about::class, 'index'])->name('about');
-Route::get('/blog', [blog::class, 'index'])->name('blog');
-Route::get('/contact', [contact::class, 'index'])->name('contact');
-Route::post('/appointment/create', [frontend::class, 'appStore'])->name('appStore');
+Route::get('about', [about::class, 'index'])->name('about');
+Route::get('blog', [blog::class, 'index'])->name('blog');
+Route::get('contact', [contact::class, 'index'])->name('contact');
+Route::post('appointment/create', [frontend::class, 'appStore'])->name('appStore');
 
 // Route::get('/dashboard', function () {
 //     return view('welcome');

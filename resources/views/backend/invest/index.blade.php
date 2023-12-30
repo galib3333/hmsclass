@@ -31,7 +31,9 @@
                                     <td>{{ $i->invset_name }}</td>
                                     <td>{{ $i->description }}</td>
                                     <td>{{ $i->price }}</td>
-                                    <td>{{ $i->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $i->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $i->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('invest.edit', encryptor('encrypt', $i->id)) }}">
                                             <i class="fa fa-edit"></i>

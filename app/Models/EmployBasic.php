@@ -27,4 +27,9 @@ class EmployBasic extends Model
     {
         return $this->hasMany(Doctor::class, 'employ_id');
     }
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'employ_id');
+    }
+
 }

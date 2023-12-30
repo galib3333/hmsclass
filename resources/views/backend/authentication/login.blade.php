@@ -52,7 +52,7 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <div class="icheck-material-white">
-                                <input type="checkbox" id="user-checkbox" checked="" />
+                                <input type="checkbox" id="user-checkbox" checked=""/>
                                 <label for="user-checkbox">Remember me</label>
                             </div>
                         </div>

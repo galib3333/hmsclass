@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 05:15 AM
+-- Generation Time: Dec 20, 2023 at 08:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,6 +43,43 @@ CREATE TABLE `appointments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `patient_id`, `employ_id`, `app_date`, `serial`, `problem`, `approve`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 8, '2023-12-14', '1', 'dfdfgdfgdg', 1, 0, 6, NULL, NULL, '2023-12-18 22:05:28', '2023-12-18 22:05:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment_requests`
+--
+
+CREATE TABLE `appointment_requests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `department_id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `blood_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `details` text NOT NULL,
+  `appdate` date NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `appointment_requests`
+--
+
+INSERT INTO `appointment_requests` (`id`, `department_id`, `doctor_id`, `name`, `email`, `phone`, `gender`, `blood_id`, `details`, `appdate`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 8, 'Abdur Rahim', 'ar@gmail.com', '01837898557', 'Male', 2, 'dfdfgdfgdg', '2023-12-14', 2, '2023-12-18 22:02:31', '2023-12-18 22:05:28'),
+(2, 1, 8, 'f', 'ashkaiser@gmail.com', '0183757557', 'Male', 2, 'fg', '2023-12-22', 1, '2023-12-19 01:17:10', '2023-12-19 01:17:10');
+
 -- --------------------------------------------------------
 
 --
@@ -64,13 +101,6 @@ CREATE TABLE `births` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `births`
---
-
-INSERT INTO `births` (`id`, `patient_id`, `title`, `birth_date`, `gender`, `description`, `doc_ref`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 5, 'dsfsdfsdf', '2023-12-12', 0, 'dsfsdf', 'sfsadf', 1, 2, NULL, '2023-12-09 00:50:21', '2023-12-09 00:47:07', '2023-12-09 00:50:21');
 
 -- --------------------------------------------------------
 
@@ -94,15 +124,12 @@ CREATE TABLE `blood` (
 --
 
 INSERT INTO `blood` (`id`, `blood_type_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'A+', 1, NULL, NULL, NULL, '2023-11-22 23:00:56', '2023-11-22 23:00:56'),
-(2, 'A-', 1, NULL, NULL, NULL, '2023-11-22 23:01:02', '2023-11-22 23:01:02'),
-(3, 'B+', 1, NULL, NULL, NULL, '2023-11-25 22:39:58', '2023-11-25 22:39:58'),
-(4, 'B-', 1, NULL, NULL, NULL, '2023-11-25 22:40:05', '2023-11-25 22:40:05'),
-(5, 'AB+', 1, NULL, NULL, NULL, '2023-11-25 22:40:13', '2023-11-25 22:40:13'),
-(6, 'AB-', 1, NULL, NULL, NULL, '2023-11-25 22:40:19', '2023-11-25 22:40:19'),
-(7, 'dgdfgdfg', 1, 2, NULL, '2023-12-01 23:32:18', '2023-12-01 23:31:06', '2023-12-01 23:32:18'),
-(8, 'dfgdgf', 1, 2, NULL, '2023-12-01 23:32:16', '2023-12-01 23:32:09', '2023-12-01 23:32:16'),
-(9, 'adssadads', 1, 2, NULL, '2023-12-01 23:34:06', '2023-12-01 23:34:02', '2023-12-01 23:34:06');
+(1, 'A+', 1, 1, NULL, NULL, '2023-12-18 21:12:11', '2023-12-18 21:12:11'),
+(2, 'A-', 1, 1, NULL, NULL, '2023-12-18 21:12:17', '2023-12-18 21:12:17'),
+(3, 'B+', 1, 1, NULL, NULL, '2023-12-18 21:12:23', '2023-12-18 21:12:23'),
+(4, 'B-', 1, 1, NULL, NULL, '2023-12-18 21:12:31', '2023-12-18 21:12:31'),
+(5, 'AB+', 1, 1, NULL, NULL, '2023-12-18 21:12:38', '2023-12-18 21:12:38'),
+(6, 'AB-', 1, 1, NULL, NULL, '2023-12-18 21:12:44', '2023-12-18 21:12:44');
 
 -- --------------------------------------------------------
 
@@ -120,16 +147,6 @@ CREATE TABLE `days` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `days`
---
-
-INSERT INTO `days` (`id`, `day_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'ttttt', 1, 2, 2, '2023-12-01 23:41:17', '2023-12-01 23:40:39', '2023-12-01 23:41:17'),
-(2, 'Sunday', 1, 2, 2, NULL, '2023-12-01 23:41:26', '2023-12-03 00:54:41'),
-(3, 'Monday', 1, 2, 2, NULL, '2023-12-01 23:58:03', '2023-12-03 00:54:50'),
-(4, 'Tuesday', 1, 2, 2, NULL, '2023-12-02 00:09:52', '2023-12-03 00:55:17');
 
 -- --------------------------------------------------------
 
@@ -174,11 +191,11 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `dep_name`, `dep_des`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Internal Medicine', 'sdfsdfsdf', 1, 2, NULL, NULL, '2023-11-26 22:26:55', '2023-12-03 00:29:38'),
-(2, 'ffffffffffffff', 'gdfgdfg', 0, 2, NULL, '2023-11-26 22:32:21', '2023-11-26 22:27:30', '2023-11-26 22:32:21'),
-(3, 'Surgery', 'hhhhhhhhhhhhh', 0, 2, NULL, NULL, '2023-11-27 00:10:13', '2023-12-03 00:29:52'),
-(4, 'Pediatrics', 'fghfgh', 1, 2, NULL, NULL, '2023-11-27 00:50:13', '2023-12-03 00:30:09'),
-(5, 'Obstetrics and Gynecology', 'yrtyrty', 1, 2, NULL, NULL, '2023-11-27 00:51:08', '2023-12-03 00:30:27');
+(1, 'Cardiology', 'sdfsfdsf', 1, 6, NULL, NULL, '2023-12-18 21:39:06', '2023-12-18 21:39:06'),
+(2, 'Orthopedics', 'sdfsfdf', 1, 6, NULL, NULL, '2023-12-18 21:39:20', '2023-12-18 21:39:20'),
+(3, 'Gynecology', 'sfsfd', 1, 6, NULL, NULL, '2023-12-18 21:39:35', '2023-12-18 21:39:35'),
+(4, 'Pediatrics', 'sdfsfd', 1, 6, NULL, NULL, '2023-12-18 21:39:50', '2023-12-18 21:39:50'),
+(5, 'Neurology', 'sfsf', 1, 6, NULL, NULL, '2023-12-18 21:40:04', '2023-12-18 21:40:04');
 
 -- --------------------------------------------------------
 
@@ -203,10 +220,11 @@ CREATE TABLE `designations` (
 --
 
 INSERT INTO `designations` (`id`, `desig_name`, `desig_des`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Cardiologist', 'fghfgh', 1, 2, NULL, NULL, '2023-11-27 00:02:45', '2023-12-03 00:31:07'),
-(2, 'General Surgeon', 'hghghgh', 1, 2, NULL, NULL, '2023-11-27 00:06:38', '2023-12-03 00:31:29'),
-(3, 'Pediatrician', 'gggggggggggg', 1, 2, NULL, NULL, '2023-11-27 00:09:18', '2023-12-03 00:31:44'),
-(4, 'Anesthesiologist', 'dsfsdfsfd', 1, 2, NULL, NULL, '2023-12-03 00:32:07', '2023-12-03 00:32:07');
+(1, 'Cardiologist', 'sfsfd', 1, 6, NULL, NULL, '2023-12-18 21:40:24', '2023-12-18 21:40:24'),
+(2, 'Orthopedic Surgeon', 'sfsfd', 1, 6, NULL, NULL, '2023-12-18 21:40:40', '2023-12-18 21:40:40'),
+(3, 'Gynecologist', 'sdfsdfsdf', 1, 6, NULL, NULL, '2023-12-18 21:40:53', '2023-12-18 21:40:53'),
+(4, 'Pediatrician', 'sdfsfd', 1, 6, NULL, NULL, '2023-12-18 21:41:11', '2023-12-18 21:41:11'),
+(5, 'Neurologist', 'sdfsfd', 1, 6, NULL, NULL, '2023-12-18 21:41:24', '2023-12-18 21:41:24');
 
 -- --------------------------------------------------------
 
@@ -230,6 +248,15 @@ CREATE TABLE `doctors` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `employ_id`, `designation_id`, `department_id`, `biography`, `specialist`, `education`, `fees`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 7, 3, 3, 'dsfsfd', 'Women\'s Reproductive Health', 'sdfsfsf', 2000, 1, 6, NULL, NULL, '2023-12-18 21:42:13', '2023-12-18 21:42:13'),
+(2, 6, 4, 4, 'sdfsdfsfd', 'Child Health', 'sfdsfd', 800, 1, 6, NULL, NULL, '2023-12-18 21:42:50', '2023-12-18 21:42:50'),
+(3, 8, 1, 1, 'dsfsdf', 'Heart and Cardiovascular System', 'sdfsdf', 2000, 1, 6, 6, NULL, '2023-12-18 22:01:30', '2023-12-20 00:54:56');
 
 -- --------------------------------------------------------
 
@@ -264,12 +291,10 @@ CREATE TABLE `employ_basics` (
 --
 
 INSERT INTO `employ_basics` (`id`, `role_id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `gender`, `birth_date`, `blood_id`, `image`, `present_address`, `permanent_address`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(6, 1, 'Asadullah Al Galib', NULL, 'galib@gmail.com', '018375755799', NULL, 'Male', '2023-11-15', 1, '7191701059484.jpg', 'sdfsdfsdf', 'sdfsdfsdf', 1, NULL, 2, NULL, '2023-11-23 00:42:44', '2023-11-26 23:05:47'),
-(8, 2, 'arabi hamid', 'arabi hamid', 'ashkaiser@gmail.com', '018375755766', NULL, 'Male', '2023-11-23', 1, '4081701059505.jpg', 'ctg', 'dfxgdfgdfg', 1, NULL, 2, '0000-00-00 00:00:00', '2023-11-25 21:20:55', '2023-11-26 23:05:32'),
-(9, 3, 'Kamal Uddin', NULL, 'k@gmail.com', '12569', NULL, 'Male', '1999-11-23', 5, '7341701146353.jpg', 'dfdfdf', 'dfdfdf', 1, 2, 2, NULL, '2023-11-27 22:39:13', '2023-11-27 22:39:45'),
-(10, 2, 'Joshim Uddin', NULL, 'j@gmail.com', '25865', NULL, 'Male', '1999-11-23', 6, '3681701146701.jpg', 'dfgdfgdf', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-11-27 22:45:01', '2023-11-28 22:40:51'),
-(11, 2, 'Farabi', NULL, 'f@gmail.com', '01458795687', NULL, 'Male', '2023-11-11', 1, '1911701146852.jpg', 'dfgdfgdg', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-11-27 22:47:32', '2023-11-29 21:32:08'),
-(12, 2, 'Farin', NULL, 'h@gmail.com', '1444444', NULL, 'Male', '2023-12-21', 3, '1921701580482.jpg', 'dfgdfgdfg', 'dfgdfgdfg', 1, 2, 2, NULL, '2023-12-02 23:14:42', '2023-12-03 00:28:11');
+(5, 1, 'Asadullah Al Galib', NULL, 'galib@gmail.com', '01533307176', NULL, 'Male', '1997-12-14', 3, '8591702956229.jpg', '2no Gate', '2no Gate', 1, 1, 6, NULL, '2023-12-18 21:23:49', '2023-12-18 21:31:25'),
+(6, 2, 'Kamal Uddin', NULL, 'k@gmail.com', '464654', NULL, 'Male', '1991-12-13', 2, '3541702956664.jpg', 'dssdf', 'sdfsdf', 1, 6, NULL, NULL, '2023-12-18 21:31:04', '2023-12-18 21:31:04'),
+(7, 2, 'Farjana Hamid', NULL, 'f@gmail.com', '018378957', NULL, 'Female', '1998-12-15', 3, '1691702956781.jpg', 'ctg', 'sfsdf', 1, 6, 6, NULL, '2023-12-18 21:33:01', '2023-12-18 21:35:15'),
+(8, 2, 'Noman Uddin', NULL, 'n@gmail.com', '54454', NULL, 'Male', '2023-12-14', 5, '2251702958454.jpg', 'vcxv', 'xvcxcv', 1, 6, NULL, NULL, '2023-12-18 22:00:54', '2023-12-18 22:00:54');
 
 -- --------------------------------------------------------
 
@@ -293,9 +318,14 @@ CREATE TABLE `invest_cats` (
 --
 
 INSERT INTO `invest_cats` (`id`, `invset_cat_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Blood Test', 1, 2, NULL, NULL, NULL, '2023-12-05 23:08:59'),
-(2, 'X-ray', 1, 2, NULL, NULL, '2023-12-04 00:40:04', '2023-12-05 23:09:33'),
-(3, 'MRI', 1, 2, NULL, NULL, '2023-12-05 23:09:54', '2023-12-05 23:09:54');
+(1, 'Blood Tests', 1, 6, NULL, NULL, '2023-12-19 21:19:17', '2023-12-19 21:19:17'),
+(2, 'Imaging', 1, 6, NULL, NULL, '2023-12-19 21:19:28', '2023-12-19 21:19:28'),
+(3, 'Cardiology', 1, 6, NULL, NULL, '2023-12-19 21:19:38', '2023-12-19 21:19:38'),
+(4, 'Neurology', 1, 6, NULL, NULL, '2023-12-19 21:19:48', '2023-12-19 21:19:48'),
+(5, 'Gastroenterology', 1, 6, NULL, NULL, '2023-12-19 21:19:57', '2023-12-19 21:19:57'),
+(6, 'Endocrinology', 1, 6, NULL, NULL, '2023-12-19 21:20:06', '2023-12-19 21:20:06'),
+(7, 'Pathology', 1, 6, NULL, NULL, '2023-12-19 21:20:18', '2023-12-19 21:20:18'),
+(8, 'Pulmonology', 1, 6, NULL, NULL, '2023-12-19 21:20:29', '2023-12-19 21:20:29');
 
 -- --------------------------------------------------------
 
@@ -322,10 +352,14 @@ CREATE TABLE `invest_lists` (
 --
 
 INSERT INTO `invest_lists` (`id`, `inv_cat_id`, `invset_name`, `description`, `price`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'vvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvv', 88888888888888, 1, 2, 2, '2023-12-04 01:24:48', '2023-12-04 01:20:17', '2023-12-04 01:24:48'),
-(2, 1, 'Hematology Profits Portfolio', 'dfgdfgdfg', 55556, 1, 2, 2, NULL, '2023-12-04 01:24:43', '2023-12-05 23:14:33'),
-(3, 1, 'Serology Securities', 'dgfgfgh', 100000, 1, 2, NULL, NULL, '2023-12-05 23:14:58', '2023-12-05 23:14:58'),
-(4, 2, 'Radiology Returns', 'gjghjghj', 200000, 1, 2, NULL, NULL, '2023-12-05 23:15:26', '2023-12-05 23:15:26');
+(1, 1, 'Complete Blood Count (CBC)', 'sdfsf', 250, 1, 6, NULL, NULL, '2023-12-19 21:21:40', '2023-12-19 21:21:40'),
+(2, 1, 'Blood Glucose Test', 'ghfghfg', 300, 1, 6, NULL, NULL, '2023-12-19 21:22:00', '2023-12-19 21:22:00'),
+(3, 1, 'Blood Type and Rh Factor', 'gfhfhg', 100, 1, 6, NULL, NULL, '2023-12-19 21:22:23', '2023-12-19 21:22:23'),
+(4, 2, 'X-ray', 'fhfh', 1000, 1, 6, NULL, NULL, '2023-12-19 21:22:57', '2023-12-19 21:22:57'),
+(5, 2, 'Magnetic Resonance Imaging (MRI)', 'ghfhg', 3000, 1, 6, NULL, NULL, '2023-12-19 21:23:21', '2023-12-19 21:23:21'),
+(6, 2, 'Ultrasound', 'fghfghfh', 5000, 1, 6, NULL, NULL, '2023-12-19 21:23:52', '2023-12-19 21:23:52'),
+(7, 3, 'Echocardiogram', 'fhfh', 20000, 1, 6, NULL, NULL, '2023-12-19 21:24:26', '2023-12-19 21:24:26'),
+(8, 4, 'Magnetic Resonance Imaging (MRI) of the Brain', 'fghfh', 200000, 1, 6, NULL, NULL, '2023-12-19 21:24:57', '2023-12-19 21:24:57');
 
 -- --------------------------------------------------------
 
@@ -344,35 +378,39 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(59, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(60, '2023_11_11_115941_blood_table', 1),
-(61, '2023_11_11_115942_create_roles_table', 1),
-(62, '2023_11_11_115943_create_employ_basics_table', 1),
-(64, '2023_11_12_043129_create_permissions_table', 1),
-(65, '2023_11_18_154907_create_departments_table', 1),
-(66, '2023_11_18_154908_create_designations_table', 1),
-(68, '2023_11_18_155037_create_room_cats_table', 1),
-(69, '2023_11_18_155038_create_room_lists_table', 1),
-(70, '2023_11_18_155039_create_patients_table', 1),
-(71, '2023_11_20_040120_create_appointments_table', 1),
-(72, '2023_11_20_040648_create_patient_admits_table', 1),
-(73, '2023_11_20_041304_create_invest_cats_table', 1),
-(74, '2023_11_20_041342_create_invest_lists_table', 1),
-(75, '2023_11_20_042341_create_tests_table', 1),
-(76, '2023_11_20_042342_create_test_details_table', 1),
-(77, '2023_11_20_042707_create_prescriptions_table', 1),
-(78, '2023_11_20_042730_create_prescription_medis_table', 1),
-(79, '2023_11_20_042958_create_shifts_table', 1),
-(80, '2023_11_20_043042_days_table', 1),
-(81, '2023_11_20_043043_create_schedules_table', 1),
-(82, '2023_11_20_043233_create_births_table', 1),
-(83, '2023_11_20_043249_create_deaths_table', 1),
-(84, '2023_11_20_043323_create_operations_table', 1),
-(88, '2023_11_11_115944_create_users_table', 2),
-(89, '2023_11_18_154909_create_doctors_table', 3),
-(90, '2023_11_20_043619_patient_prescribe_table', 4),
-(91, '2023_11_20_043721_patient_medi_cat_table', 4),
-(92, '2023_11_20_043722_patient_prescribe_medi_table', 4);
+(1, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(2, '2023_11_11_115941_blood_table', 1),
+(3, '2023_11_11_115942_create_roles_table', 1),
+(4, '2023_11_11_115943_create_employ_basics_table', 1),
+(5, '2023_11_11_115944_create_users_table', 1),
+(6, '2023_11_12_043129_create_permissions_table', 1),
+(7, '2023_11_18_154907_create_departments_table', 1),
+(8, '2023_11_18_154908_create_designations_table', 1),
+(9, '2023_11_18_154909_create_doctors_table', 1),
+(10, '2023_11_18_155037_create_room_cats_table', 1),
+(11, '2023_11_18_155038_create_room_lists_table', 1),
+(12, '2023_11_18_155039_create_patients_table', 1),
+(13, '2023_11_20_040120_create_appointments_table', 1),
+(15, '2023_11_20_041304_create_invest_cats_table', 1),
+(16, '2023_11_20_041342_create_invest_lists_table', 1),
+(17, '2023_11_20_042341_create_patient_tests_table', 1),
+(18, '2023_11_20_042342_create_patient_test_details_table', 1),
+(19, '2023_11_20_042707_create_prescriptions_table', 1),
+(20, '2023_11_20_042730_create_prescription_medis_table', 1),
+(21, '2023_11_20_042958_create_shifts_table', 1),
+(22, '2023_11_20_043042_days_table', 1),
+(23, '2023_11_20_043043_create_schedules_table', 1),
+(24, '2023_11_20_043233_create_births_table', 1),
+(25, '2023_11_20_043249_create_deaths_table', 1),
+(26, '2023_11_20_043323_create_operations_table', 1),
+(27, '2023_11_20_043619_patient_prescribe_table', 1),
+(28, '2023_11_20_043721_patient_medi_cat_table', 1),
+(29, '2023_11_20_043722_patient_prescribe_medi_table', 1),
+(30, '2023_12_10_061842_create_appointment_requests_table', 1),
+(31, '2023_12_11_140022_create_patient_bills_table', 1),
+(32, '2023_12_11_140154_create_patient_bill_details_table', 1),
+(33, '2023_12_11_140224_create_patient_payments_table', 1),
+(34, '2023_11_20_040648_create_patient_admits_table', 2);
 
 -- --------------------------------------------------------
 
@@ -403,17 +441,17 @@ CREATE TABLE `operations` (
 
 CREATE TABLE `patients` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `patient_id` varchar(255) NOT NULL,
+  `patient_id` varchar(255) DEFAULT NULL,
   `name_en` varchar(255) NOT NULL,
   `name_bn` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `contact_no_en` varchar(255) NOT NULL,
   `contact_no_bn` varchar(255) DEFAULT NULL,
-  `present_address` text NOT NULL,
-  `permanent_address` text NOT NULL,
+  `present_address` text DEFAULT NULL,
+  `permanent_address` text DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
-  `gender` varchar(255) NOT NULL,
+  `gender` varchar(255) DEFAULT NULL,
   `blood_id` bigint(20) UNSIGNED DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_by` int(11) DEFAULT NULL,
@@ -428,11 +466,7 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `patient_id`, `name_en`, `name_bn`, `email`, `contact_no_en`, `contact_no_bn`, `present_address`, `permanent_address`, `image`, `birth_date`, `gender`, `blood_id`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, '09e7733a-e3df-4aef-a2ec-bdc6ab801add', 'Kamal', NULL, 'kamal@gmail.com', '556454', NULL, 'zxczxczcx', 'zczczxc', '5931701056459.jpg', '2023-11-15', 'Male', 1, 1, NULL, 2, NULL, '2023-11-25 21:53:52', '2023-12-03 00:33:09'),
-(2, '9ab3d3db-e872-4f7a-98d7-a04f9d80df07', 'Jamal', NULL, 'jamal@gmail.com', '334343434', NULL, 'dfgdfgdfg', 'dfgdfgdfg', '4251701056480.jpg', '2023-11-23', 'Male', 3, 1, NULL, 2, NULL, '2023-11-25 22:04:02', '2023-12-03 00:33:24'),
-(3, '12eedb1b-3db0-4877-9b95-b4de71a2aa1e', 'yrtrtyrty', NULL, 'ttt@gmail.com', '454444', NULL, 'fghfghfgh', 'cvfgh', '8951700975607.jpg', '2023-11-17', 'Male', 6, 0, 2, 2, '2023-11-25 23:49:02', '2023-11-25 23:13:28', '2023-11-25 23:49:02'),
-(4, '7ac41718-6045-4cb4-90ef-adeeedbbf4a4', 'Kashem', NULL, 'kashem@gmail.com', '5555', NULL, 'dfgdfg', 'cfgf', '9701701056490.jpg', '2023-11-21', 'Male', 4, 1, 2, 2, NULL, '2023-11-26 00:25:39', '2023-12-03 00:33:51'),
-(5, '720cd79a-c527-453d-a97f-99f4f2f71d90', 'Emily', NULL, 'em@gnail.com', '01254785695', NULL, 'dfgdfgdfg', 'dfgdsfg', '9821701837135.jpg', '2023-12-21', 'female', 5, 1, 2, NULL, NULL, '2023-12-05 22:32:16', '2023-12-05 22:32:16');
+(1, 'PT-2023121', 'Abdur Rahim', NULL, 'ar@gmail.com', '01837898557', NULL, NULL, NULL, NULL, NULL, 'Male', 2, 1, 6, NULL, NULL, '2023-12-18 22:05:28', '2023-12-18 22:05:28');
 
 -- --------------------------------------------------------
 
@@ -443,17 +477,18 @@ INSERT INTO `patients` (`id`, `patient_id`, `name_en`, `name_bn`, `email`, `cont
 CREATE TABLE `patient_admits` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `patient_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `father_name` varchar(255) NOT NULL,
-  `mother_name` varchar(255) NOT NULL,
-  `husband_name` varchar(255) NOT NULL,
-  `marital_status` varchar(255) NOT NULL,
-  `doctor_ref` varchar(255) NOT NULL,
-  `problem` text NOT NULL,
-  `admit_date` date NOT NULL,
+  `father_name` varchar(255) DEFAULT NULL,
+  `mother_name` varchar(255) DEFAULT NULL,
+  `husband_name` varchar(255) DEFAULT NULL,
+  `marital_status` varchar(255) DEFAULT NULL,
+  `doctor_ref` varchar(255) DEFAULT NULL,
+  `problem` text DEFAULT NULL,
+  `admit_date` date DEFAULT NULL,
+  `release_date` date DEFAULT NULL,
   `room_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `guardian` varchar(255) NOT NULL,
-  `relation` varchar(255) NOT NULL,
-  `condition` text NOT NULL,
+  `guardian` varchar(255) DEFAULT NULL,
+  `relation` varchar(255) DEFAULT NULL,
+  `condition` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -466,10 +501,41 @@ CREATE TABLE `patient_admits` (
 -- Dumping data for table `patient_admits`
 --
 
-INSERT INTO `patient_admits` (`id`, `patient_id`, `father_name`, `mother_name`, `husband_name`, `marital_status`, `doctor_ref`, `problem`, `admit_date`, `room_id`, `guardian`, `relation`, `condition`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'ffffff', 'tttttttttttt', 'hhhhhhhhhhh', 'single', 'dddddddddddd', 'ppppppppppppp', '2023-11-16', 1, 'ggggggg', 'rrrrrrrrrr', 'cccccccccccccc', 1, 2, 2, NULL, '2023-11-30 01:13:52', '2023-12-06 22:42:27'),
-(2, 4, 'kamal', 'jamila', 'jamal', 'married', 'karim', 'dfgdfgdfg', '2023-12-19', 1, 'dfgdfgdfg', 'fgdfgdfg', 'fgdfgdfg', 1, 2, 2, NULL, '2023-12-03 00:52:55', '2023-12-03 23:34:46'),
-(3, 2, 'dfgdfg', 'dgdfg', 'dfgdfg', 'divorced', 'fdgdfg', 'dfgdfg', '2023-12-13', 2, 'dfgdfg', 'dfgdfg', 'dfgdfg', 1, 2, 2, NULL, '2023-12-03 23:09:24', '2023-12-03 23:29:29');
+INSERT INTO `patient_admits` (`id`, `patient_id`, `father_name`, `mother_name`, `husband_name`, `marital_status`, `doctor_ref`, `problem`, `admit_date`, `release_date`, `room_id`, `guardian`, `relation`, `condition`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 'cvbcvb', 'cvbcvb', 'cvbcvb', 'married', 'cvbcvb', 'cvbcvb', '2023-12-04', NULL, 1, 'cvbcvb', 'cvbcv', 'vcbcvb', 1, 6, NULL, NULL, '2023-12-19 00:17:14', '2023-12-19 00:17:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_bills`
+--
+
+CREATE TABLE `patient_bills` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `sub_amount` decimal(10,2) DEFAULT NULL,
+  `discount` decimal(10,2) DEFAULT NULL,
+  `tax` decimal(10,2) DEFAULT NULL,
+  `total_amount` decimal(10,2) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_bill_details`
+--
+
+CREATE TABLE `patient_bill_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_bill_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `particular` varchar(255) NOT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -487,6 +553,32 @@ CREATE TABLE `patient_medi_cat` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_payments`
+--
+
+CREATE TABLE `patient_payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `admit_id` int(11) DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patient_payments`
+--
+
+INSERT INTO `patient_payments` (`id`, `patient_id`, `date`, `admit_id`, `amount`, `created_at`, `updated_at`) VALUES
+(1, 1, '2023-12-20', 1, 200.00, '2023-12-19 21:26:04', '2023-12-19 21:26:04'),
+(2, 1, '2023-12-20', 1, 200.00, '2023-12-19 21:53:34', '2023-12-19 21:53:34'),
+(3, 1, '2023-12-20', 1, 200.00, '2023-12-19 21:57:35', '2023-12-19 21:57:35'),
+(4, 1, '2023-12-20', 1, 220000.00, '2023-12-19 22:14:55', '2023-12-19 22:14:55');
 
 -- --------------------------------------------------------
 
@@ -531,6 +623,66 @@ CREATE TABLE `patient_prescribe_medi` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `patient_tests`
+--
+
+CREATE TABLE `patient_tests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `sub_price` double NOT NULL,
+  `vat` double NOT NULL,
+  `discount` double NOT NULL,
+  `total_amount` double NOT NULL,
+  `paid` double NOT NULL,
+  `admit_id` int(11) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patient_tests`
+--
+
+INSERT INTO `patient_tests` (`id`, `patient_id`, `sub_price`, `vat`, `discount`, `total_amount`, `paid`, `admit_id`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 250, 15, 10, 258.75, 200, 1, 1, 6, NULL, NULL, '2023-12-19 21:26:04', '2023-12-19 21:26:04'),
+(2, 1, 20000, 15, 10, 20700, 200, 1, 1, 6, NULL, NULL, '2023-12-19 21:53:34', '2023-12-19 21:53:34'),
+(3, 1, 250, 5, 15, 223.125, 200, 1, 1, 6, NULL, NULL, '2023-12-19 21:57:35', '2023-12-19 21:57:35'),
+(4, 1, 221000, 15, 10, 228735, 220000, 1, 1, 6, NULL, NULL, '2023-12-19 22:14:54', '2023-12-19 22:14:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_test_details`
+--
+
+CREATE TABLE `patient_test_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_test_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `inv_list_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `amount` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patient_test_details`
+--
+
+INSERT INTO `patient_test_details` (`id`, `patient_test_id`, `inv_list_id`, `amount`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 250.00, '2023-12-19 21:26:04', '2023-12-19 21:26:04'),
+(2, 2, 7, 20000.00, '2023-12-19 21:53:34', '2023-12-19 21:53:34'),
+(3, 3, 1, 250.00, '2023-12-19 21:57:35', '2023-12-19 21:57:35'),
+(4, 4, 7, 20000.00, '2023-12-19 22:14:55', '2023-12-19 22:14:55'),
+(5, 4, 4, 1000.00, '2023-12-19 22:14:55', '2023-12-19 22:14:55'),
+(6, 4, 8, 200000.00, '2023-12-19 22:14:55', '2023-12-19 22:14:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `permissions`
 --
 
@@ -547,12 +699,108 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `role_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'role.index', '2023-11-26 00:53:41', '2023-11-26 00:53:41'),
-(2, 1, 'role.create', '2023-11-26 00:53:41', '2023-11-26 00:53:41'),
-(3, 1, 'role.show', '2023-11-26 00:53:41', '2023-11-26 00:53:41'),
-(4, 1, 'role.edit', '2023-11-26 00:53:41', '2023-11-26 00:53:41'),
-(5, 1, 'role.destroy', '2023-11-26 00:53:41', '2023-11-26 00:53:41'),
-(6, 1, 'permission.list', '2023-11-26 00:53:41', '2023-11-26 00:53:41');
+(7, 1, 'user.index', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(8, 1, 'user.create', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(9, 1, 'user.show', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(10, 1, 'user.edit', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(11, 1, 'user.destroy', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(12, 1, 'role.index', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(13, 1, 'role.create', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(14, 1, 'role.show', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(15, 1, 'role.edit', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(16, 1, 'role.destroy', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(17, 1, 'permission.list', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(18, 1, 'patients.index', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(19, 1, 'patients.create', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(20, 1, 'patients.show', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(21, 1, 'patients.edit', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(22, 1, 'patients.destroy', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(23, 1, 'employees.index', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(24, 1, 'employees.create', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(25, 1, 'employees.show', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(26, 1, 'employees.edit', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(27, 1, 'employees.destroy', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(28, 1, 'blood.index', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(29, 1, 'blood.create', '2023-12-19 21:09:40', '2023-12-19 21:09:40'),
+(30, 1, 'blood.show', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(31, 1, 'blood.edit', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(32, 1, 'blood.destroy', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(33, 1, 'department.index', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(34, 1, 'department.create', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(35, 1, 'department.show', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(36, 1, 'department.edit', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(37, 1, 'department.destroy', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(38, 1, 'designation.index', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(39, 1, 'designation.create', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(40, 1, 'designation.show', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(41, 1, 'designation.edit', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(42, 1, 'designation.destroy', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(43, 1, 'doctor.index', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(44, 1, 'doctor.create', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(45, 1, 'doctor.show', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(46, 1, 'doctor.edit', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(47, 1, 'doctor.destroy', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(48, 1, 'roomCat.index', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(49, 1, 'roomCat.create', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(50, 1, 'roomCat.show', '2023-12-19 21:09:41', '2023-12-19 21:09:41'),
+(51, 1, 'roomCat.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(52, 1, 'roomCat.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(53, 1, 'roomList.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(54, 1, 'roomList.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(55, 1, 'roomList.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(56, 1, 'roomList.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(57, 1, 'roomList.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(58, 1, 'pAdmit.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(59, 1, 'pAdmit.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(60, 1, 'pAdmit.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(61, 1, 'pAdmit.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(62, 1, 'pAdmit.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(63, 1, 'shift.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(64, 1, 'shift.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(65, 1, 'shift.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(66, 1, 'shift.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(67, 1, 'shift.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(68, 1, 'day.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(69, 1, 'day.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(70, 1, 'day.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(71, 1, 'day.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(72, 1, 'day.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(73, 1, 'schedule.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(74, 1, 'schedule.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(75, 1, 'schedule.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(76, 1, 'schedule.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(77, 1, 'schedule.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(78, 1, 'investCat.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(79, 1, 'investCat.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(80, 1, 'investCat.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(81, 1, 'investCat.edit', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(82, 1, 'investCat.destroy', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(83, 1, 'invest.index', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(84, 1, 'invest.create', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(85, 1, 'invest.show', '2023-12-19 21:09:42', '2023-12-19 21:09:42'),
+(86, 1, 'invest.edit', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(87, 1, 'invest.destroy', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(88, 1, 'testDetail.index', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(89, 1, 'testDetail.create', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(90, 1, 'testDetail.show', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(91, 1, 'testDetail.edit', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(92, 1, 'testDetail.destroy', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(93, 1, 'patienttest.index', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(94, 1, 'patienttest.create', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(95, 1, 'patienttest.show', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(96, 1, 'patienttest.edit', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(97, 1, 'patienttest.destroy', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(98, 1, 'birth.index', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(99, 1, 'birth.create', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(100, 1, 'birth.show', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(101, 1, 'birth.edit', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(102, 1, 'birth.destroy', '2023-12-19 21:09:43', '2023-12-19 21:09:43'),
+(103, 2, 'doctor.index', '2023-12-19 21:11:16', '2023-12-19 21:11:16'),
+(104, 2, 'doctor.show', '2023-12-19 21:11:16', '2023-12-19 21:11:16'),
+(105, 2, 'pAdmit.index', '2023-12-19 21:11:16', '2023-12-19 21:11:16'),
+(106, 2, 'pAdmit.show', '2023-12-19 21:11:16', '2023-12-19 21:11:16'),
+(107, 2, 'patienttest.index', '2023-12-19 21:11:16', '2023-12-19 21:11:16'),
+(108, 2, 'patienttest.show', '2023-12-19 21:11:16', '2023-12-19 21:11:16');
 
 -- --------------------------------------------------------
 
@@ -639,11 +887,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `identity`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'superadmin', 1, NULL, NULL, NULL, '2023-11-22 22:59:25', NULL),
-(2, 'Doctor', 'doctor', 1, NULL, NULL, NULL, '2023-11-22 22:59:25', NULL),
-(3, 'Receptionist', 'receptionist', 1, NULL, NULL, NULL, '2023-11-22 22:59:25', NULL),
-(4, 'Accountant', 'accountant', 1, NULL, NULL, NULL, '2023-11-22 22:59:25', NULL),
-(5, 'Nurse', 'nurse', 1, 2, NULL, NULL, '2023-11-26 00:52:23', '2023-11-26 00:52:23');
+(1, 'Super Admin', 'superadmin', 1, NULL, NULL, NULL, '2023-12-18 00:57:13', NULL),
+(2, 'Doctor', 'doctor', 1, NULL, NULL, NULL, '2023-12-18 00:57:13', NULL),
+(3, 'Receptionist', 'receptionist', 1, NULL, NULL, NULL, '2023-12-18 00:57:13', NULL),
+(4, 'Accountant', 'accountant', 1, NULL, NULL, NULL, '2023-12-18 00:57:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -667,9 +914,8 @@ CREATE TABLE `room_cats` (
 --
 
 INSERT INTO `room_cats` (`id`, `room_cat_name`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'AC', 1, 2, 2, NULL, '2023-11-28 23:24:55', '2023-12-06 22:22:52'),
-(2, 'ghhhhhhhhhhhhhhhj', 0, 2, NULL, '2023-11-28 23:29:51', '2023-11-28 23:29:36', '2023-11-28 23:29:51'),
-(3, 'Non-AC', 1, 2, NULL, NULL, '2023-12-03 00:55:54', '2023-12-03 00:55:54');
+(1, 'AC', 1, 6, NULL, NULL, '2023-12-18 21:35:28', '2023-12-18 21:35:28'),
+(2, 'Non-AC', 1, 6, NULL, NULL, '2023-12-18 21:35:44', '2023-12-18 21:35:44');
 
 -- --------------------------------------------------------
 
@@ -698,8 +944,8 @@ CREATE TABLE `room_lists` (
 --
 
 INSERT INTO `room_lists` (`id`, `room_cat_id`, `room_no`, `floor_no`, `description`, `capacity`, `price`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 12, 6, 'f d fgdfgdfgdfxx x', 2, 20000, 1, 2, 2, NULL, '2023-11-29 21:03:51', '2023-11-29 21:54:20'),
-(2, 3, 1, 3, 'tyutyutyutyutyu', 5, 20000, 1, 2, NULL, NULL, '2023-12-03 23:29:02', '2023-12-03 23:29:02');
+(1, 1, 1, 1, 'sfsfd', 4, 2000, 1, 6, NULL, NULL, '2023-12-18 21:36:29', '2023-12-18 21:36:29'),
+(2, 2, 2, 1, 'sfdsfd', 4, 1000, 1, 6, NULL, NULL, '2023-12-18 21:37:08', '2023-12-18 21:37:08');
 
 -- --------------------------------------------------------
 
@@ -720,14 +966,6 @@ CREATE TABLE `schedules` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `schedules`
---
-
-INSERT INTO `schedules` (`id`, `employ_id`, `day_id`, `shift_id`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 10, 2, 2, 1, 2, 2, NULL, '2023-12-02 01:02:05', '2023-12-02 01:09:45'),
-(2, 11, 4, 2, 1, 2, NULL, NULL, '2023-12-02 01:10:25', '2023-12-02 01:10:25');
-
 -- --------------------------------------------------------
 
 --
@@ -739,61 +977,6 @@ CREATE TABLE `shifts` (
   `s_name` varchar(255) NOT NULL,
   `start` varchar(255) NOT NULL,
   `end_time` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `shifts`
---
-
-INSERT INTO `shifts` (`id`, `s_name`, `start`, `end_time`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'fgdfgdfg', 'fgdfgdfg', 'dddddddddddddd', 0, 2, NULL, '2023-12-01 22:20:25', '2023-12-01 22:18:40', '2023-12-01 22:20:25'),
-(2, 'fdfgdfg', 'dfgdfgdf', 'dfgdfg', 1, 2, NULL, NULL, '2023-12-02 01:01:46', '2023-12-02 01:01:46');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tests`
---
-
-CREATE TABLE `tests` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `patient_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `vat` double NOT NULL,
-  `discount` double NOT NULL,
-  `paid` double NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `tests`
---
-
-INSERT INTO `tests` (`id`, `patient_id`, `vat`, `discount`, `paid`, `status`, `created_by`, `updated_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 2, 6, 450, 20000, 1, 2, 2, '2023-12-04 23:26:00', '2023-12-04 23:23:57', '2023-12-04 23:26:00'),
-(2, 2, 15, 256, 755.44, 1, 2, 2, '2023-12-06 22:31:54', '2023-12-04 23:26:59', '2023-12-06 22:31:54'),
-(3, 5, 10, 15, 1000, 1, 2, NULL, NULL, '2023-12-06 22:32:32', '2023-12-06 22:32:32');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `test_details`
---
-
-CREATE TABLE `test_details` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `test_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `inv_list_id` bigint(20) UNSIGNED DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -832,11 +1015,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `employ_id`, `role_id`, `name_en`, `email`, `contact_no_en`, `password`, `language`, `full_access`, `status`, `created_by`, `updated_by`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 6, 1, 'Asadullah Al Galib', 'galib@gmail.com', '018375755799', '$2y$12$JrYgams5nXcHmqlnk7aUTOnC2rtZ1aABHLbt7ElC2ghErwzkv2kZ2', 'en', 1, 1, NULL, 2, NULL, '2023-11-23 00:42:44', '2023-11-26 23:05:47', NULL),
-(4, 9, 3, 'Kamal Uddin', 'k@gmail.com', '12569', '$2y$12$SlQqXma10cbi6q3TvviR5OuPXl/K0QSZTxrtvbN6ygGErLMvYJaQe', 'en', 0, 1, 2, NULL, NULL, '2023-11-27 22:39:13', '2023-11-28 22:31:35', NULL),
-(5, 10, 2, 'Joshim Uddin', 'j@gmail.com', '25865', '$2y$12$8NwZWWrJlpXYmk5TvmBwvupiY1IJaH1wE.bW4jlOMWZLVYCC.GJMq', 'en', 0, 1, 2, 2, NULL, '2023-11-27 22:45:02', '2023-11-28 22:40:52', NULL),
-(6, 11, 2, 'Farabi', 'f@gmail.com', '01458795687', '$2y$12$7T0vRQVY0XM8UBwxZySNV.i5JFdTeVfHdKMvk8SpKR2bykq.lmJje', 'en', 0, 1, 2, 2, NULL, '2023-11-27 22:47:33', '2023-11-29 21:32:08', NULL),
-(7, 12, 2, 'Farin', 'h@gmail.com', '1444444', '$2y$12$0gngcPLvjSZ/bvuKk6duhONwwW0lRATmIzfqdBpmnBfL9q573MiKG', 'en', 0, 1, 2, 2, NULL, '2023-12-02 23:14:43', '2023-12-03 00:26:55', NULL);
+(6, 5, 1, 'Asadullah Al Galib', 'galib@gmail.com', '01533307176', '$2y$12$8rTPEfTBb59o1Q2g.iz6LehBlTBBFh9rMJUThUWeikTXOQrLUs5xa', 'en', 1, 1, 1, 6, NULL, '2023-12-18 21:23:50', '2023-12-20 00:58:55', NULL),
+(7, 6, 2, 'Kamal Uddin', 'k@gmail.com', '464654', '$2y$12$rwbIpJ2pkG6UITibjd5MEOaD7E.4RAHtb65H9nYXSRehqgO.A8hhC', 'en', 0, 1, 6, NULL, NULL, '2023-12-18 21:31:04', '2023-12-18 21:31:04', NULL),
+(8, 7, 2, 'Farjana Hamid', 'f@gmail.com', '018378957', '$2y$12$JQ9g5fqeck0nI2cAyKGXEu99sEI/vUFgTyFfS9oqEE63sJ5BIOthy', 'en', 0, 1, 6, NULL, NULL, '2023-12-18 21:33:02', '2023-12-18 21:33:02', NULL),
+(9, 8, 2, 'Noman Uddin', 'n@gmail.com', '54454', '$2y$12$39GgLlKRTNHeVMx98zzwwevEoziVsvn8HfN8KXuBMu.dM.AB.fylG', 'en', 0, 1, 6, NULL, NULL, '2023-12-18 22:00:54', '2023-12-18 22:00:54', NULL);
 
 --
 -- Indexes for dumped tables
@@ -849,6 +1031,14 @@ ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `appointments_patient_id_foreign` (`patient_id`),
   ADD KEY `appointments_employ_id_foreign` (`employ_id`);
+
+--
+-- Indexes for table `appointment_requests`
+--
+ALTER TABLE `appointment_requests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `appointment_requests_department_id_foreign` (`department_id`),
+  ADD KEY `appointment_requests_doctor_id_foreign` (`doctor_id`);
 
 --
 -- Indexes for table `births`
@@ -952,10 +1142,31 @@ ALTER TABLE `patient_admits`
   ADD KEY `patient_admits_room_id_foreign` (`room_id`);
 
 --
+-- Indexes for table `patient_bills`
+--
+ALTER TABLE `patient_bills`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_bills_patient_id_foreign` (`patient_id`);
+
+--
+-- Indexes for table `patient_bill_details`
+--
+ALTER TABLE `patient_bill_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_bill_details_patient_bill_id_foreign` (`patient_bill_id`);
+
+--
 -- Indexes for table `patient_medi_cat`
 --
 ALTER TABLE `patient_medi_cat`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patient_payments`
+--
+ALTER TABLE `patient_payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_payments_patient_id_foreign` (`patient_id`);
 
 --
 -- Indexes for table `patient_prescribe`
@@ -972,6 +1183,21 @@ ALTER TABLE `patient_prescribe_medi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `patient_prescribe_medi_prescribe_id_foreign` (`prescribe_id`),
   ADD KEY `patient_prescribe_medi_medicine_cat_id_foreign` (`medicine_cat_id`);
+
+--
+-- Indexes for table `patient_tests`
+--
+ALTER TABLE `patient_tests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_tests_patient_id_foreign` (`patient_id`);
+
+--
+-- Indexes for table `patient_test_details`
+--
+ALTER TABLE `patient_test_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_test_details_patient_test_id_foreign` (`patient_test_id`),
+  ADD KEY `patient_test_details_inv_list_id_foreign` (`inv_list_id`);
 
 --
 -- Indexes for table `permissions`
@@ -1007,7 +1233,7 @@ ALTER TABLE `prescription_medis`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roles_type_unique` (`name`),
+  ADD UNIQUE KEY `roles_name_unique` (`name`),
   ADD UNIQUE KEY `roles_identity_unique` (`identity`);
 
 --
@@ -1039,21 +1265,6 @@ ALTER TABLE `shifts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tests`
---
-ALTER TABLE `tests`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tests_patient_id_foreign` (`patient_id`);
-
---
--- Indexes for table `test_details`
---
-ALTER TABLE `test_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `test_details_test_id_foreign` (`test_id`),
-  ADD KEY `test_details_inv_list_id_foreign` (`inv_list_id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1071,25 +1282,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `appointment_requests`
+--
+ALTER TABLE `appointment_requests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `births`
 --
 ALTER TABLE `births`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `blood`
 --
 ALTER TABLE `blood`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `days`
 --
 ALTER TABLE `days`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `deaths`
@@ -1107,7 +1324,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `designations`
 --
 ALTER TABLE `designations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `doctors`
@@ -1119,25 +1336,25 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `employ_basics`
 --
 ALTER TABLE `employ_basics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `invest_cats`
 --
 ALTER TABLE `invest_cats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `invest_lists`
 --
 ALTER TABLE `invest_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `operations`
@@ -1149,19 +1366,37 @@ ALTER TABLE `operations`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patient_admits`
 --
 ALTER TABLE `patient_admits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `patient_bills`
+--
+ALTER TABLE `patient_bills`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `patient_bill_details`
+--
+ALTER TABLE `patient_bill_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patient_medi_cat`
 --
 ALTER TABLE `patient_medi_cat`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `patient_payments`
+--
+ALTER TABLE `patient_payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `patient_prescribe`
@@ -1176,10 +1411,22 @@ ALTER TABLE `patient_prescribe_medi`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `patient_tests`
+--
+ALTER TABLE `patient_tests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `patient_test_details`
+--
+ALTER TABLE `patient_test_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1203,13 +1450,13 @@ ALTER TABLE `prescription_medis`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `room_cats`
 --
 ALTER TABLE `room_cats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `room_lists`
@@ -1221,31 +1468,19 @@ ALTER TABLE `room_lists`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tests`
---
-ALTER TABLE `tests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `test_details`
---
-ALTER TABLE `test_details`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -1257,6 +1492,13 @@ ALTER TABLE `users`
 ALTER TABLE `appointments`
   ADD CONSTRAINT `appointments_employ_id_foreign` FOREIGN KEY (`employ_id`) REFERENCES `employ_basics` (`id`),
   ADD CONSTRAINT `appointments_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`);
+
+--
+-- Constraints for table `appointment_requests`
+--
+ALTER TABLE `appointment_requests`
+  ADD CONSTRAINT `appointment_requests_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
+  ADD CONSTRAINT `appointment_requests_doctor_id_foreign` FOREIGN KEY (`doctor_id`) REFERENCES `employ_basics` (`id`);
 
 --
 -- Constraints for table `births`
@@ -1312,6 +1554,24 @@ ALTER TABLE `patient_admits`
   ADD CONSTRAINT `patient_admits_room_id_foreign` FOREIGN KEY (`room_id`) REFERENCES `room_lists` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `patient_bills`
+--
+ALTER TABLE `patient_bills`
+  ADD CONSTRAINT `patient_bills_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `patient_bill_details`
+--
+ALTER TABLE `patient_bill_details`
+  ADD CONSTRAINT `patient_bill_details_patient_bill_id_foreign` FOREIGN KEY (`patient_bill_id`) REFERENCES `patient_bills` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `patient_payments`
+--
+ALTER TABLE `patient_payments`
+  ADD CONSTRAINT `patient_payments_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `patient_prescribe`
 --
 ALTER TABLE `patient_prescribe`
@@ -1324,6 +1584,19 @@ ALTER TABLE `patient_prescribe`
 ALTER TABLE `patient_prescribe_medi`
   ADD CONSTRAINT `patient_prescribe_medi_medicine_cat_id_foreign` FOREIGN KEY (`medicine_cat_id`) REFERENCES `patient_medi_cat` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `patient_prescribe_medi_prescribe_id_foreign` FOREIGN KEY (`prescribe_id`) REFERENCES `patient_prescribe` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `patient_tests`
+--
+ALTER TABLE `patient_tests`
+  ADD CONSTRAINT `patient_tests_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `patient_test_details`
+--
+ALTER TABLE `patient_test_details`
+  ADD CONSTRAINT `patient_test_details_inv_list_id_foreign` FOREIGN KEY (`inv_list_id`) REFERENCES `invest_lists` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `patient_test_details_patient_test_id_foreign` FOREIGN KEY (`patient_test_id`) REFERENCES `patient_tests` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `permissions`
@@ -1356,19 +1629,6 @@ ALTER TABLE `schedules`
   ADD CONSTRAINT `schedules_day_id_foreign` FOREIGN KEY (`day_id`) REFERENCES `days` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `schedules_employ_id_foreign` FOREIGN KEY (`employ_id`) REFERENCES `employ_basics` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `schedules_shift_id_foreign` FOREIGN KEY (`shift_id`) REFERENCES `shifts` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `tests`
---
-ALTER TABLE `tests`
-  ADD CONSTRAINT `tests_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `test_details`
---
-ALTER TABLE `test_details`
-  ADD CONSTRAINT `test_details_inv_list_id_foreign` FOREIGN KEY (`inv_list_id`) REFERENCES `invest_lists` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `test_details_test_id_foreign` FOREIGN KEY (`test_id`) REFERENCES `tests` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`

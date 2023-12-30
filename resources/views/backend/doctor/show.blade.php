@@ -12,11 +12,12 @@
                         <img class="img-fluid" src="{{ asset('public/assets/images/Profile3.jpg') }}" alt="Card image cap">
                     </div>
                     <div class="card-body pt-5">
-                        <img src="{{ asset('public/uploads/employees/' .request()->session()->get('image')) }}"
+                        
+                        <img src="{{ asset('public/uploads/employees/'.$doctor->employ?->image) }}"
                             alt="profile-image" class="profile">
-                        <h4> {{ encryptor('decrypt',request()->session()->get('userName')) }}</h4>
-                        <h6> {{ encryptor('decrypt',request()->session()->get('email')) }}</h6>
-                        <h6> {{ encryptor('decrypt',request()->session()->get('role')) }}</h6>
+                        <h4> {{ isset($doctor->employ->name_en) ? $doctor->employ?->name_en : 'Name not found' }}</h4>
+                        <h6>{{ isset($doctor->employ->email) ? $doctor->employ?->email : 'Email not found' }}</h6>
+                        <h6> {{ isset($doctor->employ?->role->name) ? $doctor->employ?->role->name: 'Role not found' }}</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p>
                         <div class="icon-block">
@@ -29,8 +30,7 @@
                     <div class="card-body border-top border-light">
                         <div class="media align-items-center">
                             <div>
-                                <img src="{{ asset('public/assets/images/d2.svg') }}" class="skill-img"
-                                    alt="skill img">
+                                <img src="{{ asset('public/assets/images/d2.svg') }}" class="skill-img" alt="skill img">
                             </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
@@ -43,8 +43,7 @@
                         </div>
                         <hr>
                         <div class="media align-items-center">
-                            <div><img src="{{ asset('public/assets/images/d4.svg') }}" class="skill-img"
-                                    alt="skill img">
+                            <div><img src="{{ asset('public/assets/images/d4.svg') }}" class="skill-img" alt="skill img">
                             </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
@@ -57,8 +56,7 @@
                         </div>
                         <hr>
                         <div class="media align-items-center">
-                            <div><img src="{{ asset('public/assets/images/d3.svg') }}" class="skill-img"
-                                    alt="skill img">
+                            <div><img src="{{ asset('public/assets/images/d3.svg') }}" class="skill-img" alt="skill img">
                             </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
@@ -71,8 +69,8 @@
                         </div>
                         <hr>
                         <div class="media align-items-center">
-                            <div><img src="{{ asset('public/assets/images/d5.svg') }}" class="skill-img"
-                                    alt="skill img"></div>
+                            <div><img src="{{ asset('public/assets/images/d5.svg') }}" class="skill-img" alt="skill img">
+                            </div>
                             <div class="media-body text-left ml-3">
                                 <div class="progress-wrapper">
                                     <p>Surgical Oncology<span class="float-right">35%</span></p>
@@ -97,14 +95,14 @@
                                     class="nav-link active"><i class="icon-user"></i> <span
                                         class="hidden-xs">Profile</span></a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i
                                         class="icon-envelope-open"></i> <span class="hidden-xs">Add Doctor</span></a>
                             </li>
                             <li class="nav-item">
                                 <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i
                                         class="icon-note"></i> <span class="hidden-xs">Doctor's List</span></a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="tab-content p-3">
                             <div class="tab-pane active" id="profile">
@@ -125,24 +123,30 @@
                                         <h6>Blood Group</h6>
                                         <h6>Education</h6>
                                         <h6>Fees</h6>
-                                        <h6>Status</h6>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6>Email Address</h6>
-                                        <h6>Department</h6>
-                                        <h6>Designation</h6>
-                                        <h6>Present Address</h6>
-                                        <h6>Permanent Address</h6>
-                                        <h6>Contact Number EN</h6>
-                                        <h6>Contact Number BN</h6>
-                                        <h6>Short Biography</h6>
-                                        <h6>Date Of Birth</h6>
-                                        <h6>Specialist</h6>
-                                        <h6>Gender</h6>
-                                        <h6>Blood Group</h6>
-                                        <h6>Education</h6>
-                                        <h6>Fees</h6>
-                                        <h6>Status</h6>
+                                        <h6>{{ isset($doctor->employ->email) ? $doctor->employ->email : 'Email not found' }}</h6>
+                                        <h6>{{ isset($doctor->department->dep_name) ? $doctor->department->dep_name : 'Department not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->designation->desig_name) ? $doctor->designation->desig_name : 'Designation not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->employ->present_address) ? $doctor->employ->present_address : 'Present Address not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->employ->permanent_address) ? $doctor->employ->permanent_address : 'Permanent Address not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->employ->contact_no_en) ? $doctor->employ->contact_no_en : 'Contact not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->employ->contact_no_bn) ? $doctor->employ->contact_no_bn : 'Contact not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->biography) ? $doctor->biography : 'Biography not found' }}</h6>
+                                        <h6>{{ isset($doctor->employ->birth_date) ? $doctor->employ->birth_date : 'Birth Date not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->specialist) ? $doctor->specialist : 'Speciality not found' }}</h6>
+                                        <h6>{{ isset($doctor->employ->gender) ? $doctor->employ->gender : 'Gender Type not found' }}</h6>
+                                        <h6>{{ isset($doctor->employ->blood->blood_type_name) ? $doctor->employ->blood->blood_type_name : 'Blood Type not found' }}
+                                        </h6>
+                                        <h6>{{ isset($doctor->education) ? $doctor->education : 'Education Info not found' }}</h6>
+                                        <h6>{{ isset($doctor->fees) ? $doctor->fees : 'Fee not found' }}</h6>
                                     </div>
                                 </div>
                                 <!--/row-->

@@ -33,7 +33,9 @@
                                             {{ __('Inactive') }}
                                         @endif
                                     </td> --}}
-                                    <td>{{ $d->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $d->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $d->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('department.edit', encryptor('encrypt', $d->id)) }}">
                                             <i class="fa fa-edit"></i>

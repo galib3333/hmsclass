@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Doctor;
-use App\Models\Department;
-use App\Models\Designation;
-use App\Models\EmployBasic;
 use App\Http\Requests\Backend\Doctor\StoreDoctorRequest;
 use App\Http\Requests\Backend\Doctor\UpdateDoctorRequest;
+use App\Models\Department;
+use App\Models\Designation;
+use App\Models\Doctor;
+use App\Models\EmployBasic;
 use Exception;
 
 class DoctorController extends Controller
@@ -29,7 +29,7 @@ class DoctorController extends Controller
     {
         $department = Department::get();
         $designation = Designation::get();
-        $employee  = EmployBasic::where('role_id',2)->get();
+        $employee = EmployBasic::where('role_id', 2)->get();
         return view('backend.doctor.create', compact('department', 'designation', 'employee'));
     }
 
@@ -66,9 +66,11 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Doctor $doctor)
+    public function show($id)
     {
-        //
+       
+        $doctor = Doctor::findOrFail(encryptor('decrypt', $id));
+        return view('backend.doctor.show', compact('doctor'));
     }
 
     /**
@@ -125,8 +127,9 @@ class DoctorController extends Controller
         }
     }
 
-    public function doctorProfile()
-    {
-        return view('backend.profiles.doctorProfile');
-    }
+    // public function doctorProfile($id)
+    // {
+    //     $doctor = Doctor::findOrFail(encryptor('decrypt', $id));
+    //     return view('backend.profiles.doctorProfile', compact('doctor',));
+    // }
 }

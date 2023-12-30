@@ -145,13 +145,7 @@
                     <ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%">
                         <li class="dropdown-item">
                             <a href="{{ route('doctor.index') }}">
-                                <i class="fa fa-user-md"></i></i><span>Doctors</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li class="dropdown-item">
-                            <a href="{{ route('doctorProfile') }}">
-                                <i class="fa fa-user"></i> <span>Doctor's Profile</span>
+                                <i class="fa fa-user-md"></i><span>Doctors</span>
                             </a>
                         </li>
                         <li class="dropdown-divider"></li>
@@ -199,21 +193,22 @@
                                 <i class="fa-solid fa-prescription"></i><span>Appointment request</span>
                             </a>
                         </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a href="{{ route('appAccepted') }}">
+                                <i class="fa-solid fa-prescription"></i><span>Appointment Accept List</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- Add more items as needed -->
                 </li>
                 <!-- Dropdown Menu END-->
+                
                 <li>
-                    <a href="{{ route('test.index') }}">
-                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test</span>
+                    <a href="{{ route('patienttest.create') }}">
+                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Create</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('patienttest.index') }}">
-                        <i class="fas fa-dna" aria-hidden="true"></i><span>Test Invoice</span>
-                    </a>
-                </li>
-
                 <li>
                     <a href="{{ route('blood.index') }}">
                         <i class="zmdi zmdi-invert-colors"></i><span>Blood Group</span>
@@ -394,7 +389,7 @@
     <script src="{{ asset('public/assets/js/app-script.js') }}"></script>
     <!-- Chart js -->
     <script src="{{ asset('public/assets/plugins/Chart.js/Chart.min.js') }}"></script>
-    @stack('scripts');
+    @stack('scripts')
     <!-- Index js -->
     <script src="{{ asset('public/assets/js/index.js') }}"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>

@@ -36,7 +36,9 @@
                                     <td>{{ $pa->admit_date }}</td>
                                     <td>{{ $pa->roomList?->room_no }}</td>
                                     <td>{{ $pa->condition }}</td>
-                                    <td>{{ $pa->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                    <td class="{{ $pa->status == 1 ? 'text-success' : 'text-danger' }}">
+                                        {{ $pa->status == 1 ? 'Active' : 'Inactive' }}
+                                    </td>
                                     <td class="white-space-nowrap">
                                         <a href="{{ route('pAdmit.edit', encryptor('encrypt', $pa->id)) }}">
                                             <i class="fa fa-edit"></i>
