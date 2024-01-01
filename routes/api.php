@@ -19,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('department',[ApiController::class,'department']);
+Route::get('blood',[ApiController::class,'blood']);
 Route::get('doctor/{dept}',[ApiController::class,'doctor']);
+Route::post('appReq',[ApiController::class,'appStore']);

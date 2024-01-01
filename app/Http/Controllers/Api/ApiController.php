@@ -9,6 +9,7 @@ use App\Models\AppointmentRequest;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Blood;
 use Exception;
 use DB;
 
@@ -28,7 +29,12 @@ class ApiController extends Controller
         return response($data, 200);
     }
 
-    public function appStore(StoreAppointmentRequest $request)
+    public function blood(){
+        $blood = Blood::get()->toArray();
+        return response($blood, 200);
+    }
+
+    public function appStore(Request $request)
     {
         try {
             $data = new AppointmentRequest;
